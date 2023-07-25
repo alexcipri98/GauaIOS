@@ -1,21 +1,20 @@
 //
-//  GauaApp.swift
-//  Gaua
+//  GauaMockApp.swift
+//  GauaMock
 //
-//  Created by Alex Ciprián López on 10/7/23.
+//  Created by Alex Ciprián López on 13/7/23.
 //
 
 import SwiftUI
-import Firebase
 
 @main
 struct GauaApp: App {
-    
+
     @StateObject private var navigationService = NavigationService.shared
        
        var body: some Scene {
            WindowGroup {
-               ParentView()
+               ContentView()
                    .environmentObject(navigationService.router)
            }
        }
