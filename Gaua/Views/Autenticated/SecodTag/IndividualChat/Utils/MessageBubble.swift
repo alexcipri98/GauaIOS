@@ -35,9 +35,3 @@ struct MessageBubble: View {
         .padding(.horizontal, 10)
     }
 }
-
-struct MessageBubble_Previews: PreviewProvider {
-    static var previews: some View {
-        MessageBubble(message: Message(id: "12345", text: "I´ve been coding for Gaua App", received: true, timestamp: Date()))
-    }
-}

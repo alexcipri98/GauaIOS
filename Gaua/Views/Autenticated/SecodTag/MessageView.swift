@@ -1,42 +1,14 @@
 //
-//  ChatView.swift
+//  MessageView.swift
 //  Gaua
 //
-//  Created by Alex Ciprián López on 12/7/23.
+//  Created by Alex Ciprián López on 25/7/23.
 //
 
 import SwiftUI
 
-struct ChatView: View {
-    @StateObject var viewModel = ChatViewModel()
-    var messageArray = ["Hello you", "How are you doing?", "I´ve been buildng Gaua App"]
-    var body: some View {
-        VStack {
-            VStack{
-                TitleRowView()
-                
-                ScrollView{
-                    ForEach(viewModel.messages, id: \.id) { message in
-                        MessageBubble(message: message)
-                    }
-                }.padding(.top, 10)
-                    .background(.white)
-                    .cornerRadius(30, corners: [.topLeft, .topRight])
-            }
-            .background(Color("Peach"))
-            
-            MessageFieldView().environmentObject(viewModel)
-        }
-    }
-}
 
-struct ChatView_Previews: PreviewProvider {
-    static var previews: some View {
-        ChatView()
-    }
-}
-
-struct messagesView: View {
+struct MessageView: View {
     var body: some View{
         ScrollView {
             ForEach(0..<10, id: \.self) { num in
@@ -68,5 +40,12 @@ struct messagesView: View {
                 
             }.padding(.bottom, 50)
         }
+    }
+}
+
+
+struct MessageView_Previews: PreviewProvider {
+    static var previews: some View {
+        MessageView()
     }
 }

@@ -12,24 +12,36 @@ class LikeViewModel: ObservableObject {
     @Published var discardedPeople: [Person] = []
     @Published var likedPeople: [Person] = []
     @Published var isNotLikedIn: Bool = true
+    @Published var errorText: String = ""
+    @Published var showError: Bool = false
     private var likeService = LikeService()
     let currentPerson = UserSession.shared.currentUser
+    
+    typealias MessageResult = Result<[Person], Error>
+
+    func processMessagesResult(_ result: MessageResult) {
+        switch result {
+        case .success(let people):
+            self.people = people
+            self.isNotLikedIn = false
+        case .failure(let error):
+            self.errorText = error.localizedDescription
+            self.showError = true
+            self.isNotLikedIn = false
+        }
+    }
     
     func readUsers() {
         guard let person = currentPerson else {
             print("Current person is nil")
             return
         }
-        likeService.getPeople(person: person, onSuccess: { [weak self] peopleService in
-            DispatchQueue.main.async {
-                self?.people = peopleService
-                self?.isNotLikedIn = false
-                print("Success")
-            }
-        }, onFailure: { error in
-            print("Register error: \(error?.localizedDescription ?? "")")
-            self.isNotLikedIn = false
-        })
+        likeService.getPeople(person: person,
+                              onSuccess: { people in
+                                    self.processMessagesResult(.success(people))
+                                }, onFailure: { error in
+                                    self.processMessagesResult(.failure(error ?? NSError(domain: "", code: 0, userInfo: nil)))
+                                })
     }
     
     func likeUser(user: Person) {
@@ -39,9 +51,9 @@ class LikeViewModel: ObservableObject {
             likeService.likeUser(fromPerson: currentPerson!,
                                  toPerson: user,
                                  onSuccess: { isMatch in
-                
+                                    #warning("Falta implementar que se hace cuando es match")
                                 }, onFailure: { error in
-                                    print("Register error: \(error?.localizedDescription ?? "")")
+                                    self.processMessagesResult(.failure(error ?? NSError(domain: "", code: 0, userInfo: nil)))
                                 })
         } else {
             print("Error")
