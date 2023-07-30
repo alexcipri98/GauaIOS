@@ -21,7 +21,8 @@ struct MainView: View {
             }
 
             NavigationView {
-                ChatView()
+                //ChatView()
+                AllChatsView()
             }
             .tabItem {
                 Label("Chat", systemImage: "ellipsis.message")

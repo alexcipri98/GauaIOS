@@ -26,7 +26,6 @@ struct CardView: View {
                 Spacer()
                 HStack{
                         ComponentStyles.customTitleText(text: user.name + " " + String(user.yearOfBorn), typeOfTitle: .title, color: .white)
-                       // ComponentStyles.customTitleText(text: String(user.yearOfBorn), typeOfTitle: .subheadline, color: .white)
                     Spacer()
                 }
                 if showAllDescription {

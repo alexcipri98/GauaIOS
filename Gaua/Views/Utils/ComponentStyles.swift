@@ -77,6 +77,13 @@ struct ComponentStyles {
         }
     }
     
+    static func customDefaultUserImage() -> some View {
+        Image("spanish")
+            .resizable()
+            .scaledToFill()
+            .aspectRatio(contentMode: .fill)
+    }
+    
 }
 
 struct RoundedTextFieldStyle: TextFieldStyle {

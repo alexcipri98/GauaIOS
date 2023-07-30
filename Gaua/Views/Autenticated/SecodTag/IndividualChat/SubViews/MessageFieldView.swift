@@ -16,7 +16,7 @@ struct MessageFieldView: View {
             customTextField(placeholder: Text("Enter your message here"), text: $message)
             
             Button {
-                chatViewModel.sendMessage(text: message, toMatchDocumentID: "J3OS7Y5uoZMUVWAeXXEqEdsOTl63_J3OS7Y5uoZMUVWAeXXEqEdsOTl63")
+                chatViewModel.sendMessage(text: message, toMatchDocumentID: chatViewModel.matchID)
                 message = ""
             } label: {
                 Image(systemName: "paperplane.fill")

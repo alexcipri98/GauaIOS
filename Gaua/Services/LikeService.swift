@@ -14,7 +14,7 @@ class LikeService {
     
     public func getPeople(person: Person, onSuccess: @escaping ([Person]) -> Void, onFailure: @escaping (Error?) -> Void) {
         let usersCollection = db.collection("users")
-        // Aquí falta filtrar por los usuarios que están a X distancia
+        #warning("Aquí falta filtrar por los usuarios que están a X distancia, genero, etc")
         
         usersCollection.getDocuments { (querySnapshot, error) in
             if let error = error {
@@ -52,7 +52,7 @@ class LikeService {
         
         let newLike = Like(id: "\(userId)_\(likedUserId)",
                            fromUserID: userId,
-                           toUserID: likedUserId, conversation: [])
+                           toUserID: likedUserId)
                
         likesCollection.document(newLike.id).setData([
                 "fromUserID": newLike.fromUserID,
@@ -101,10 +101,10 @@ class LikeService {
         let userId = fromPerson.id
         let likedUserId = toPerson.id
         
-        let newMatch = Like(id: "\(userId)_\(likedUserId)",
-                           fromUserID: userId,
-                            toUserID: likedUserId,
-                            conversation: [])
+        let newMatch = Match(id: "\(userId)_\(likedUserId)",
+                             conversation: [],
+                             fromUserID: userId,
+                             toUserID: likedUserId)
                
         matchesCollection.document(newMatch.id).setData([
                 "fromUserID": newMatch.fromUserID,

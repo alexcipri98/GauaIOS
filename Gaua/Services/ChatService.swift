@@ -35,7 +35,7 @@ class ChatService {
     func getMessages(conversationIDs: [String], onSuccess: @escaping ([Message]) -> Void, onFailure: @escaping (Error?) -> Void) {
         let chunkedConversationIDs = conversationIDs.chunked(into: 10)
         
-        var messages = [Message]() // Lista para almacenar todos los mensajes
+        var messages = [Message]()
         
         for chunk in chunkedConversationIDs {
             self.db.collection("messages")

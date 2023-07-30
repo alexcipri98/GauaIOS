@@ -35,11 +35,6 @@ class FireBaseManager: NSObject {
         }
 
         URLSession.shared.dataTask(with: imageUrl) { (data, response, error) in
-           /* if let error = error {
-                onSuccess(person)
-                return
-            }*/
-            
             guard let imageData = data, let image = UIImage(data: imageData) else {
                 onSuccess(person)
                 return

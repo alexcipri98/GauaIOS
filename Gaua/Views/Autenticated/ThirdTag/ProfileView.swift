@@ -12,15 +12,13 @@ struct ProfileView: View {
 
     var body: some View {
         let shouldPresentCropView = viewModel.isShowingCropViewController && viewModel.selectedImage != nil
-
+        
         VStack {
             ZStack {
                 Button(action: {
                     viewModel.isShowingImagePicker = true
                 }) {
-                    Image("spanish")
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
+                    ComponentStyles.customDefaultUserImage()
                         .frame(width: 200, height: 200)
                         .clipShape(Circle())
                         .shadow(radius: 10)

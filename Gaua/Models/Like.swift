@@ -11,12 +11,10 @@ struct Like: Identifiable {
     var id: String
     var fromUserID: String
     var toUserID: String
-    var conversation: [String]
     
-    init(id: String, fromUserID: String, toUserID: String, conversation: [String]) {
+    init(id: String, fromUserID: String, toUserID: String) {
         self.id = id
         self.fromUserID = fromUserID
         self.toUserID = toUserID
-        self.conversation = conversation
     }
 }

@@ -8,12 +8,19 @@
 import SwiftUI
 
 struct ChatView: View {
-    @StateObject var viewModel = ChatViewModel()
+    private var forDocument: String
+
+    @StateObject private var viewModel: ChatViewModel
+
+    init(forDocument document: String, otherPerson: Person) {
+        self.forDocument = document
+        _viewModel = StateObject(wrappedValue: ChatViewModel(forDocument: document, otherPerson: otherPerson))
+    }
     
     var body: some View {
         VStack {
             VStack{
-                TitleRowView()
+                TitleRowView().environmentObject(viewModel)
                 
                 ScrollView{
                     ForEach(viewModel.messages, id: \.id) { message in
@@ -27,11 +34,5 @@ struct ChatView: View {
             
             MessageFieldView().environmentObject(viewModel)
         }
-    }
-}
-
-struct ChatView_Previews: PreviewProvider {
-    static var previews: some View {
-        ChatView()
     }
 }

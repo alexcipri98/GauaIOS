@@ -14,7 +14,8 @@ class ChatViewModel: ObservableObject {
     @Published var showError: Bool = false
     @Published var errorText: String = ""
     private var chatService = ChatService()
-    
+    public var matchID: String
+    public var otherPerson: Person
     typealias MessageResult = Result<[Message], Error>
 
     func processMessagesResult(_ result: MessageResult) {
@@ -27,8 +28,11 @@ class ChatViewModel: ObservableObject {
         }
     }
 
-    init(){
-        getMessages(forDocument: "J3OS7Y5uoZMUVWAeXXEqEdsOTl63_J3OS7Y5uoZMUVWAeXXEqEdsOTl63")
+
+    init(forDocument document: String, otherPerson: Person) {
+        self.matchID = document
+        self.otherPerson = otherPerson
+        getMessages(forDocument: document)
     }
     
     func getMessages(forDocument documentID: String) {
@@ -44,7 +48,7 @@ class ChatViewModel: ObservableObject {
     }
     
     func sendMessage(text: String, toMatchDocumentID matchDocumentID: String) {
-        let newMessage = Message(id: "\(UUID())", text: text, received: false, timestamp: Date())
+        let newMessage = Message(id: "\(UUID())", text: text, sendedByID: UserSession.shared.currentUser!.id, timestamp: Date())
         chatService.sendMessage(newMessage: newMessage,
                                 toMatchDocumentID: matchDocumentID,
                                 onFailure: { error in

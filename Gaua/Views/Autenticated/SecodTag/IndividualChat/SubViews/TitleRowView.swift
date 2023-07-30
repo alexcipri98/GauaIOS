@@ -8,17 +8,24 @@
 import SwiftUI
 
 struct TitleRowView: View {
-    var image = Image("spanish")
-    var name = "sara"
+    @EnvironmentObject var chatViewModel: ChatViewModel
+
     var body: some View {
         HStack(spacing: 20){
-            image.resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(width: 50, height: 50)
-                .cornerRadius(50)
-            
+            if let image = chatViewModel.otherPerson.image {
+                Image(uiImage: image)
+                    .resizable()
+                    .scaledToFill()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 50, height: 50)
+                    .cornerRadius(50)
+            } else {
+                ComponentStyles.customDefaultUserImage()
+                    .frame(width: 50, height: 50)
+                    .cornerRadius(50)
+            }
             VStack(alignment: .leading) {
-                Text(name)
+                Text(chatViewModel.otherPerson.name)
                     .font(.title).bold()
                 
                 Text("Online")
