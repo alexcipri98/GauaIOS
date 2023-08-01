@@ -25,12 +25,15 @@ struct CardView: View {
             VStack(alignment: .leading) {
                 Spacer()
                 HStack{
-                        ComponentStyles.customTitleText(text: user.name + " " + String(user.yearOfBorn), typeOfTitle: .title, color: .white)
-                       // ComponentStyles.customTitleText(text: String(user.yearOfBorn), typeOfTitle: .subheadline, color: .white)
+                        ComponentStyles.customTitleText(text: user.name + " " + String(user.yearOfBorn),
+                                                        typeOfTitle: .title,
+                                                        color: .white)
                     Spacer()
                 }
                 if showAllDescription {
-                    ComponentStyles.customTitleText(text: "Nacido en San Sebastian, viviendo en Madrid desde hace dos años, disfruto el día a día, me gusta bailar y los animales", typeOfTitle: .subheadline, color: .white)
+                    ComponentStyles.customTitleText(text: "Nacido en San Sebastian, viviendo en Madrid desde hace dos años, disfruto el día a día, me gusta bailar y los animales",
+                                                    typeOfTitle: .subheadline,
+                                                    color: .white)
                         .opacity(showAllDescription ? 1.0 : 0.0)
                         .onTapGesture {
                             withAnimation(.easeInOut(duration: 0.3)) {
@@ -38,7 +41,9 @@ struct CardView: View {
                             }
                         }
                 } else {
-                    ComponentStyles.customTitleText(text: "Nacido en San Sebastian, vivi...", typeOfTitle: .subheadline, color: .white)
+                    ComponentStyles.customTitleText(text: "Nacido en San Sebastian, vivi...",
+                                                    typeOfTitle: .subheadline,
+                                                    color: .white)
                         .opacity(showAllDescription ? 0.0 : 1.0)
                         .onTapGesture {
                             withAnimation(.easeInOut(duration: 0.3)) {
@@ -47,9 +52,15 @@ struct CardView: View {
                         }
                 }
                 HStack {
-                    ComponentStyles.customButtonWithAction(using: methodToRemoveLastUser, imageName: "trash.circle", user: user, color: .red)
+                    ComponentStyles.customButtonWithAction(using: methodToRemoveLastUser,
+                                                           imageName: "trash.circle",
+                                                           user: user,
+                                                           color: .red)
                     Spacer()
-                    ComponentStyles.customButtonWithAction(using: methodToLikeUser, imageName: "flame.circle", user: user, color: .green)
+                    ComponentStyles.customButtonWithAction(using: methodToLikeUser,
+                                                           imageName: "flame.circle",
+                                                           user: user,
+                                                           color: .green)
                 }.padding()
             }.background(
                 LinearGradient(
@@ -57,7 +68,7 @@ struct CardView: View {
                     startPoint: UnitPoint(x: 0.5, y: 0.5),
                     endPoint: UnitPoint(x: 0.5, y: 1)
                 )
-                .frame(maxWidth: .infinity, maxHeight: .infinity) // Asegura que el gradiente cubra toda la tarjeta
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
             )
         }
         .cornerRadius(20)
