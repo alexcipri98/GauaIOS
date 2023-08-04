@@ -1,0 +1,46 @@
+/* 
+  Localizable.strings
+  Gaua
+
+  Created by Alex Ciprián López on 1/8/23.
+  
+*/
+
+/* Generic */
+"any_view_close" = "Close";
+"any_view_error" = "Error";
+
+/* LogIn */
+"login_view_title" = "Login";
+"login_view_button" = "Log in";
+"login_register_redirect" = "Don't have an account yet?";
+
+/* Register */
+"register_view_title" = "Register";
+"register_view_button" = "Create Account";
+"register_action_correct" = "Successful user registration";
+"register_email_user" = "An email has been sent to you to confirm your email";
+
+/* Request parameters */
+"request_parameter_email" = "Email";
+"request_parameter_password" = "Password";
+"request_parameter_name" = "Name";
+"request_parameter_gender" = "Gender";
+"request_parameter_sexualOrientation" = "Sexual orientation";
+"request_parameter_yearOfBirth" = "Year of birth";
+
+/* Genders */
+"male_gender_parameter" = "Male";
+"female_gender_parameter" = "Female";
+"other_gender_parameter" = "Other";
+
+/* Sexual Orientations */
+"heterosexual_orientation_parameter" = "Heterosexual";
+"homosexual_orientation_parameter" = "Homosexual";
+"bisexual_orientation_parameter" = "Bisexual";
+
+/* Main View */
+"main_view_game" = "Game";
+"main_view_chat" = "Chat";
+"main_view_profile" = "Profile";
+

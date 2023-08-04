@@ -16,7 +16,8 @@ struct MainView: View {
                 LikeView()
             }
             .tabItem {
-                Label("Game", systemImage: "flame.circle")
+                Label("main_view_game".localized,
+                      systemImage: "flame.circle")
                     .font(.title)
             }
 
@@ -25,7 +26,8 @@ struct MainView: View {
                 AllChatsView()
             }
             .tabItem {
-                Label("Chat", systemImage: "ellipsis.message")
+                Label("main_view_chat".localized,
+                      systemImage: "ellipsis.message")
                     .font(.title)
             }
 
@@ -33,7 +35,8 @@ struct MainView: View {
                 ProfileView()
             }
             .tabItem {
-                Label("Profile", systemImage: "person.circle")
+                Label("main_view_profile".localized,
+                      systemImage: "person.circle")
                     .font(.title)
             }
         }

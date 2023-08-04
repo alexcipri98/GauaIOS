@@ -39,3 +39,15 @@ extension Array {
         return result
     }
 }
+
+extension String {
+    
+    var localized: String {
+        return NSLocalizedString(self, comment: "")
+    }
+    
+    var image: UIImage {
+        return UIImage(named: self) ?? UIImage()
+    }
+    
+}

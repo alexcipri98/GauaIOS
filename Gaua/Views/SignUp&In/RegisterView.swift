@@ -10,35 +10,42 @@ import SwiftUI
 struct RegisterView: View {
     @StateObject private var viewModel = RegisterViewModel()
     @Binding var isRegisterLinkActive: Bool
-    var genders = ["Masculino", "Femenino", "Otro"]
-    var sexualOrientations = ["Heterosexual", "Homosexual", "Bisexual"]
+    
+    var genders = ["male_gender_parameter".localized,
+                   "female_gender_parameter".localized,
+                   "other_gender_parameter".localized]
+    
+    var sexualOrientations = ["heterosexual_orientation_parameter".localized,
+                              "homosexual_orientation_parameter".localized,
+                              "bisexual_orientation_parameter".localized]
 
     var body: some View {
         ScrollView {
-            ComponentStyles.customTitleText(text: "Registro", typeOfTitle: .largeTitle, color: .black)
+            ComponentStyles.customTitleText(text: "register_view_title".localized, typeOfTitle: .largeTitle, color: .black)
             
             ComponentStyles.customTextField(variable: $viewModel.email,
-                                            text: "Email")
+                                            text: "request_parameter_email".localized)
             
             ComponentStyles.customSecureField(variable: $viewModel.password,
-                                              text: "Contraseña")
+                                              text: "request_parameter_password".localized)
             
             ComponentStyles.customTextField(variable: $viewModel.name,
-                                            text: "Nombre")
+                                            text: "request_parameter_name".localized)
             
-            ComponentStyles.customPicker(text: "Género", values: genders,
+            ComponentStyles.customPicker(text: "request_parameter_gender".localized,
+                                         values: genders,
                                          variable: $viewModel.gender)
                         
-            ComponentStyles.customPicker(text: "Orientación sexual",
+            ComponentStyles.customPicker(text: "request_parameter_sexualOrientation".localized,
                                          values: sexualOrientations,
                                          variable: $viewModel.sexualOrientation)
             
-            ComponentStyles.customYearPicker(text: "Año de nacimiento",
+            ComponentStyles.customYearPicker(text: "request_parameter_yearOfBirth".localized,
                                              variable: $viewModel.yearOfBorn)
             Button(action: {
                 viewModel.register()
             }) {
-                Text("Crear cuenta")
+                Text("register_view_button".localized)
                     .foregroundColor(.white)
                     .padding()
                     .background(Color.blue)
@@ -50,16 +57,16 @@ struct RegisterView: View {
         .padding()
         .alert(isPresented: $viewModel.showError) {
             Alert(
-                title: Text("Error"),
+                title: Text("any_view_error".localized),
                 message: Text(viewModel.errorText),
-                dismissButton: .default(Text("Cerrar"))
+                dismissButton: .default(Text("any_view_close".localized))
             )
         }
         .alert(isPresented: $viewModel.showVerify) {
             Alert(
-                title: Text("Registro correcto"),
-                message: Text("Se ha enviado un email a \(viewModel.email) para que confirme su correo"),
-                dismissButton: .default(Text("Cerrar")){
+                title: Text("register_action_correct".localized),
+                message: Text("register_email_user".localized),
+                dismissButton: .default(Text("any_view_close".localized)){
                     isRegisterLinkActive = false
                 }
             )
