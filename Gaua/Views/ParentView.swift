@@ -12,7 +12,7 @@ struct ParentView: View {
     
     var body: some View {
         NavigationView {
-            VStack { // Agregamos un contenedor vertical
+            VStack {
                 switch router.currentDestination {
                 case .login:
                     LoginView()
@@ -20,9 +20,6 @@ struct ParentView: View {
                     MainView()
                 }
             }
-            /*.navigationTitle("App Title")
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationBarHidden(false)*/
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }

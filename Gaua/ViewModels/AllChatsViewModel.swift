@@ -22,6 +22,7 @@ class AllChatsViewModel: ObservableObject {
             self.isLoading = false
         }, onFailure: { error in
             print(error?.localizedDescription ?? "")
+            self.isLoading = false
         })
     }
     

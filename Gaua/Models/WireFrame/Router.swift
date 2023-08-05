@@ -17,6 +17,8 @@ class Router: ObservableObject {
     @Published var currentDestination: Destination = .login
     
     func navigateTo(destination: Destination) {
-        currentDestination = destination
+        DispatchQueue.main.async {
+            self.currentDestination = destination
+        }
     }
 }

@@ -30,7 +30,6 @@ class AllChatsService {
                     if let error = error {
                         print("Error al obtener los matches: \(error.localizedDescription)")
                         onFailure(error)
-                        return
                     }
                     totalTransactions += querySnapshot?.documents.count ?? 0
                     if let querySnapshot = querySnapshot {
@@ -38,7 +37,6 @@ class AllChatsService {
                             self.matchFromDocument(document, onSuccess: { match in
                                 matches.append(match)
                                 onSuccess(matches)
-
                             })
                         }
                     }
@@ -54,7 +52,9 @@ class AllChatsService {
                             
                             if let querySnapshot = querySnapshot {
                                 totalTransactions += querySnapshot.documents.count
-
+                                if totalTransactions == 0 {
+                                    onSuccess(matches)
+                                }
                                 for document in querySnapshot.documents {
                                     self.matchFromDocument(document, onSuccess: { match in
                                         matches.append(match)
