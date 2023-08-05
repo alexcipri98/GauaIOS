@@ -56,6 +56,8 @@
 		0F61453A2A62A7B50070D111 /* Like.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6145392A62A7B50070D111 /* Like.swift */; };
 		0F7906522A78E28D00FC4621 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0F7906542A78E28D00FC4621 /* Localizable.strings */; };
 		0F7906582A78E35900FC4621 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0F7906542A78E28D00FC4621 /* Localizable.strings */; };
+		0F7906882A7D1C6A00FC4621 /* ImageUserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7906872A7D1C6A00FC4621 /* ImageUserProfileView.swift */; };
+		0F79068A2A7E49CE00FC4621 /* BodyOfProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7906892A7E49CE00FC4621 /* BodyOfProfileView.swift */; };
 		0F9B7ED02A5C105600CEE335 /* GauaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9B7ECF2A5C105600CEE335 /* GauaApp.swift */; };
 		0F9B7ED22A5C105600CEE335 /* ParentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9B7ED12A5C105600CEE335 /* ParentView.swift */; };
 		0F9B7ED42A5C105900CEE335 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F9B7ED32A5C105900CEE335 /* Assets.xcassets */; };
@@ -114,6 +116,8 @@
 		0F7906532A78E28D00FC4621 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0F7906562A78E2AB00FC4621 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0F7906572A78E2CA00FC4621 /* ca */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ca; path = ca.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0F7906872A7D1C6A00FC4621 /* ImageUserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUserProfileView.swift; sourceTree = "<group>"; };
+		0F7906892A7E49CE00FC4621 /* BodyOfProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyOfProfileView.swift; sourceTree = "<group>"; };
 		0F9B7ECC2A5C105600CEE335 /* Gaua.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gaua.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F9B7ECF2A5C105600CEE335 /* GauaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GauaApp.swift; sourceTree = "<group>"; };
 		0F9B7ED12A5C105600CEE335 /* ParentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentView.swift; sourceTree = "<group>"; };
@@ -262,6 +266,8 @@
 			children = (
 				0F595AB42A6549A900620811 /* Utils */,
 				0FFFC5872A5F4E860025268A /* ProfileView.swift */,
+				0F7906872A7D1C6A00FC4621 /* ImageUserProfileView.swift */,
+				0F7906892A7E49CE00FC4621 /* BodyOfProfileView.swift */,
 			);
 			path = ThirdTag;
 			sourceTree = "<group>";
@@ -545,6 +551,7 @@
 				0F4B118F2A6FDD420068F135 /* ChatService.swift in Sources */,
 				0F9B7F192A5D738900CEE335 /* Router.swift in Sources */,
 				0F595AB62A654B2F00620811 /* ProfileViewModel.swift in Sources */,
+				0F7906882A7D1C6A00FC4621 /* ImageUserProfileView.swift in Sources */,
 				0F4B11652A6C33DC0068F135 /* ChatViewModel.swift in Sources */,
 				0FFFC58A2A5F4EAD0025268A /* ChatView.swift in Sources */,
 				0F9B7EEF2A5C242200CEE335 /* LoginView.swift in Sources */,
@@ -573,6 +580,7 @@
 				0F9B7F232A5E8ED000CEE335 /* ComponentStyles.swift in Sources */,
 				0F4B11612A6C2CD90068F135 /* MessageFieldView.swift in Sources */,
 				0F6145282A5FE7880070D111 /* LikeViewModel.swift in Sources */,
+				0F79068A2A7E49CE00FC4621 /* BodyOfProfileView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

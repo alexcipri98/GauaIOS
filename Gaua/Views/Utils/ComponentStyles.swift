@@ -77,11 +77,14 @@ struct ComponentStyles {
         }
     }
     
-    static func customDefaultUserImage() -> some View {
-        Image("spanish")
-            .resizable()
-            .scaledToFill()
-            .aspectRatio(contentMode: .fill)
+    static func customImageOfUser() -> some View {
+        let image: Image
+        if let uiImage = UserSession.shared.currentUser?.image {
+            image = Image(uiImage: uiImage)
+        } else {
+            image = Image("spanish").scaledToFill().aspectRatio(contentMode: .fill) as! Image
+        }
+        return image.resizable()
     }
     
 }

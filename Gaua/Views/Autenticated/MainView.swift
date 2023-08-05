@@ -22,7 +22,6 @@ struct MainView: View {
             }
 
             NavigationView {
-                //ChatView()
                 AllChatsView()
             }
             .tabItem {
@@ -40,6 +39,7 @@ struct MainView: View {
                     .font(.title)
             }
         }
+        .background(Color(.systemGray6))
         .accentColor(.purple)
         .navigationViewStyle(StackNavigationViewStyle())
     }

@@ -12,18 +12,12 @@ struct TitleRowView: View {
 
     var body: some View {
         HStack(spacing: 20){
-            if let image = chatViewModel.otherPerson.image {
-                Image(uiImage: image)
-                    .resizable()
+            ComponentStyles.customImageOfUser()
                     .scaledToFill()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 50, height: 50)
                     .cornerRadius(50)
-            } else {
-                ComponentStyles.customDefaultUserImage()
-                    .frame(width: 50, height: 50)
-                    .cornerRadius(50)
-            }
+            
             VStack(alignment: .leading) {
                 Text(chatViewModel.otherPerson.name)
                     .font(.title).bold()
