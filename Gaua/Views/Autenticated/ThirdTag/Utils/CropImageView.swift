@@ -19,17 +19,14 @@ struct CropViewControllerRepresentable: UIViewControllerRepresentable {
         }
         
         let cropViewController = TOCropViewController(image: image)
-        cropViewController.delegate = context.coordinator
-        return configureCropView(cropViewController: cropViewController)
-    }
+        // Establece la relación de aspecto a 9:16
+        cropViewController.customAspectRatio = CGSize(width: 9, height: 16)
 
-    private func configureCropView(cropViewController: TOCropViewController) -> TOCropViewController {
-        cropViewController.customAspectRatio = CGSize(width: 3.5, height: 5)
-        cropViewController.aspectRatioPreset = .presetCustom
+        // Bloquea el selector para que se mantenga en esta relación de aspecto
         cropViewController.aspectRatioLockEnabled = true
-        cropViewController.resetAspectRatioEnabled = false
-        cropViewController.rotateButtonsHidden = true
-        
+        cropViewController.toolbarPosition = .top // Esto podría mover la barra de herramientas a la parte superior.
+
+        cropViewController.delegate = context.coordinator
         return cropViewController
     }
 
@@ -55,4 +52,24 @@ struct CropViewControllerRepresentable: UIViewControllerRepresentable {
             parent.presentationMode.wrappedValue.dismiss()
         }
     }
+    
+    class OverlayView: UIView {
+        
+        override init(frame: CGRect) {
+            super.init(frame: frame)
+            setup()
+        }
+        
+        required init?(coder: NSCoder) {
+            super.init(coder: coder)
+            setup()
+        }
+        
+        private func setup() {
+            self.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+            self.layer.borderWidth = 2.0
+            self.layer.borderColor = UIColor.white.cgColor
+        }
+    }
+
 }

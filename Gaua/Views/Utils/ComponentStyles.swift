@@ -82,9 +82,9 @@ struct ComponentStyles {
         if let uiImage = UserSession.shared.currentUser?.image {
             image = Image(uiImage: uiImage)
         } else {
-            image = Image("spanish").scaledToFill().aspectRatio(contentMode: .fill) as! Image
+            image = Image("spanish")
         }
-        return image.resizable()
+        return image.resizable().aspectRatio(contentMode: .fill)
     }
     
 }

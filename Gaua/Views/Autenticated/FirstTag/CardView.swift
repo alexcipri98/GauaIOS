@@ -16,11 +16,6 @@ struct CardView: View {
     let methodToLikeUser: (Person) -> Void
 
     var body: some View {
-        ZStack {
-            if let image = user.image {
-                Image(uiImage: image)
-                    .resizable()
-            }
             VStack(alignment: .leading) {
                 Spacer()
                 HStack{
@@ -50,15 +45,20 @@ struct CardView: View {
                     ComponentStyles.customButtonWithAction(using: methodToLikeUser, imageName: "flame.circle", user: user, color: .green)
                 }.padding()
             }.background(
-                LinearGradient(
-                    gradient: Gradient(colors: [Color.black.opacity(0.2), Color.black.opacity(1)]),
-                    startPoint: UnitPoint(x: 0.5, y: 0.5),
-                    endPoint: UnitPoint(x: 0.5, y: 1)
-                )
-                .frame(maxWidth: .infinity, maxHeight: .infinity) // Asegura que el gradiente cubra toda la tarjeta
+                ZStack{
+                    Image(uiImage: user.image ?? UIImage())
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                    LinearGradient(
+                        gradient: Gradient(colors: [Color.black.opacity(0.2), Color.black.opacity(1)]),
+                        startPoint: UnitPoint(x: 0.5, y: 0.5),
+                        endPoint: UnitPoint(x: 0.5, y: 1)
+                    )
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        
+                }
             )
-        }
-        .cornerRadius(20)
-        .shadow(radius: 5)
+            .cornerRadius(20)
+            .shadow(radius: 5)
     }
 }
