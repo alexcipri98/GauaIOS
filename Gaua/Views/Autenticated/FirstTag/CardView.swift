@@ -16,7 +16,6 @@ struct CardView: View {
     let methodToLikeUser: (Person) -> Void
 
     var body: some View {
-        let imageOfUser = user.image ?? UIImage(named: "spanish")
         ZStack {
             if let image = user.image {
                 Image(uiImage: image)

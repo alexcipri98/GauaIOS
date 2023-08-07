@@ -61,9 +61,6 @@ class AllChatsService {
                                         onSuccess(matches)
 
                                     })
-                                    /*if matches.count ==                     totalTransactions {
-                                                    onSuccess(matches)
-                                                }*/
                                 }
                             }
                         }

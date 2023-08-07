@@ -17,24 +17,51 @@ struct BodyOfProfileView: View {
         Tag(name: "Cine", iconName: "film"),
         Tag(name: "Atrevido", iconName: "flame"),
         Tag(name: "Lanzado", iconName: "paperplane")
-        // Añade más tags aquí
     ]
 
     @State private var selectedTags = Set<UUID>()
+    @State private var isEditingName = false
+    @State private var name: String = "Hola"
     var body: some View {
         if let user = UserSession.shared.currentUser {
             Text("Nombre:")
                 .font(.headline)
                 .foregroundColor(.secondary)
-            Text(user.name)
-                .font(.title)
-                .fontWeight(.bold)
-                .foregroundColor(.primary)
+            if isEditingName {
+                          HStack {
+                              TextField("Nombre", text: $name)
+                                  .font(.title)
+                                  .fontWeight(.bold)
+                                  .foregroundColor(.primary)
+                              Button(action: {
+                                  withAnimation {
+                                      isEditingName.toggle()
+                                  }
+                              }) {
+                                  Image(systemName: "pencil")
+                              }
+                          }
+                      } else {
+                          HStack {
+                              Text(user.name)
+                                  .font(.title)
+                                  .fontWeight(.bold)
+                                  .foregroundColor(.primary)
+                              Button(action: {
+                                  withAnimation {
+                                      isEditingName.toggle()
+                                  }
+                              }) {
+                                  Image(systemName: "pencil")
+                              }
+                          }
+                      }
+
 
             Text("Descripción:")
                 .font(.headline)
                 .foregroundColor(.secondary)
-            Text("Esto es una prueba de descripción de usuario bastante larga, quiero saber hasta donde puede llegar el texto sin qeu se superpongan las vistas, aún no he llegado al máximo asique sigo escribiendo, esto no acaba no se como no se revientan los márgenes.")
+            Text(user.description)
                 .font(.body)
                 .fixedSize(horizontal: false, vertical: true)
                 .foregroundColor(.primary)

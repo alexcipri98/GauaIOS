@@ -39,11 +39,12 @@ struct ImageUserProfileView: View {
         .sheet(isPresented: $viewModel.isShowingImagePicker, onDismiss: viewModel.showCrop) {
             ImagePicker(image: $viewModel.selectedImage)
         }
-        .sheet(isPresented: Binding<Bool>(get: { shouldPresentCropView },
-                                              set: { _ in viewModel.isShowingCropViewController = false }),
-                   onDismiss: viewModel.loadImage) {
-                CropViewControllerRepresentable(viewModel: self.viewModel)
-            }
+        .fullScreenCover(isPresented: Binding<Bool>(get: { shouldPresentCropView },
+                                                  set: { _ in viewModel.isShowingCropViewController = false }),
+                         onDismiss: viewModel.loadImage) {
+            CropViewControllerRepresentable(viewModel: self.viewModel)
+        }
+
     }
 }
 

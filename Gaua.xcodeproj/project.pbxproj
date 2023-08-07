@@ -118,6 +118,7 @@
 		0F7906572A78E2CA00FC4621 /* ca */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ca; path = ca.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0F7906872A7D1C6A00FC4621 /* ImageUserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUserProfileView.swift; sourceTree = "<group>"; };
 		0F7906892A7E49CE00FC4621 /* BodyOfProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyOfProfileView.swift; sourceTree = "<group>"; };
+		0F79068D2A7E65F100FC4621 /* Tareas.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Tareas.md; sourceTree = "<group>"; };
 		0F9B7ECC2A5C105600CEE335 /* Gaua.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gaua.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F9B7ECF2A5C105600CEE335 /* GauaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GauaApp.swift; sourceTree = "<group>"; };
 		0F9B7ED12A5C105600CEE335 /* ParentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentView.swift; sourceTree = "<group>"; };
@@ -275,6 +276,7 @@
 		0F9B7EC32A5C105600CEE335 = {
 			isa = PBXGroup;
 			children = (
+				0F79068D2A7E65F100FC4621 /* Tareas.md */,
 				0F9B7ECE2A5C105600CEE335 /* Gaua */,
 				0F6144E22A5FDA360070D111 /* GauaMock */,
 				0F7906542A78E28D00FC4621 /* Localizable.strings */,
@@ -779,6 +781,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Gaua/Preview Content\"";
+				DEVELOPMENT_TEAM = N7T95ZVA33;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -815,6 +818,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Gaua/Preview Content\"";
+				DEVELOPMENT_TEAM = N7T95ZVA33;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
