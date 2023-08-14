@@ -20,6 +20,9 @@
 "register_view_button" = "Create Account";
 "register_action_correct" = "Successful user registration";
 "register_email_user" = "An email has been sent to you to confirm your email";
+"register_email_error" = "The email is not in the expected format (xxxxx@xxxx.xxx)";
+"register_password_error" = "The password must have a capital letter, a number, a special character and between 8 and 16 digits";
+"register_name_error" = "The name is a required field";
 
 /* Request parameters */
 "request_parameter_email" = "Email";

@@ -15,6 +15,16 @@ struct ComponentStyles {
             .padding()
     }
     
+    static func customTextError(variable: Binding<Bool>, text: String) -> some View {
+        return variable.wrappedValue ?
+            Text(text)
+                .font(.system(size: 12))
+                .foregroundColor(Color.red)
+                .bold()
+            :
+            Text("")
+    }
+    
     static func customTextForButton(text: String) -> some View {
         Text(text)
             .foregroundColor(.white)

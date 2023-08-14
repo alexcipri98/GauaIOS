@@ -25,13 +25,16 @@ struct RegisterView: View {
             
             ComponentStyles.customTextField(variable: $viewModel.email,
                                             text: "request_parameter_email".localized)
+            ComponentStyles.customTextError(variable: $viewModel.showEmailError, text: "register_email_error".localized)
             
             ComponentStyles.customSecureField(variable: $viewModel.password,
                                               text: "request_parameter_password".localized)
-            
+            ComponentStyles.customTextError(variable: $viewModel.showPasswordError, text: "register_password_error".localized)
+
             ComponentStyles.customTextField(variable: $viewModel.name,
                                             text: "request_parameter_name".localized)
-            
+            ComponentStyles.customTextError(variable: $viewModel.showNameError, text: "register_name_error".localized)
+
             ComponentStyles.customPicker(text: "request_parameter_gender".localized,
                                          values: genders,
                                          variable: $viewModel.gender)

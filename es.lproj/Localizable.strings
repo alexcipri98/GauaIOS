@@ -19,6 +19,9 @@
 "register_view_button" = "Crear cuenta";
 "register_action_correct" = "Registro de usuario satisfactorio";
 "register_email_user" = "Se ha enviado un correo para que confirme su cuenta";
+"register_email_error" = "El correo electrónico no tiene el formato esperado (xxxxx@xxxx.xxx)";
+"register_password_error" = "La contraseña debe tener una mayúscula, un número, un caracter especial y entre 8 y 16 dígitos";
+"register_name_error" = "El nombre es un campo obligatorio";
 
 /* Request parameters */
 "request_parameter_email" = "Email";
