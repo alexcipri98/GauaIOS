@@ -26,18 +26,14 @@
 "request_parameter_password" = "Password";
 "request_parameter_name" = "Name";
 "request_parameter_gender" = "Gender";
-"request_parameter_sexualOrientation" = "Sexual orientation";
+"request_parameter_sexualOrientation" = "Show me";
 "request_parameter_yearOfBirth" = "Year of birth";
 
-/* Genders */
+/* Genders and sexual orientations*/
 "male_gender_parameter" = "Male";
 "female_gender_parameter" = "Female";
 "other_gender_parameter" = "Other";
-
-/* Sexual Orientations */
-"heterosexual_orientation_parameter" = "Heterosexual";
-"homosexual_orientation_parameter" = "Homosexual";
-"bisexual_orientation_parameter" = "Bisexual";
+"bisexual_orientation_parameter" = "Both";
 
 /* Main View */
 "main_view_game" = "Game";

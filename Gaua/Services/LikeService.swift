@@ -28,7 +28,8 @@ class LikeService {
                                                email: data["email"] as? String ?? "",
                                                name: data["name"] as? String ?? "",
                                                gender: data["gender"] as? String ?? "",
-                                               sexualOrientation: data["sexualOrientation"] as? String ?? "",
+                                               genderToShow: data["genderToShow"] as? String ?? "",
+                                               classOfPerson: ClassOfPerson(rawValue: data["classOfPerson"] as? String ?? "") ?? .classA,
                                                yearOfBorn: data["yearOfBorn"] as? Int ?? 2023,
                                                imageUrl: data["imageUrl"] as? String ?? "Error")
                     

@@ -15,8 +15,8 @@ struct RegisterView: View {
                    "female_gender_parameter".localized,
                    "other_gender_parameter".localized]
     
-    var sexualOrientations = ["heterosexual_orientation_parameter".localized,
-                              "homosexual_orientation_parameter".localized,
+    var sexualOrientations = ["male_gender_parameter".localized,
+                              "female_gender_parameter".localized,
                               "bisexual_orientation_parameter".localized]
 
     var body: some View {
@@ -38,7 +38,7 @@ struct RegisterView: View {
                         
             ComponentStyles.customPicker(text: "request_parameter_sexualOrientation".localized,
                                          values: sexualOrientations,
-                                         variable: $viewModel.sexualOrientation)
+                                         variable: $viewModel.genderToShow)
             
             ComponentStyles.customYearPicker(text: "request_parameter_yearOfBirth".localized,
                                              variable: $viewModel.yearOfBorn)

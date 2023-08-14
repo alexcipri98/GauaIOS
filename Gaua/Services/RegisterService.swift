@@ -46,7 +46,8 @@ class RegisterService {
             "name": person.name,
             "yearOfBorn": person.yearOfBorn,
             "gender": person.gender,
-            "sexualOrientation": person.sexualOrientation
+            "genderToShow": person.genderToShow,
+            "classOfPerson": person.classOfPerson.rawValue
         ]) { error in
            if let error = error {
                print("\u{274C} Error saving user data: \(error.localizedDescription)")

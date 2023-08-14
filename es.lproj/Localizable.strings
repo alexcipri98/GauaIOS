@@ -25,18 +25,14 @@
 "request_parameter_password" = "Contraseña";
 "request_parameter_name" = "Nombre";
 "request_parameter_gender" = "Género";
-"request_parameter_sexualOrientation" = "Orientación sexual";
+"request_parameter_sexualOrientation" = "Muéstrame";
 "request_parameter_yearOfBirth" = "Año de nacimiento";
 
 /* Genders */
 "male_gender_parameter" = "Hombre";
 "female_gender_parameter" = "Mujer";
 "other_gender_parameter" = "Otro";
-
-/* Sexual Orientations */
-"heterosexual_orientation_parameter" = "Heterosexual";
-"homosexual_orientation_parameter" = "Homosexual";
-"bisexual_orientation_parameter" = "Bisexual";
+"bisexual_orientation_parameter" = "Ambos";
 
 /* Main View */
 "main_view_game" = "Juego";

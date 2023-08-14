@@ -13,21 +13,23 @@ class RegisterViewModel: ObservableObject {
     @Published var password: String = ""
     @Published var name: String = ""
     @Published var gender: String = "Otro"
-    @Published var sexualOrientation: String = "Bisexual"
+    @Published var genderToShow: String = "Bisexual"
     @Published var yearOfBorn: Int = 2023
     @Published var showError: Bool = false
     @Published var errorText: String = ""
     @Published var showVerify: Bool = false
     private var registerService = RegisterService()
+    private var classOfPerson: ClassOfPerson?
     
     func register() {
-        
+        calculateClassOfPerson()
         let currentperson = Person(email: email,
                                name: name,
                                gender: gender,
-                               sexualOrientation: sexualOrientation,
-                                   yearOfBorn: yearOfBorn,
-                                   imageUrl: "")
+                               genderToShow: genderToShow,
+                               classOfPerson: classOfPerson ?? .classI,
+                               yearOfBorn: yearOfBorn,
+                               imageUrl: "")
         
         registerService.register(person: currentperson,
                            password: password,
@@ -39,4 +41,35 @@ class RegisterViewModel: ObservableObject {
                            })
     }
     
+    private func calculateClassOfPerson() {
+        switch gender {
+        case "male_gender_parameter".localized:
+            switch genderToShow {
+            case "female_gender_parameter".localized:
+                classOfPerson = .classA
+            case "male_gender_parameter".localized:
+                classOfPerson = .classC
+            default:
+                classOfPerson = .classE
+            }
+        case "female_gender_parameter".localized:
+            switch genderToShow {
+            case "male_gender_parameter".localized:
+                classOfPerson = .classB
+            case "female_gender_parameter".localized:
+                classOfPerson = .classD
+            default:
+                classOfPerson = .classF
+            }
+        default:
+            switch genderToShow {
+            case "male_gender_parameter".localized:
+                classOfPerson = .classH
+            case "female_gender_parameter".localized:
+                classOfPerson = .classG
+            default:
+                classOfPerson = .classI
+            }
+        }
+    }
 }
