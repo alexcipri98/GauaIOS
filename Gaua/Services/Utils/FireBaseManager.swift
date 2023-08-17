@@ -9,12 +9,14 @@ import SwiftUI
 import Firebase
 import FirebaseFirestore
 import FirebaseStorage
+import FirebaseFunctions
 
 class FireBaseManager: NSObject {
     
     let auth: Auth
     let storage: Storage
     let db : Firestore
+    let functions : Functions
 
     static let shared = FireBaseManager()
     
@@ -24,6 +26,7 @@ class FireBaseManager: NSObject {
         self.auth.languageCode = "es"
         self.storage = Storage.storage()
         self.db = Firestore.firestore()
+        self.functions = Functions.functions()
         super.init()
     }
     

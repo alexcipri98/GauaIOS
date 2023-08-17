@@ -10,3 +10,4 @@
 9- Gestión de temas de permisos (1 día)
 10- Aplicación para pubs y discotecas (3 semanas) (Falta desglosar)
 
+El classOfPerson de Person no debería ser opcional

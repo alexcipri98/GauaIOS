@@ -11,18 +11,26 @@ import FirebaseFirestore
 
 class LikeService {
     let db = FireBaseManager.shared.db
+    let functions = FireBaseManager.shared.functions
     
     public func getPeople(person: Person, onSuccess: @escaping ([Person]) -> Void, onFailure: @escaping (Error?) -> Void) {
-        let usersCollection = db.collection("users")
-        #warning("Aquí falta filtrar por los usuarios que están a X distancia, genero, etc")
-        
-        usersCollection.getDocuments { (querySnapshot, error) in
+
+        let excludedClasses = getIncompatibleClasses(currentClass: UserSession.shared.currentUser?.classOfPerson ?? .classA)
+        let idsToExclude = ["x96X3wlC7BkiM3mz0P7T", "ID2", "ID3"]
+
+        db.collection("users").whereField("classOfPerson", notIn: excludedClasses).getDocuments { (querySnapshot, error) in
             if let error = error {
                 print("\u{274C} Error getting documents: \(error)")
                 onFailure(error)
             } else {
                 var result: [Person] = []
+                
                 for document in querySnapshot!.documents {
+                    // Filtro por ID aquí
+                    if idsToExclude.contains(document.documentID) {
+                        continue
+                    }
+
                     let data = document.data()
                     let currentPerson = Person(id: document.documentID,
                                                email: data["email"] as? String ?? "",
@@ -32,7 +40,7 @@ class LikeService {
                                                classOfPerson: ClassOfPerson(rawValue: data["classOfPerson"] as? String ?? "") ?? .classA,
                                                yearOfBorn: data["yearOfBorn"] as? Int ?? 2023,
                                                imageUrl: data["imageUrl"] as? String ?? "Error")
-                    
+
                     FireBaseManager.shared.retrieveImageOfUser(person: currentPerson, onSuccess: { person in
                         result.append(person)
                         
@@ -43,6 +51,25 @@ class LikeService {
                     }, onFailure: onFailure)
                 }
             }
+        }
+    }
+
+
+
+    private func getIncompatibleClasses(currentClass: ClassOfPerson) -> [String] {
+        switch currentClass{
+        case .classA:
+            return ["classA", "classC", "classD", "classE", "classG"]
+        case .classB:
+            return ["classB", "classC", "classD", "classF", "classH"]
+        case .classC:
+            return ["classA", "classB", "classD", "classF", "classG"]
+        case .classD:
+            return ["classA", "classB", "classC", "classE", "classH"]
+        case .classE:
+            return ["classA", "classD", "classE", "classF"]
+        default:
+            return ["classB", "classC", "classE", "classF"]
         }
     }
     

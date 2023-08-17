@@ -18,7 +18,9 @@ struct LoginView: View {
                                             typeOfTitle: .largeTitle, color: .black)
             
             ComponentStyles.customTextField(variable: $viewModel.email,
-                                            text: "request_parameter_email".localized)
+                                            text: "request_parameter_email".localized) .keyboardType(.emailAddress)
+                .autocapitalization(.none)
+                .disableAutocorrection(true)
             
             ComponentStyles.customSecureField(variable: $viewModel.password,
                                               text: "request_parameter_password".localized)

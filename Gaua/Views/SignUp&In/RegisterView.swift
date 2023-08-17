@@ -21,10 +21,14 @@ struct RegisterView: View {
 
     var body: some View {
         ScrollView {
+            
             ComponentStyles.customTitleText(text: "register_view_title".localized, typeOfTitle: .largeTitle, color: .black)
             
             ComponentStyles.customTextField(variable: $viewModel.email,
                                             text: "request_parameter_email".localized)
+            .keyboardType(.emailAddress)
+                .autocapitalization(.none)
+                .disableAutocorrection(true)
             ComponentStyles.customTextError(variable: $viewModel.showEmailError, text: "register_email_error".localized)
             
             ComponentStyles.customSecureField(variable: $viewModel.password,
@@ -45,16 +49,6 @@ struct RegisterView: View {
             
             ComponentStyles.customYearPicker(text: "request_parameter_yearOfBirth".localized,
                                              variable: $viewModel.yearOfBorn)
-            Button(action: {
-                viewModel.register()
-            }) {
-                Text("register_view_button".localized)
-                    .foregroundColor(.white)
-                    .padding()
-                    .background(Color.blue)
-                    .cornerRadius(10)
-            }
-            .padding()
             
         }
         .padding()
@@ -74,5 +68,15 @@ struct RegisterView: View {
                 }
             )
         }
+        Button(action: {
+            viewModel.register()
+        }) {
+            Text("register_view_button".localized)
+                .foregroundColor(.white)
+                .padding()
+                .background(Color.blue)
+                .cornerRadius(10)
+        }
+        .padding()
     }
 }
