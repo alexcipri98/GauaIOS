@@ -19,30 +19,58 @@ class LikeViewModel: ObservableObject {
     
     typealias MessageResult = Result<[Person], Error>
 
+    var isFetching = false // Para evitar llamadas redundantes
+
     func processMessagesResult(_ result: MessageResult) {
         switch result {
-        case .success(let people):
-            self.people = people
+        case .success(let fetchedPeople):
+            self.people.append(contentsOf: fetchedPeople)
             self.isNotLikedIn = false
+            
+            if fetchedPeople.count == 20 {
+                fetchMoreUsers()
+            }
         case .failure(let error):
             self.errorText = error.localizedDescription
             self.showError = true
             self.isNotLikedIn = false
         }
     }
-    
-    func readUsers() {
+
+    func fetchMoreUsers() {
+        guard !isFetching else { return }
+        
+        isFetching = true
         guard let person = currentPerson else {
             print("Current person is nil")
             return
         }
-        likeService.getPeople(person: person,
+        likeService.getPeople(initialFetch: false, person: person,
                               onSuccess: { people in
-                                    self.processMessagesResult(.success(people))
-                                }, onFailure: { error in
-                                    self.processMessagesResult(.failure(error ?? NSError(domain: "", code: 0, userInfo: nil)))
-                                })
+                                  self.isFetching = false
+                                  self.processMessagesResult(.success(people))
+                              }, onFailure: { error in
+                                  self.isFetching = false
+                                  self.processMessagesResult(.failure(error ?? NSError(domain: "", code: 0, userInfo: nil)))
+                              })
     }
+
+    func readUsers() {
+        self.isFetching = true
+        guard let person = currentPerson else {
+            print("Current person is nil")
+            return
+        }
+        likeService.getPeople(initialFetch: true, person: person,
+                              onSuccess: { people in
+                                  self.isFetching = false
+                                  self.processMessagesResult(.success(people))
+                              }, onFailure: { error in
+                                  self.isFetching = false
+                                  self.processMessagesResult(.failure(error ?? NSError(domain: "", code: 0, userInfo: nil)))
+                              })
+    }
+
     
     func likeUser(user: Person) {
         if let index = people.firstIndex(where: { $0.id == user.id }) {

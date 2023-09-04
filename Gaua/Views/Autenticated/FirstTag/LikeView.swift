@@ -20,10 +20,10 @@ struct LikeView: View {
             VStack {
                 ZStack {
                     ForEach(viewModel.people) { user in
-                        
                         CardView(users: $viewModel.people,
                                  user: user,
-                                 methodToRemoveLastUser: self.discardUser, methodToLikeUser: self.likeUser)
+                                 methodToRemoveLastUser: self.discardUser,
+                                 methodToLikeUser: self.likeUser)
                         .gesture(
                             DragGesture()
                                 .onEnded { gesture in
@@ -32,6 +32,11 @@ struct LikeView: View {
                                     }
                                 }
                         )
+                        .onAppear {
+                            if isLastUser(user: user) && !viewModel.isFetching {
+                                viewModel.fetchMoreUsers()
+                            }
+                        }
                     }
                 }
                 .padding()
@@ -39,7 +44,12 @@ struct LikeView: View {
             }
         }
     }
-    
+    func isLastUser(user: Person) -> Bool {
+        guard let lastUser = viewModel.people.last else {
+            return false
+        }
+        return lastUser.id == user.id
+    }
     private func discardUser(_ user: Person) {
         viewModel.discardUser(user: user)
     }

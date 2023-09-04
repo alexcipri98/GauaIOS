@@ -21,50 +21,80 @@ struct BodyOfProfileView: View {
 
     @State private var selectedTags = Set<UUID>()
     @State private var isEditingName = false
-    @State private var name: String = "Hola"
+    @State private var isEditingDescription = false
+    @State private var name: String = UserSession.shared.currentUser?.name ?? ""
+    @State private var description: String = UserSession.shared.currentUser?.description ?? ""
     var body: some View {
         if let user = UserSession.shared.currentUser {
             Text("Nombre:")
                 .font(.headline)
                 .foregroundColor(.secondary)
             if isEditingName {
-                          HStack {
-                              TextField("Nombre", text: $name)
-                                  .font(.title)
-                                  .fontWeight(.bold)
-                                  .foregroundColor(.primary)
-                              Button(action: {
-                                  withAnimation {
-                                      isEditingName.toggle()
-                                  }
-                              }) {
-                                  Image(systemName: "pencil")
-                              }
-                          }
-                      } else {
-                          HStack {
-                              Text(user.name)
-                                  .font(.title)
-                                  .fontWeight(.bold)
-                                  .foregroundColor(.primary)
-                              Button(action: {
-                                  withAnimation {
-                                      isEditingName.toggle()
-                                  }
-                              }) {
-                                  Image(systemName: "pencil")
-                              }
-                          }
+                HStack {
+                  TextField("Nombre", text: $name)
+                      .font(.title)
+                      .fontWeight(.bold)
+                      .foregroundColor(.primary)
+                  Button(action: {
+                      withAnimation {
+                          isEditingName.toggle()
+                          #warning("Falta confirmar los cambios para el usuario en firebase")
                       }
-
+                  }) {
+                      Image(systemName: "checkmark").foregroundColor(Color.green)
+                  }
+                }
+            } else {
+                HStack {
+                  Text(user.name)
+                      .font(.title)
+                      .fontWeight(.bold)
+                      .foregroundColor(.primary)
+                  Button(action: {
+                      withAnimation {
+                          isEditingName.toggle()
+                      }
+                  }) {
+                      Image(systemName: "pencil")
+                  }
+                }
+            }
 
             Text("Descripción:")
                 .font(.headline)
                 .foregroundColor(.secondary)
-            Text(user.description)
-                .font(.body)
-                .fixedSize(horizontal: false, vertical: true)
-                .foregroundColor(.primary)
+            
+            if isEditingDescription {
+              HStack {
+                  TextField("Descripción", text: $description)
+                      .font(.body)
+                      .fixedSize(horizontal: false, vertical: true)
+                      .foregroundColor(.primary)
+                  Button(action: {
+                      withAnimation {
+                          isEditingDescription.toggle()
+                          #warning("Falta confirmar los cambios para el usuario en firebase")
+                      }
+                  }) {
+                      Image(systemName: "checkmark").foregroundColor(Color.green)
+                  }
+              }
+            } else {
+              HStack {
+                  Text(user.description)
+                      .font(.body)
+                      .fixedSize(horizontal: false, vertical: true)
+                      .foregroundColor(.primary)
+                  Button(action: {
+                      withAnimation {
+                          isEditingDescription.toggle()
+                      }
+                  }) {
+                      Image(systemName: "pencil")
+                  }
+              }
+            }
+            
 
             Text("Año de nacimiento:")
                 .font(.headline)

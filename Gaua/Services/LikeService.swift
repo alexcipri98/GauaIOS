@@ -13,43 +13,56 @@ class LikeService {
     let db = FireBaseManager.shared.db
     let functions = FireBaseManager.shared.functions
     
-    public func getPeople(person: Person, onSuccess: @escaping ([Person]) -> Void, onFailure: @escaping (Error?) -> Void) {
+    var lastDocumentSnapshot: DocumentSnapshot?
+
+    public func getPeople(initialFetch: Bool, person: Person, onSuccess: @escaping ([Person]) -> Void, onFailure: @escaping (Error?) -> Void) {
 
         let excludedClasses = getIncompatibleClasses(currentClass: UserSession.shared.currentUser?.classOfPerson ?? .classA)
         let idsToExclude = ["x96X3wlC7BkiM3mz0P7T", "ID2", "ID3"]
+        var query = db.collection("users").whereField("classOfPerson", notIn: excludedClasses).limit(to: 20)
 
-        db.collection("users").whereField("classOfPerson", notIn: excludedClasses).getDocuments { (querySnapshot, error) in
+        if !initialFetch, let lastSnapshot = lastDocumentSnapshot {
+            query = query.start(afterDocument: lastSnapshot)
+        }
+
+        query.getDocuments { (querySnapshot, error) in
             if let error = error {
                 print("\u{274C} Error getting documents: \(error)")
                 onFailure(error)
-            } else {
-                var result: [Person] = []
-                
-                for document in querySnapshot!.documents {
-                    // Filtro por ID aquí
-                    if idsToExclude.contains(document.documentID) {
-                        continue
-                    }
+                return
+            }
 
-                    let data = document.data()
-                    let currentPerson = Person(id: document.documentID,
-                                               email: data["email"] as? String ?? "",
-                                               name: data["name"] as? String ?? "",
-                                               gender: data["gender"] as? String ?? "",
-                                               genderToShow: data["genderToShow"] as? String ?? "",
-                                               classOfPerson: ClassOfPerson(rawValue: data["classOfPerson"] as? String ?? "") ?? .classA,
-                                               yearOfBorn: data["yearOfBorn"] as? Int ?? 2023,
-                                               imageUrl: data["imageUrl"] as? String ?? "Error")
+            guard let snapshot = querySnapshot else {
+                print("\u{274C} Error getting documents: No snapshot found")
+                onFailure(nil)
+                return
+            }
 
-                    FireBaseManager.shared.retrieveImageOfUser(person: currentPerson, onSuccess: { person in
-                        result.append(person)
-                        
-                        if result.count == querySnapshot!.documents.count {
-                            print("\u{1F44C} se han obtenido todos los usuarios.")
-                            onSuccess(result)
-                        }
-                    }, onFailure: onFailure)
+            var result: [Person] = []
+            for document in snapshot.documents {
+                if idsToExclude.contains(document.documentID) {
+                    continue
                 }
+
+                let data = document.data()
+                let currentPerson = Person(id: document.documentID,
+                                           email: data["email"] as? String ?? "",
+                                           name: data["name"] as? String ?? "",
+                                           gender: data["gender"] as? String ?? "",
+                                           genderToShow: data["genderToShow"] as? String ?? "",
+                                           classOfPerson: ClassOfPerson(rawValue: data["classOfPerson"] as? String ?? "") ?? .classA,
+                                           yearOfBorn: data["yearOfBorn"] as? Int ?? 2023,
+                                           imageUrl: data["imageUrl"] as? String ?? "Error")
+
+                FireBaseManager.shared.retrieveImageOfUser(person: currentPerson, onSuccess: { person in
+                    result.append(person)
+                    
+                    if result.count == snapshot.documents.count {
+                        print("\u{1F44C} se han obtenido todos los usuarios.")
+                        self.lastDocumentSnapshot = snapshot.documents.last
+                        onSuccess(result)
+                    }
+                }, onFailure: onFailure)
             }
         }
     }
