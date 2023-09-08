@@ -15,7 +15,7 @@ struct ImageUserProfileView: View {
         Button(action: {
             viewModel.isShowingImagePicker = true
         }) {
-            ComponentStyles.customImageOfUser()
+            ComponentStyles.customImageOfUser(imageIn: UserSession.shared.currentUser?.image)
                 .frame(width: 200, height: 200)
                 .clipShape(Circle())
                 .shadow(radius: 10)

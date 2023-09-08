@@ -21,17 +21,25 @@ struct ChatView: View {
         VStack {
             VStack{
                 TitleRowView().environmentObject(viewModel)
-                
-                ScrollView{
-                    ForEach(viewModel.messages, id: \.id) { message in
-                        MessageBubble(message: message)
+
+                ScrollViewReader { proxy in
+                    ScrollView {
+                        ForEach(viewModel.messages, id: \.id) { message in
+                            MessageBubble(message: message)
+                        }
+                        .onChange(of: viewModel.messages.count) { _ in
+                            if let lastMessage = viewModel.messages.last {
+                                proxy.scrollTo(lastMessage.id, anchor: .bottom)
+                            }
+                        }
                     }
-                }.padding(.top, 10)
+                    .padding(.top, 10)
                     .background(.white)
                     .cornerRadius(30, corners: [.topLeft, .topRight])
+                }
             }
             .background(Color("Peach"))
-            
+
             MessageFieldView().environmentObject(viewModel)
         }
     }

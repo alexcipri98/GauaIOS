@@ -12,7 +12,7 @@ struct TitleRowView: View {
 
     var body: some View {
         HStack(spacing: 20){
-            ComponentStyles.customImageOfUser()
+            ComponentStyles.customImageOfUser(imageIn: chatViewModel.otherPerson.image)
                     .scaledToFill()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 50, height: 50)
