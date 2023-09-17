@@ -49,6 +49,7 @@ struct CardView: View {
                     Image(uiImage: user.image ?? UIImage())
                         .resizable()
                         .aspectRatio(contentMode: .fill)
+                        .background(Color.black)
                     LinearGradient(
                         gradient: Gradient(colors: [Color.black.opacity(0.2), Color.black.opacity(1)]),
                         startPoint: UnitPoint(x: 0.5, y: 0.5),

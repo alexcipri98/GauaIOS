@@ -24,7 +24,7 @@ class LikeViewModel: ObservableObject {
     func processMessagesResult(_ result: MessageResult) {
         switch result {
         case .success(let fetchedPeople):
-            self.people.append(contentsOf: fetchedPeople)
+            self.people.insert(contentsOf: fetchedPeople, at: 0)
             self.isNotLikedIn = false
             
             if fetchedPeople.count == 20 {
