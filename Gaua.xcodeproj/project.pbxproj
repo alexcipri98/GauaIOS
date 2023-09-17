@@ -150,6 +150,8 @@
 		0FA17AC72AB7111E00F43791 /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = 0FA17AC62AB7111E00F43791 /* FirebaseFunctions */; };
 		0FA17AC92AB7111E00F43791 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 0FA17AC82AB7111E00F43791 /* FirebaseMessaging */; };
 		0FA17ACB2AB7111E00F43791 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 0FA17ACA2AB7111E00F43791 /* FirebaseStorage */; };
+		0FA17ACF2AB79DFC00F43791 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA17ACE2AB79DFB00F43791 /* Ticket.swift */; };
+		0FA17AD12AB7A61600F43791 /* Pub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA17AD02AB7A61600F43791 /* Pub.swift */; };
 		0FF163352A8E31470016AF04 /* BulkData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF163342A8E31470016AF04 /* BulkData.swift */; };
 		0FFFC5842A5F4AE70025268A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFFC5832A5F4AE70025268A /* MainView.swift */; };
 		0FFFC5862A5F4E470025268A /* LikeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFFC5852A5F4E470025268A /* LikeView.swift */; };
@@ -212,6 +214,8 @@
 		0F9B7F2B2A5EBFD300CEE335 /* Converters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Converters.swift; sourceTree = "<group>"; };
 		0FA17A6A2AB70DEE00F43791 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0FA17A702AB70E5100F43791 /* GauaIntegracion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GauaIntegracion.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0FA17ACE2AB79DFB00F43791 /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
+		0FA17AD02AB7A61600F43791 /* Pub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pub.swift; sourceTree = "<group>"; };
 		0FF163342A8E31470016AF04 /* BulkData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulkData.swift; sourceTree = "<group>"; };
 		0FFFC5832A5F4AE70025268A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		0FFFC5852A5F4E470025268A /* LikeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeView.swift; sourceTree = "<group>"; };
@@ -431,6 +435,8 @@
 				0F4B115A2A6C25890068F135 /* Message.swift */,
 				0F4B11962A711FC60068F135 /* Match.swift */,
 				0F7906A22A83890D00FC4621 /* ClassOfPerson.swift */,
+				0FA17ACE2AB79DFB00F43791 /* Ticket.swift */,
+				0FA17AD02AB7A61600F43791 /* Pub.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -731,6 +737,7 @@
 				0F4B118F2A6FDD420068F135 /* ChatService.swift in Sources */,
 				0F9B7F192A5D738900CEE335 /* Router.swift in Sources */,
 				0F595AB62A654B2F00620811 /* ProfileViewModel.swift in Sources */,
+				0FA17ACF2AB79DFC00F43791 /* Ticket.swift in Sources */,
 				0F7906882A7D1C6A00FC4621 /* ImageUserProfileView.swift in Sources */,
 				0F4B11652A6C33DC0068F135 /* ChatViewModel.swift in Sources */,
 				0FFFC58A2A5F4EAD0025268A /* ChatView.swift in Sources */,
@@ -749,6 +756,7 @@
 				0FFFC5882A5F4E860025268A /* ProfileView.swift in Sources */,
 				0FFFC5862A5F4E470025268A /* LikeView.swift in Sources */,
 				0F9B7EE52A5C137F00CEE335 /* LoginService.swift in Sources */,
+				0FA17AD12AB7A61600F43791 /* Pub.swift in Sources */,
 				0F4B11592A6C1F720068F135 /* TitleRowView.swift in Sources */,
 				0FF163352A8E31470016AF04 /* BulkData.swift in Sources */,
 				0F4B11972A711FC60068F135 /* Match.swift in Sources */,
