@@ -47,4 +47,38 @@ class FireBaseManager: NSObject {
             onSuccess(mutablePerson)
         }.resume()
     }
+    
+    public func requestNotificationPermission() {
+        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+        UNUserNotificationCenter.current().requestAuthorization(
+            options: authOptions,
+            completionHandler: { granted, error in
+                if let error = error {
+                    print("Error al solicitar permisos para notificaciones: \(error)")
+                } else if granted {
+                    DispatchQueue.main.async {
+                        UIApplication.shared.registerForRemoteNotifications()
+                        self.retrieveFCMToken(completion: {_,_ in 
+                            print("bien")
+                        })
+                    }
+                }
+            }
+        )
+    }
+    
+    #warning("Falta llamar a este método desde algún sitio")
+    func retrieveFCMToken(completion: @escaping (String?, Error?) -> Void) {
+        Messaging.messaging().token { token, error in
+            if let error = error {
+                print("Error fetching FCM registration token: \(error)")
+                completion(nil, error)
+            } else if let token = token {
+                print("FCM registration token: \(token)")
+                #warning("El comentario a continuación es muy importante porque serviría para saber que usuario usa que dispositivo")
+                // Aquí, además de llamar al completion, podrías guardar el token en Firestore asociado al usuario.
+                completion(token, nil)
+            }
+        }
+    }
 }

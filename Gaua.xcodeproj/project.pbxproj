@@ -73,7 +73,6 @@
 		0F9B7EE32A5C12F300CEE335 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9B7EE22A5C12F300CEE335 /* LoginViewModel.swift */; };
 		0F9B7EE52A5C137F00CEE335 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9B7EE42A5C137F00CEE335 /* LoginService.swift */; };
 		0F9B7EEF2A5C242200CEE335 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9B7EEE2A5C242200CEE335 /* LoginView.swift */; };
-		0F9B7EF92A5D370200CEE335 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0F9B7EF82A5D370200CEE335 /* GoogleService-Info.plist */; };
 		0F9B7F172A5D734400CEE335 /* NavigationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9B7F162A5D734400CEE335 /* NavigationService.swift */; };
 		0F9B7F192A5D738900CEE335 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9B7F182A5D738900CEE335 /* Router.swift */; };
 		0F9B7F1D2A5E87E700CEE335 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9B7F1C2A5E87E700CEE335 /* RegisterViewModel.swift */; };
@@ -152,6 +151,9 @@
 		0FA17ACB2AB7111E00F43791 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 0FA17ACA2AB7111E00F43791 /* FirebaseStorage */; };
 		0FA17ACF2AB79DFC00F43791 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA17ACE2AB79DFB00F43791 /* Ticket.swift */; };
 		0FA17AD12AB7A61600F43791 /* Pub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA17AD02AB7A61600F43791 /* Pub.swift */; };
+		0FA17AF72AB8A3D000F43791 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA17AF62AB8A3D000F43791 /* AppDelegate.swift */; };
+		0FA17B002AB9ED0F00F43791 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA17AF62AB8A3D000F43791 /* AppDelegate.swift */; };
+		0FA17B122AC051AF00F43791 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0FA17B112AC051AF00F43791 /* GoogleService-Info.plist */; };
 		0FF163352A8E31470016AF04 /* BulkData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF163342A8E31470016AF04 /* BulkData.swift */; };
 		0FFFC5842A5F4AE70025268A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFFC5832A5F4AE70025268A /* MainView.swift */; };
 		0FFFC5862A5F4E470025268A /* LikeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFFC5852A5F4E470025268A /* LikeView.swift */; };
@@ -203,7 +205,6 @@
 		0F9B7EE22A5C12F300CEE335 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		0F9B7EE42A5C137F00CEE335 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		0F9B7EEE2A5C242200CEE335 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		0F9B7EF82A5D370200CEE335 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0F9B7F162A5D734400CEE335 /* NavigationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationService.swift; sourceTree = "<group>"; };
 		0F9B7F182A5D738900CEE335 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		0F9B7F1C2A5E87E700CEE335 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
@@ -216,6 +217,8 @@
 		0FA17A702AB70E5100F43791 /* GauaIntegracion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GauaIntegracion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FA17ACE2AB79DFB00F43791 /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
 		0FA17AD02AB7A61600F43791 /* Pub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pub.swift; sourceTree = "<group>"; };
+		0FA17AF62AB8A3D000F43791 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		0FA17B112AC051AF00F43791 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0FF163342A8E31470016AF04 /* BulkData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulkData.swift; sourceTree = "<group>"; };
 		0FFFC5832A5F4AE70025268A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		0FFFC5852A5F4E470025268A /* LikeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeView.swift; sourceTree = "<group>"; };
@@ -403,6 +406,7 @@
 			isa = PBXGroup;
 			children = (
 				0F9B7ECF2A5C105600CEE335 /* GauaApp.swift */,
+				0FA17AF62AB8A3D000F43791 /* AppDelegate.swift */,
 				0F9B7F2A2A5EBFC300CEE335 /* Utils */,
 				0F9B7EE12A5C128300CEE335 /* ViewModels */,
 				0F9B7EE02A5C127900CEE335 /* Services */,
@@ -510,7 +514,7 @@
 		0FA17ACC2AB713B300F43791 /* FirebaseConfiguration */ = {
 			isa = PBXGroup;
 			children = (
-				0F9B7EF82A5D370200CEE335 /* GoogleService-Info.plist */,
+				0FA17B112AC051AF00F43791 /* GoogleService-Info.plist */,
 			);
 			path = FirebaseConfiguration;
 			sourceTree = "<group>";
@@ -664,7 +668,7 @@
 				0F9B7ED82A5C105900CEE335 /* Preview Assets.xcassets in Resources */,
 				0F7906522A78E28D00FC4621 /* Localizable.strings in Resources */,
 				0F9B7ED42A5C105900CEE335 /* Assets.xcassets in Resources */,
-				0F9B7EF92A5D370200CEE335 /* GoogleService-Info.plist in Resources */,
+				0FA17B122AC051AF00F43791 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -748,6 +752,7 @@
 				0F7906A32A83890D00FC4621 /* ClassOfPerson.swift in Sources */,
 				0F5211D12A66798600A551FB /* FireBaseManager.swift in Sources */,
 				0F9B7ED22A5C105600CEE335 /* ParentView.swift in Sources */,
+				0FA17AF72AB8A3D000F43791 /* AppDelegate.swift in Sources */,
 				0F61453A2A62A7B50070D111 /* Like.swift in Sources */,
 				0F9B7ED02A5C105600CEE335 /* GauaApp.swift in Sources */,
 				0F9B7F1F2A5E87E700CEE335 /* RegisterService.swift in Sources */,
@@ -778,6 +783,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FA17B002AB9ED0F00F43791 /* AppDelegate.swift in Sources */,
 				0FA17A982AB70EAC00F43791 /* AllChatsView.swift in Sources */,
 				0FA17A962AB70EA900F43791 /* CardView.swift in Sources */,
 				0FA17A812AB70E6900F43791 /* Extensions.swift in Sources */,
@@ -1019,7 +1025,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Gaua/Preview Content\"";
-				DEVELOPMENT_TEAM = N7T95ZVA33;
+				DEVELOPMENT_TEAM = 3GT6TJK6HT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -1037,10 +1043,12 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 12.6;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.alexciprian.gaua;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gauaapp.gaua;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1056,7 +1064,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Gaua/Preview Content\"";
-				DEVELOPMENT_TEAM = N7T95ZVA33;
+				DEVELOPMENT_TEAM = 3GT6TJK6HT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -1074,10 +1082,12 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 12.6;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.alexciprian.gaua;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gauaapp.gaua;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
