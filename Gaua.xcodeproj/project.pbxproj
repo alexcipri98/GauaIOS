@@ -154,6 +154,7 @@
 		0FA17AF72AB8A3D000F43791 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA17AF62AB8A3D000F43791 /* AppDelegate.swift */; };
 		0FA17B002AB9ED0F00F43791 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA17AF62AB8A3D000F43791 /* AppDelegate.swift */; };
 		0FA17B122AC051AF00F43791 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0FA17B112AC051AF00F43791 /* GoogleService-Info.plist */; };
+		0FA17B152AC0CE0A00F43791 /* PhoneNumberRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA17B142AC0CE0A00F43791 /* PhoneNumberRequestView.swift */; };
 		0FF163352A8E31470016AF04 /* BulkData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF163342A8E31470016AF04 /* BulkData.swift */; };
 		0FFFC5842A5F4AE70025268A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFFC5832A5F4AE70025268A /* MainView.swift */; };
 		0FFFC5862A5F4E470025268A /* LikeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFFC5852A5F4E470025268A /* LikeView.swift */; };
@@ -219,6 +220,7 @@
 		0FA17AD02AB7A61600F43791 /* Pub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pub.swift; sourceTree = "<group>"; };
 		0FA17AF62AB8A3D000F43791 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0FA17B112AC051AF00F43791 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0FA17B142AC0CE0A00F43791 /* PhoneNumberRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberRequestView.swift; sourceTree = "<group>"; };
 		0FF163342A8E31470016AF04 /* BulkData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulkData.swift; sourceTree = "<group>"; };
 		0FFFC5832A5F4AE70025268A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		0FFFC5852A5F4E470025268A /* LikeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeView.swift; sourceTree = "<group>"; };
@@ -327,6 +329,7 @@
 		0F6145222A5FE2EB0070D111 /* SignUp&In */ = {
 			isa = PBXGroup;
 			children = (
+				0FA17B132AC0CDC700F43791 /* Register */,
 				0F9B7F202A5E88AC00CEE335 /* RegisterView.swift */,
 				0F9B7EEE2A5C242200CEE335 /* LoginView.swift */,
 			);
@@ -525,6 +528,14 @@
 				0FA17A6A2AB70DEE00F43791 /* GoogleService-Info.plist */,
 			);
 			path = FirebaseConfigurationIntegracion;
+			sourceTree = "<group>";
+		};
+		0FA17B132AC0CDC700F43791 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				0FA17B142AC0CE0A00F43791 /* PhoneNumberRequestView.swift */,
+			);
+			path = Register;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -770,6 +781,7 @@
 				0F4B115D2A6C25E90068F135 /* MessageBubble.swift in Sources */,
 				0F9B7F172A5D734400CEE335 /* NavigationService.swift in Sources */,
 				0F4B115F2A6C2B4E0068F135 /* Extensions.swift in Sources */,
+				0FA17B152AC0CE0A00F43791 /* PhoneNumberRequestView.swift in Sources */,
 				0FFFC5842A5F4AE70025268A /* MainView.swift in Sources */,
 				0F4B115B2A6C25890068F135 /* Message.swift in Sources */,
 				0F9B7F232A5E8ED000CEE335 /* ComponentStyles.swift in Sources */,
