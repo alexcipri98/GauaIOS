@@ -66,6 +66,7 @@
 		0F7906D02A8A51A900FC4621 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 0F7906CF2A8A51A900FC4621 /* FirebaseMessaging */; };
 		0F7906D22A8A51A900FC4621 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 0F7906D12A8A51A900FC4621 /* FirebaseStorage */; };
 		0F7906D52A8A558400FC4621 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0F7906D42A8A558400FC4621 /* FirebaseFirestoreSwift */; };
+		0F84E4002ACD7BB30001FC26 /* ShowedGenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F84E3FF2ACD7BB20001FC26 /* ShowedGenderView.swift */; };
 		0F9B7ED02A5C105600CEE335 /* GauaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9B7ECF2A5C105600CEE335 /* GauaApp.swift */; };
 		0F9B7ED22A5C105600CEE335 /* ParentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9B7ED12A5C105600CEE335 /* ParentView.swift */; };
 		0F9B7ED42A5C105900CEE335 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F9B7ED32A5C105900CEE335 /* Assets.xcassets */; };
@@ -155,6 +156,19 @@
 		0FA17B002AB9ED0F00F43791 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA17AF62AB8A3D000F43791 /* AppDelegate.swift */; };
 		0FA17B122AC051AF00F43791 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0FA17B112AC051AF00F43791 /* GoogleService-Info.plist */; };
 		0FA17B152AC0CE0A00F43791 /* PhoneNumberRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA17B142AC0CE0A00F43791 /* PhoneNumberRequestView.swift */; };
+		0FA17B2A2AC2CF8800F43791 /* libPhoneNumber in Frameworks */ = {isa = PBXBuildFile; productRef = 0FA17B292AC2CF8800F43791 /* libPhoneNumber */; };
+		0FA17B2C2AC2D14900F43791 /* RegisterSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA17B2B2AC2D14900F43791 /* RegisterSteps.swift */; };
+		0FA17B352AC2F48F00F43791 /* VerificationCodeRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA17B342AC2F48F00F43791 /* VerificationCodeRequestView.swift */; };
+		0FA17B372AC4038200F43791 /* NameRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA17B362AC4038100F43791 /* NameRequestView.swift */; };
+		0FA17B432AC4436A00F43791 /* EnvironmentColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA17B422AC4436A00F43791 /* EnvironmentColors.swift */; };
+		0FA17B492AC553C100F43791 /* RegisterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA17B482AC553C100F43791 /* RegisterButton.swift */; };
+		0FA17B4B2AC5545900F43791 /* RegisterText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA17B4A2AC5545900F43791 /* RegisterText.swift */; };
+		0FA17B4D2AC5554900F43791 /* RegisterField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA17B4C2AC5554900F43791 /* RegisterField.swift */; };
+		0FA17B4F2AC5585F00F43791 /* BackgroundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA17B4E2AC5585F00F43791 /* BackgroundImage.swift */; };
+		0FA17B512AC562C500F43791 /* BirthDateRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA17B502AC562C500F43791 /* BirthDateRequestView.swift */; };
+		0FA17B552AC5899B00F43791 /* GenderRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA17B542AC5899B00F43791 /* GenderRequestView.swift */; };
+		0FD8D7C92AD3021500DB9C0B /* RegisterGenderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD8D7C82AD3021500DB9C0B /* RegisterGenderButton.swift */; };
+		0FD8D7CB2AD31A6000DB9C0B /* ImageRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD8D7CA2AD31A6000DB9C0B /* ImageRequestView.swift */; };
 		0FF163352A8E31470016AF04 /* BulkData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF163342A8E31470016AF04 /* BulkData.swift */; };
 		0FFFC5842A5F4AE70025268A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFFC5832A5F4AE70025268A /* MainView.swift */; };
 		0FFFC5862A5F4E470025268A /* LikeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFFC5852A5F4E470025268A /* LikeView.swift */; };
@@ -197,6 +211,7 @@
 		0F7906892A7E49CE00FC4621 /* BodyOfProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyOfProfileView.swift; sourceTree = "<group>"; };
 		0F79068D2A7E65F100FC4621 /* Tareas.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Tareas.md; sourceTree = "<group>"; };
 		0F7906A22A83890D00FC4621 /* ClassOfPerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassOfPerson.swift; sourceTree = "<group>"; };
+		0F84E3FF2ACD7BB20001FC26 /* ShowedGenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowedGenderView.swift; sourceTree = "<group>"; };
 		0F9B7ECC2A5C105600CEE335 /* Gaua.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gaua.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F9B7ECF2A5C105600CEE335 /* GauaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GauaApp.swift; sourceTree = "<group>"; };
 		0F9B7ED12A5C105600CEE335 /* ParentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentView.swift; sourceTree = "<group>"; };
@@ -221,6 +236,19 @@
 		0FA17AF62AB8A3D000F43791 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0FA17B112AC051AF00F43791 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0FA17B142AC0CE0A00F43791 /* PhoneNumberRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberRequestView.swift; sourceTree = "<group>"; };
+		0FA17B2B2AC2D14900F43791 /* RegisterSteps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterSteps.swift; sourceTree = "<group>"; };
+		0FA17B2D2AC2DA9500F43791 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		0FA17B342AC2F48F00F43791 /* VerificationCodeRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCodeRequestView.swift; sourceTree = "<group>"; };
+		0FA17B362AC4038100F43791 /* NameRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameRequestView.swift; sourceTree = "<group>"; };
+		0FA17B422AC4436A00F43791 /* EnvironmentColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentColors.swift; sourceTree = "<group>"; };
+		0FA17B482AC553C100F43791 /* RegisterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterButton.swift; sourceTree = "<group>"; };
+		0FA17B4A2AC5545900F43791 /* RegisterText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterText.swift; sourceTree = "<group>"; };
+		0FA17B4C2AC5554900F43791 /* RegisterField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterField.swift; sourceTree = "<group>"; };
+		0FA17B4E2AC5585F00F43791 /* BackgroundImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundImage.swift; sourceTree = "<group>"; };
+		0FA17B502AC562C500F43791 /* BirthDateRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthDateRequestView.swift; sourceTree = "<group>"; };
+		0FA17B542AC5899B00F43791 /* GenderRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderRequestView.swift; sourceTree = "<group>"; };
+		0FD8D7C82AD3021500DB9C0B /* RegisterGenderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterGenderButton.swift; sourceTree = "<group>"; };
+		0FD8D7CA2AD31A6000DB9C0B /* ImageRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRequestView.swift; sourceTree = "<group>"; };
 		0FF163342A8E31470016AF04 /* BulkData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulkData.swift; sourceTree = "<group>"; };
 		0FFFC5832A5F4AE70025268A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		0FFFC5852A5F4E470025268A /* LikeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeView.swift; sourceTree = "<group>"; };
@@ -244,6 +272,7 @@
 				0F7906C82A8A51A900FC4621 /* FirebaseAuth in Frameworks */,
 				0F7906D02A8A51A900FC4621 /* FirebaseMessaging in Frameworks */,
 				0F7906CA2A8A51A900FC4621 /* FirebaseDatabase in Frameworks */,
+				0FA17B2A2AC2CF8800F43791 /* libPhoneNumber in Frameworks */,
 				0F7906CE2A8A51A900FC4621 /* FirebaseFunctions in Frameworks */,
 				0F7906D22A8A51A900FC4621 /* FirebaseStorage in Frameworks */,
 				0F7906CC2A8A51A900FC4621 /* FirebaseFirestore in Frameworks */,
@@ -329,7 +358,7 @@
 		0F6145222A5FE2EB0070D111 /* SignUp&In */ = {
 			isa = PBXGroup;
 			children = (
-				0FA17B132AC0CDC700F43791 /* Register */,
+				0FA17B132AC0CDC700F43791 /* RegisterSubViews */,
 				0F9B7F202A5E88AC00CEE335 /* RegisterView.swift */,
 				0F9B7EEE2A5C242200CEE335 /* LoginView.swift */,
 			);
@@ -408,6 +437,7 @@
 		0F9B7ECE2A5C105600CEE335 /* Gaua */ = {
 			isa = PBXGroup;
 			children = (
+				0FA17B2D2AC2DA9500F43791 /* Info.plist */,
 				0F9B7ECF2A5C105600CEE335 /* GauaApp.swift */,
 				0FA17AF62AB8A3D000F43791 /* AppDelegate.swift */,
 				0F9B7F2A2A5EBFC300CEE335 /* Utils */,
@@ -452,6 +482,7 @@
 			isa = PBXGroup;
 			children = (
 				0F9B7ED12A5C105600CEE335 /* ParentView.swift */,
+				0FA17B472AC553AC00F43791 /* Components */,
 				0F9B7F262A5EB98500CEE335 /* Utils */,
 				0F6145222A5FE2EB0070D111 /* SignUp&In */,
 				0F6145232A5FE30B0070D111 /* Autenticated */,
@@ -491,6 +522,7 @@
 			children = (
 				0F9B7F222A5E8ED000CEE335 /* ComponentStyles.swift */,
 				0F5211E32A67BEC400A551FB /* LoadingView.swift */,
+				0FA17B422AC4436A00F43791 /* EnvironmentColors.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -500,6 +532,7 @@
 			children = (
 				0F9B7F182A5D738900CEE335 /* Router.swift */,
 				0F9B7F162A5D734400CEE335 /* NavigationService.swift */,
+				0FA17B2B2AC2D14900F43791 /* RegisterSteps.swift */,
 			);
 			path = WireFrame;
 			sourceTree = "<group>";
@@ -530,12 +563,30 @@
 			path = FirebaseConfigurationIntegracion;
 			sourceTree = "<group>";
 		};
-		0FA17B132AC0CDC700F43791 /* Register */ = {
+		0FA17B132AC0CDC700F43791 /* RegisterSubViews */ = {
 			isa = PBXGroup;
 			children = (
 				0FA17B142AC0CE0A00F43791 /* PhoneNumberRequestView.swift */,
+				0FA17B342AC2F48F00F43791 /* VerificationCodeRequestView.swift */,
+				0FA17B362AC4038100F43791 /* NameRequestView.swift */,
+				0FA17B502AC562C500F43791 /* BirthDateRequestView.swift */,
+				0FA17B542AC5899B00F43791 /* GenderRequestView.swift */,
+				0F84E3FF2ACD7BB20001FC26 /* ShowedGenderView.swift */,
+				0FD8D7CA2AD31A6000DB9C0B /* ImageRequestView.swift */,
 			);
-			path = Register;
+			path = RegisterSubViews;
+			sourceTree = "<group>";
+		};
+		0FA17B472AC553AC00F43791 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				0FA17B482AC553C100F43791 /* RegisterButton.swift */,
+				0FA17B4A2AC5545900F43791 /* RegisterText.swift */,
+				0FA17B4C2AC5554900F43791 /* RegisterField.swift */,
+				0FA17B4E2AC5585F00F43791 /* BackgroundImage.swift */,
+				0FD8D7C82AD3021500DB9C0B /* RegisterGenderButton.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -581,6 +632,7 @@
 				0F7906CF2A8A51A900FC4621 /* FirebaseMessaging */,
 				0F7906D12A8A51A900FC4621 /* FirebaseStorage */,
 				0F7906D42A8A558400FC4621 /* FirebaseFirestoreSwift */,
+				0FA17B292AC2CF8800F43791 /* libPhoneNumber */,
 			);
 			productName = Gaua;
 			productReference = 0F9B7ECC2A5C105600CEE335 /* Gaua.app */;
@@ -649,6 +701,8 @@
 			packageReferences = (
 				0F5211DE2A670B6B00A551FB /* XCRemoteSwiftPackageReference "TOCropViewController" */,
 				0F7906C62A8A51A900FC4621 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				0FA17B262AC2CB2100F43791 /* XCRemoteSwiftPackageReference "libPhoneNumber-iOS" */,
+				0FD8D7CC2AD3EBB900DB9C0B /* XCRemoteSwiftPackageReference "KeyboardObserving" */,
 			);
 			productRefGroup = 0F9B7ECD2A5C105600CEE335 /* Products */;
 			projectDirPath = "";
@@ -741,21 +795,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FD8D7CB2AD31A6000DB9C0B /* ImageRequestView.swift in Sources */,
 				0F9B7F292A5EBBBB00CEE335 /* Person.swift in Sources */,
 				0F595AB32A65493A00620811 /* ImagePicker.swift in Sources */,
 				0F9B7F212A5E88AC00CEE335 /* RegisterView.swift in Sources */,
+				0FA17B372AC4038200F43791 /* NameRequestView.swift in Sources */,
+				0FA17B552AC5899B00F43791 /* GenderRequestView.swift in Sources */,
+				0FA17B4B2AC5545900F43791 /* RegisterText.swift in Sources */,
 				0F6145042A5FDB490070D111 /* Converters.swift in Sources */,
 				0F4B11952A711EDC0068F135 /* AllChatsViewModel.swift in Sources */,
+				0FA17B432AC4436A00F43791 /* EnvironmentColors.swift in Sources */,
 				0F4B11992A7128160068F135 /* AllChatsService.swift in Sources */,
+				0FD8D7C92AD3021500DB9C0B /* RegisterGenderButton.swift in Sources */,
 				0F6145382A62A3710070D111 /* UserSession.swift in Sources */,
 				0F5211E42A67BEC400A551FB /* LoadingView.swift in Sources */,
 				0F4B118F2A6FDD420068F135 /* ChatService.swift in Sources */,
 				0F9B7F192A5D738900CEE335 /* Router.swift in Sources */,
+				0F84E4002ACD7BB30001FC26 /* ShowedGenderView.swift in Sources */,
 				0F595AB62A654B2F00620811 /* ProfileViewModel.swift in Sources */,
 				0FA17ACF2AB79DFC00F43791 /* Ticket.swift in Sources */,
+				0FA17B492AC553C100F43791 /* RegisterButton.swift in Sources */,
 				0F7906882A7D1C6A00FC4621 /* ImageUserProfileView.swift in Sources */,
 				0F4B11652A6C33DC0068F135 /* ChatViewModel.swift in Sources */,
 				0FFFC58A2A5F4EAD0025268A /* ChatView.swift in Sources */,
+				0FA17B4F2AC5585F00F43791 /* BackgroundImage.swift in Sources */,
 				0F9B7EEF2A5C242200CEE335 /* LoginView.swift in Sources */,
 				0F5211DD2A670AF300A551FB /* CropImageView.swift in Sources */,
 				0F4B118B2A6FDC900068F135 /* AllChatsView.swift in Sources */,
@@ -765,6 +828,7 @@
 				0F9B7ED22A5C105600CEE335 /* ParentView.swift in Sources */,
 				0FA17AF72AB8A3D000F43791 /* AppDelegate.swift in Sources */,
 				0F61453A2A62A7B50070D111 /* Like.swift in Sources */,
+				0FA17B512AC562C500F43791 /* BirthDateRequestView.swift in Sources */,
 				0F9B7ED02A5C105600CEE335 /* GauaApp.swift in Sources */,
 				0F9B7F1F2A5E87E700CEE335 /* RegisterService.swift in Sources */,
 				0F9B7EE32A5C12F300CEE335 /* LoginViewModel.swift in Sources */,
@@ -774,7 +838,9 @@
 				0F9B7EE52A5C137F00CEE335 /* LoginService.swift in Sources */,
 				0FA17AD12AB7A61600F43791 /* Pub.swift in Sources */,
 				0F4B11592A6C1F720068F135 /* TitleRowView.swift in Sources */,
+				0FA17B4D2AC5554900F43791 /* RegisterField.swift in Sources */,
 				0FF163352A8E31470016AF04 /* BulkData.swift in Sources */,
+				0FA17B2C2AC2D14900F43791 /* RegisterSteps.swift in Sources */,
 				0F4B11972A711FC60068F135 /* Match.swift in Sources */,
 				0F6145362A612BF80070D111 /* CardView.swift in Sources */,
 				0F9B7F1D2A5E87E700CEE335 /* RegisterViewModel.swift in Sources */,
@@ -785,6 +851,7 @@
 				0FFFC5842A5F4AE70025268A /* MainView.swift in Sources */,
 				0F4B115B2A6C25890068F135 /* Message.swift in Sources */,
 				0F9B7F232A5E8ED000CEE335 /* ComponentStyles.swift in Sources */,
+				0FA17B352AC2F48F00F43791 /* VerificationCodeRequestView.swift in Sources */,
 				0F4B11612A6C2CD90068F135 /* MessageFieldView.swift in Sources */,
 				0F6145282A5FE7880070D111 /* LikeViewModel.swift in Sources */,
 				0F79068A2A7E49CE00FC4621 /* BodyOfProfileView.swift in Sources */,
@@ -1040,6 +1107,7 @@
 				DEVELOPMENT_TEAM = 3GT6TJK6HT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Gaua/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -1079,6 +1147,7 @@
 				DEVELOPMENT_TEAM = 3GT6TJK6HT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Gaua/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -1227,6 +1296,22 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		0FA17B262AC2CB2100F43791 /* XCRemoteSwiftPackageReference "libPhoneNumber-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/iziz/libPhoneNumber-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		0FD8D7CC2AD3EBB900DB9C0B /* XCRemoteSwiftPackageReference "KeyboardObserving" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nickffox/KeyboardObserving";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1319,6 +1404,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0F7906C62A8A51A900FC4621 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		0FA17B292AC2CF8800F43791 /* libPhoneNumber */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0FA17B262AC2CB2100F43791 /* XCRemoteSwiftPackageReference "libPhoneNumber-iOS" */;
+			productName = libPhoneNumber;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -42,7 +42,8 @@ struct LoginView: View {
                     .foregroundColor(Color.blue)
             }
             .sheet(isPresented: $isRegisterLinkActive) {
-                RegisterView(isRegisterLinkActive: $isRegisterLinkActive)
+                //RegisterView(isRegisterLinkActive: $isRegisterLinkActive)
+                RegisterView()
             }
             
             Spacer()

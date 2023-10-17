@@ -9,6 +9,7 @@
 /* Generic */
 "any_view_close" = "Close";
 "any_view_error" = "Error";
+"any_view_unknown_error" = "Unknown error, try again later";
 
 /* LogIn */
 "login_view_title" = "Login";
@@ -16,27 +17,31 @@
 "login_register_redirect" = "Don't have an account yet?";
 
 /* Register */
-"register_view_title" = "Register";
-"register_view_button" = "Create Account";
-"register_action_correct" = "Successful user registration";
-"register_email_user" = "An email has been sent to you to confirm your email";
-"register_email_error" = "The email is not in the expected format (xxxxx@xxxx.xxx)";
-"register_password_error" = "The password must have a capital letter, a number, a special character and between 8 and 16 digits";
-"register_name_error" = "The name is a required field";
-
-/* Request parameters */
-"request_parameter_email" = "Email";
-"request_parameter_password" = "Password";
-"request_parameter_name" = "Name";
-"request_parameter_gender" = "Gender";
-"request_parameter_sexualOrientation" = "Show me";
-"request_parameter_yearOfBirth" = "Year of birth";
+"register_view_next" = "Next";
+"register_view_movileRequest" = "Can you give us your cell phone?";
+"register_view_phoneNumber" = "Phone number";
+"register_view_phoneError" = "The prefix or phone number format is incorrect. \n Example: +34 666666666";;
+"register_view_privateSecurityText" = "Your private information is safe with us. we do not share it with any user.";
+"register_view_verificationCodeRequest" = "Enter the code we just sent you via SMS:";
+"register_view_code" = "Code";
+"register_view_nameRequest" = "¿What is your name?";
+"register_view_nameText" = "With this name, other users will see you.";
+"register_view_name" = "name";
+"register_view_birthDateRequest" = "When were you born?";
+"register_view_genderRequest" = "Tell us a bit about yourself.";
+"register_view_gender" = "What is your gender?";
+"register_view_showGender" = "Almost thereeeeeee";
+"register_view_showGenderRequest" = "What would you like us to show you?";
+"register_view_imageRequest" = "Finally... add a photo of yourself :)";
+"register_view_imageError" = "Error retrieving the selected image.";
 
 /* Genders and sexual orientations*/
 "male_gender_parameter" = "Male";
 "female_gender_parameter" = "Female";
 "other_gender_parameter" = "Other";
-"bisexual_orientation_parameter" = "Both";
+"showMale_gender_parameter" = "Men";
+"showFemale_gender_parameter" = "Women";
+"showBoth_gender_parameter" = "All";
 
 /* Main View */
 "main_view_game" = "Game";

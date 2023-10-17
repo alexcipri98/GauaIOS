@@ -13,7 +13,7 @@ struct AllChatsView: View {
 
     var body: some View{
         if viewModel.isLoading{
-            LoadingView()
+            //LoadingView()
         } else {
             ScrollView {
                 ForEach(0..<viewModel.matches.count, id: \.self) { num in

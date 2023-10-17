@@ -5,9 +5,11 @@
   Created by Alex Ciprián López on 1/8/23.
   
 */
+
 /* Generic */
 "any_view_close" = "Cerrar";
 "any_view_error" = "Error";
+"any_view_unknown_error" = "Error desconocido, vuelva a intentarlo en unos minutos";
 
 /* LogIn */
 "login_view_title" = "Inicio de sesión";
@@ -15,27 +17,31 @@
 "login_register_redirect" = "¿Aún no tienes cuenta?";
 
 /* Register */
-"register_view_title" = "Registro";
-"register_view_button" = "Crear cuenta";
-"register_action_correct" = "Registro de usuario satisfactorio";
-"register_email_user" = "Se ha enviado un correo para que confirme su cuenta";
-"register_email_error" = "El correo electrónico no tiene el formato esperado (xxxxx@xxxx.xxx)";
-"register_password_error" = "La contraseña debe tener una mayúscula, un número, un caracter especial y entre 8 y 16 dígitos";
-"register_name_error" = "El nombre es un campo obligatorio";
-
-/* Request parameters */
-"request_parameter_email" = "Email";
-"request_parameter_password" = "Contraseña";
-"request_parameter_name" = "Nombre";
-"request_parameter_gender" = "Género";
-"request_parameter_sexualOrientation" = "Muéstrame";
-"request_parameter_yearOfBirth" = "Año de nacimiento";
+"register_view_next" = "Siguiente";
+"register_view_movileRequest" = "¿Nos das tu \n móvil? ;)";
+"register_view_phoneError" = "El prefijo o el número de teléfono no tienen un formato correcto. \n Ejemplo: +34 666666666";
+"register_view_phoneNumber" = "Número de teléfono";
+"register_view_privateSecurityText" = "Tu información privada está segura con nosotros. No la compartiremos con ningún usuario.";
+"register_view_verificationCodeRequest" = "Introduce el código que acabamos de enviarte por SMS:";
+"register_view_code" = "Código";
+"register_view_nameRequest" = "¿Cómo te llamas?";
+"register_view_nameText" = "Con este nombre es con el que te verán el resto de usuarios";
+"register_view_name" = "Nombre";
+"register_view_birthDateRequest" = "¿Cuándo naciste?";
+"register_view_genderRequest" = "Háblanos un poco sobre ti";
+"register_view_gender" = "¿Cuál es tu género?";
+"register_view_showGender" = "Ya queda menosssssss";
+"register_view_showGenderRequest" = "¿Qué quieres que te mostremos?";
+"register_view_imageRequest" = "Por último... añade una foto tuya :)";
+"register_view_imageError" = "Error al obtener la imagen seleccionada";
 
 /* Genders */
 "male_gender_parameter" = "Hombre";
 "female_gender_parameter" = "Mujer";
-"other_gender_parameter" = "Otro";
-"bisexual_orientation_parameter" = "Ambos";
+"other_gender_parameter" = "Otrx";
+"showMale_gender_parameter" = "Hombres";
+"showFemale_gender_parameter" = "Mujeres";
+"showBoth_gender_parameter" = "Todxs";
 
 /* Main View */
 "main_view_game" = "Juego";

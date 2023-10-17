@@ -13,7 +13,7 @@ class LoginService {
     let fb = FireBaseManager.shared
     
     public func login(email: String, password: String, onSuccess: @escaping (Person?) -> Void, onFailure: @escaping (Error?) -> Void, onNoVerified: @escaping () -> Void) {
-        
+        /*
         fb.auth.signIn(withEmail: email, password: password) { (result, error) in
             if error != nil {
                 print("\u{274C}" + (error?.localizedDescription ?? "Error desconocido"))
@@ -29,7 +29,7 @@ class LoginService {
                     }
                 }
             }
-        }
+        }*/
     }
     
     private func getUser(withUserID userID: String, onSuccess: @escaping (Person?) -> Void, onFailure: @escaping (Error?) -> Void) {
@@ -45,7 +45,7 @@ class LoginService {
             } else {
                 if let document = documentSnapshot, document.exists {
                     let data = document.data()
-                    let person = Person(id: document.documentID,
+                  /*  let person = Person(id: document.documentID,
                                         email: data?["email"] as? String ?? "",
                                         name: data?["name"] as? String ?? "",
                                         gender: data?["gender"] as? String ?? "",
@@ -53,7 +53,7 @@ class LoginService {
                                         classOfPerson: ClassOfPerson(rawValue: data?["classOfPerson"] as? String ?? "") ?? .classA,
                                         yearOfBorn: data?["birthDay"] as? Int ?? 2023,
                                         imageUrl: data?["imageUrl"] as? String ?? "Error")
-                    FireBaseManager.shared.retrieveImageOfUser(person: person, onSuccess: onSuccess, onFailure: onFailure)
+                    FireBaseManager.shared.retrieveImageOfUser(person: person, onSuccess: onSuccess, onFailure: onFailure)*/
                 } else {
                     onSuccess(nil)
                 }

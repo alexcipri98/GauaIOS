@@ -7,56 +7,79 @@
 
 import Foundation
 import Firebase
-import FirebaseAuth
+import FirebaseStorage
 
 class RegisterService {
-    let fb = FireBaseManager.shared
-    public func register(person: Person, password: String, onSuccess: @escaping (Bool) -> Void, onFailure: @escaping (Error?) -> Void) {
-        fb.auth.createUser(withEmail: person.email,
-                               password: password,
-                               completion: { result, err in
-                                    if let err = err {
-                                        print("\u{274C} Error en el usuario")
-                                        onFailure(err)
-                                    } else {
-                                        print("\u{1F44C} Successfully created account with ID: \(result?.user.uid ?? "")")
-                                        guard let userFirebase = result?.user else{
-                                            print("\u{274C} Error")
-                                            return
-                                        }
-                                        self.sendEmailVerification(user: userFirebase)
-                                        self.addExtraUserParams(userID: userFirebase.uid, person: person, onSuccess: onSuccess, onFailure: onFailure)
-                                    }
-                            })
-    }
-    
-    private func sendEmailVerification(user: User) {
-        user.sendEmailVerification { error in
-                if let error = error {
-                    print("\u{274C}" + error.localizedDescription)
-                    return
-                }
-                print("\u{1F44C} Successfull email")
-            }
-    }
-    
-    private func addExtraUserParams(userID: String, person: Person, onSuccess: @escaping (Bool) -> Void, onFailure: @escaping (Error?) -> Void) {
-        
-        fb.db.collection("users").document(userID).setData([
+    let db = FireBaseManager.shared.db
+    let storage = FireBaseManager.shared.storage
+
+    public func register(person: Person, onSuccess: @escaping () -> Void, onFailure: @escaping (Error?) -> Void) {
+        db.collection("users").addDocument(data: [
             "name": person.name,
-            "yearOfBorn": person.yearOfBorn,
+            "birthDate": person.birthDate,
             "gender": person.gender,
             "genderToShow": person.genderToShow,
-            "classOfPerson": person.classOfPerson.rawValue
+            "classOfPerson": person.classOfPerson.rawValue,
+            "imageURL" : person.imageUrl
         ]) { error in
            if let error = error {
-               print("\u{274C} Error saving user data: \(error.localizedDescription)")
+               print("\u{274C} Error adding user: \(error.localizedDescription)")
                onFailure(error)
            } else {
-               print("\u{1F44C} User data saved successfully!")
-               onSuccess(true)
+               print("\u{1F44C} User added successfully!")
+               onSuccess()
            }
         }
+    }
+    public func getVerificationID(prefix: String, phoneNumber: String, onSuccess: @escaping (String) -> Void, onFailure: @escaping (Error?) -> Void) {
+        PhoneAuthProvider.provider()
+            .verifyPhoneNumber(prefix + phoneNumber, uiDelegate: nil) { verificationID, error in
+                if let error = error {
+                    print(error.localizedDescription)
+                    onFailure(error)
+                } else {
+                    if let verificationID = verificationID {
+                        print("this is the verification id" + (verificationID ?? ""))
+
+                        onSuccess(verificationID)
+                    } else {
+                        onFailure(nil)
+                    }
+                }        
+            }
+    }
+    public func loadImage(imageData: Data, onSuccess: @escaping (String) -> Void, onFailure: @escaping (Error?) -> Void) {
         
+        let uniqueID = UUID().uuidString
+        let imagePath = "users/\(uniqueID).jpg"
+        let imageRef = storage.reference().child(imagePath)
+        
+        let metadata = StorageMetadata()
+        metadata.contentType = "image/jpeg"
+        
+        _ = imageRef.putData(imageData, metadata: metadata) { (metadata, error) in
+            if let error = error {
+                print("\u{274C} error en la subida de la imagen")
+                onFailure(error)
+                return
+            }
+            
+            imageRef.downloadURL { (url, error) in
+                if let error = error {
+                    print("\u{274C} error en la descarga de la imagen")
+                    onFailure(error)
+                    return
+                }
+                
+                guard let imageUrl = url?.absoluteString else {
+                    let invalidUrlError = NSError(domain: "Gaua", code: 0, userInfo: [NSLocalizedDescriptionKey: "Invalid image URL"])
+                    print("\u{274C} error en la url de la imagen")
+                    onFailure(invalidUrlError)
+                    return
+                }
+                
+                onSuccess(imageUrl)
+            }
+        }
     }
 }

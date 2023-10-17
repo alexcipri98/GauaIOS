@@ -107,15 +107,15 @@ class AllChatsService {
             } else {
                 if let document = documentSnapshot, document.exists {
                     let data = document.data()
-                    let person = Person(id: document.documentID,
+                  /*  let person = Person(id: document.documentID,
                                         email: data?["email"] as? String ?? "",
                                         name: data?["name"] as? String ?? "",
                                         gender: data?["gender"] as? String ?? "",
                                         genderToShow: data?["genderToShow"] as? String ?? "",
                                         classOfPerson: ClassOfPerson(rawValue: data?["classOfPerson"] as? String ?? "") ?? .classA,
                                         yearOfBorn: data?["birthDay"] as? Int ?? 2023,
-                                        imageUrl: data?["imageUrl"] as? String ?? "Error")
-                    FireBaseManager.shared.retrieveImageOfUser(person: person, onSuccess: onSuccess, onFailure: onFailure)
+                                        imageUrl: data?["imageUrl"] as? String ?? "Error")*/
+                   // FireBaseManager.shared.retrieveImageOfUser(person: person, onSuccess: onSuccess, onFailure: onFailure)
                 } else {
                     onSuccess(nil)
                 }

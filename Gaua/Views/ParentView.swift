@@ -15,7 +15,8 @@ struct ParentView: View {
             VStack {
                 switch router.currentDestination {
                 case .login:
-                    LoginView()
+                  //  LoginView()
+                    RegisterView()
                 case .main:
                     MainView()
                 }

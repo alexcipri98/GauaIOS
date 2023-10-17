@@ -41,11 +41,11 @@ struct ProfileView: View {
             .sheet(isPresented: $viewModel.isShowingImagePicker, onDismiss: viewModel.showCrop) {
                 ImagePicker(image: $viewModel.selectedImage)
             }
-            .fullScreenCover(isPresented: Binding<Bool>(get: { shouldPresentCropView },
+           /* .fullScreenCover(isPresented: Binding<Bool>(get: { shouldPresentCropView },
                                                       set: { _ in viewModel.isShowingCropViewController = false }),
                              onDismiss: viewModel.loadImage) {
                 CropViewControllerRepresentable(viewModel: self.viewModel)
-            }
+            }*/
             
             VStack(alignment: .leading, spacing: 10) {
                 BodyOfProfileView()

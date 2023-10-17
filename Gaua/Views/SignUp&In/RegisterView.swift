@@ -8,19 +8,14 @@
 import SwiftUI
 
 struct RegisterView: View {
-    @StateObject private var viewModel = RegisterViewModel()
-    @Binding var isRegisterLinkActive: Bool
+    @StateObject private var registerViewModel = RegisterViewModel()
     
-    var genders = ["male_gender_parameter".localized,
-                   "female_gender_parameter".localized,
-                   "other_gender_parameter".localized]
-    
-    var sexualOrientations = ["male_gender_parameter".localized,
-                              "female_gender_parameter".localized,
-                              "bisexual_orientation_parameter".localized]
-
     var body: some View {
-        ScrollView {
+        
+        NavigationStack  {
+            PhoneNumberRequestView(registerViewModel: registerViewModel)
+        }
+        /*ScrollView {
             
             ComponentStyles.customTitleText(text: "register_view_title".localized, typeOfTitle: .largeTitle, color: .black)
             
@@ -77,6 +72,6 @@ struct RegisterView: View {
                 .background(Color.blue)
                 .cornerRadius(10)
         }
-        .padding()
+        .padding()*/
     }
 }

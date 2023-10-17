@@ -11,11 +11,11 @@ struct LikeView: View {
     @StateObject private var viewModel = LikeViewModel()
     var body: some View {
         if viewModel.isNotLikedIn {
-            LoadingView().onAppear{
+            /*LoadingView().onAppear{
                 if viewModel.people.isEmpty {
                     viewModel.readUsers()
                 }
-            }
+            }*/
         } else {
             VStack {
                 ZStack {

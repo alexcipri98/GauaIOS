@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ComponentStyles {
     
+    // MARK: Generic for all views
+    
     static func customTextField(variable: Binding<String>, text: String) -> some View {
         TextField(text, text: variable)
             .textFieldStyle(RoundedTextFieldStyle())
@@ -58,7 +60,7 @@ struct ComponentStyles {
             .pickerStyle(.segmented)
         }.padding()
     }
-    
+   
     static func customYearPicker(text: String, variable: Binding<Int>) -> some View {
         let currentYear = Calendar.current.component(.year, from: Date())
         let dateRange = 1900...currentYear

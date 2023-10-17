@@ -17,5 +17,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         return true
     }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        if Auth.auth().canHandle(url) {
+            return true
+        }
+        // Tu manejo de otras URLs si es necesario
+        return false
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
+        if Auth.auth().canHandleNotification(userInfo) {
+            return
+        }
+        // Tu código para manejar otras notificaciones, si es necesario
+    }
+
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        if Auth.auth().canHandleNotification(userInfo) {
+            completionHandler(UIBackgroundFetchResult.noData)
+            return
+        }
+        // Tu código para manejar otras notificaciones, si es necesario
+    }
 
 }
