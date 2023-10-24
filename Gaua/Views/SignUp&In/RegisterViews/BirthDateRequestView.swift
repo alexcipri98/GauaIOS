@@ -23,7 +23,7 @@ struct BirthDateRequestView: View {
             BackgroundImage(name: "RegisterStep4")
 
             VStack(alignment: .center) {
-                RegisterText(
+                GenericText(
                     text: "register_view_birthDateRequest".localized,
                     color: .white,
                     space: 0
@@ -77,7 +77,7 @@ struct BirthDateRequestView: View {
                 }
                 .padding(.vertical)
                 
-                RegisterButton(action: {
+                GenericButton(action: {
                     registerViewModel.birthDate = "\(dayOfBorn)/\(monthOfBorn)/\(yearOfBorn)"
                     registerViewModel.goGender = true
                 })

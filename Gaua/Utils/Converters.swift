@@ -22,8 +22,6 @@ class Converters {
     }
     
     static func fromStringToDate(string: String) -> Date? {
-        //let dateString = "2023-07-12 14:30:00"
-
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
 

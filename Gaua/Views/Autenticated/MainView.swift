@@ -45,19 +45,6 @@ struct MainView: View {
     }
 }
 
-
-extension View {
-    @ViewBuilder
-    func `if`<Content: View>(_ condition: Bool, content: (Self) -> Content) -> some View {
-        if condition {
-            content(self)
-        } else {
-            self
-        }
-    }
-}
-
-
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         MainView()

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct RegisterText: View {
+struct GenericText: View {
     
     var text: String
     var color: Color
@@ -24,7 +24,7 @@ struct RegisterText: View {
 
 struct RegisterText_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterText(text: "texto",
+        GenericText(text: "texto",
                            color: Color.blue)
     }
 }

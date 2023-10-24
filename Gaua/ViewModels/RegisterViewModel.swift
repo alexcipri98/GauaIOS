@@ -48,9 +48,10 @@ class RegisterViewModel: ObservableObject {
     @Published var lastStepError: String?
    
     @Published var isLoading = false
-
+    
     private var registerService = RegisterService()
 
+    
     func registerStepOne(){
         isLoading = true
         if prefix == "" {
@@ -91,11 +92,40 @@ class RegisterViewModel: ObservableObject {
                 print(error.localizedDescription)
                 return
             }
-            
             print("Usuario autenticado con éxito!")
-            self.goName = true
+            self.evaluateIfUserExist(userId: (self.prefix + self.phoneNumber))
         }
     }
+    
+    private func evaluateIfUserExist(userId: String) {
+        registerService.existUser(userId: userId,
+                                  onSuccessExist: {
+            self.login(userId: userId)
+        },
+                                  onSuccessNotExist: {
+            self.goName = true
+        },
+                                  onFailure: { error in
+            self.secondStepError = error?.localizedDescription ?? "any_view_unknown_error".localized
+            self.showSecondStepError = true
+            print(error?.localizedDescription ?? "Error en registerStepTwo")
+        })
+    }
+    
+    private func login(userId: String) {
+        
+        registerService.getUser(userId: userId,
+                                onSuccess: { person in
+            UserSession.shared.currentUser = person
+            NavigationService.shared.router.currentDestination = .main
+        },
+                                onFailure: { error in
+            self.secondStepError = error?.localizedDescription ?? "any_view_unknown_error".localized
+            self.showSecondStepError = true
+            print(error?.localizedDescription ?? "Error en el login")
+        })
+    }
+    
     func loadImageAndRegister() {
         isLoading = true
         guard let selectedImage = recortedImage,
@@ -107,7 +137,8 @@ class RegisterViewModel: ObservableObject {
             return
         }
         
-        registerService.loadImage(imageData: imageData,
+        registerService.loadImage(userId: (self.prefix + self.phoneNumber),
+                                  imageData: imageData,
                                   onSuccess: { imageUrl in
                                     self.registerUser(imageUrl: imageUrl)
                                 },
@@ -159,25 +190,6 @@ class RegisterViewModel: ObservableObject {
             return false
         }
     }
-   
-   /* private func validateRegisterFields() -> Bool {
-        if !isValidEmail(email) {
-            showEmailError = true
-            return false
-        }
-        if !isValidPassword(password) {
-            showEmailError = false
-            showPasswordError = true
-            return false
-        }
-        if name == "" {
-            showPasswordError = false
-            showEmailError = false
-            showNameError = true
-            return false
-        }
-        return true
-    }*/
     
     private func calculateClassOfPerson() -> ClassOfPerson {
         switch gender {
@@ -211,34 +223,3 @@ class RegisterViewModel: ObservableObject {
         }
     }
 }
-/*
-extension RegisterViewModel {
-    private func isValidEmail(_ email: String) -> Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-
-        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        return emailPred.evaluate(with: email)
-    }
-    
-    private func isValidPassword(_ password: String) -> Bool {
-        guard 8...16 ~= password.count else { return false }
-
-        let capitalLetterPattern = ".*[A-Z]+.*"
-        
-        let numberPattern = ".*[0-9]+.*"
-
-        let specialCharacterPattern = ".*[^a-zA-Z0-9\\s]+.*"
-
-        let capitalLetterRegex = try? NSRegularExpression(pattern: capitalLetterPattern)
-        let numberRegex = try? NSRegularExpression(pattern: numberPattern)
-        let specialCharacterRegex = try? NSRegularExpression(pattern: specialCharacterPattern)
-
-        if let _ = capitalLetterRegex?.firstMatch(in: password, options: [], range: NSRange(location: 0, length: password.count)),
-           let _ = numberRegex?.firstMatch(in: password, options: [], range: NSRange(location: 0, length: password.count)),
-           let _ = specialCharacterRegex?.firstMatch(in: password, options: [], range: NSRange(location: 0, length: password.count)) {
-            return true
-        }
-        return false
-    }
-}
-*/

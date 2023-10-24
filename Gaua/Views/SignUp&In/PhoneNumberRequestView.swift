@@ -5,10 +5,19 @@
 //  Created by Alex Ciprián López on 24/9/23.
 //
 
+/*
+ @State
+ @Binding
+ @StateObject
+ @ObservableObject
+ @Published
+ */
+
 import SwiftUI
 
 struct PhoneNumberRequestView: View {
-    @ObservedObject var registerViewModel: RegisterViewModel
+    @StateObject private var registerViewModel = RegisterViewModel()
+
     var body: some View {
         ZStack {
             BackgroundImage(name: "RegisterStep1")
@@ -17,17 +26,16 @@ struct PhoneNumberRequestView: View {
                 if registerViewModel.isLoading {
                     LoadingView()
                 } else {
-                    HStack {
-                        Spacer()
+
+                    HStack(alignment: .center) {
                         Image("GauaLogo")
                             .resizable()
                             .frame(width: 225, height: 225)
                             .foregroundColor(Color.white)
-                        Spacer()
                     }
                     .padding(.top)
                     
-                    RegisterText(text: "register_view_movileRequest".localized, color: Color.white)
+                    GenericText(text: "register_view_movileRequest".localized, color: Color.white)
                         .padding(.top)
                     
                     HStack {
@@ -49,7 +57,7 @@ struct PhoneNumberRequestView: View {
                     }
                     .foregroundColor(Color.white)
                     
-                    RegisterButton(action: {
+                    GenericButton(action: {
                         registerViewModel.registerStepOne()
                     })
                     .disabled(registerViewModel.phoneNumber == "")
@@ -70,6 +78,6 @@ struct PhoneNumberRequestView: View {
 
 struct PhoneNumberRequestView_Previews: PreviewProvider {
     static var previews: some View {
-        PhoneNumberRequestView(registerViewModel: RegisterViewModel())
+        PhoneNumberRequestView()
     }
 }

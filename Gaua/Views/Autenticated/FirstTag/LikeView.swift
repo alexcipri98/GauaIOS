@@ -9,13 +9,26 @@ import SwiftUI
 
 struct LikeView: View {
     @StateObject private var viewModel = LikeViewModel()
+    
     var body: some View {
-        if viewModel.isNotLikedIn {
-            /*LoadingView().onAppear{
-                if viewModel.people.isEmpty {
-                    viewModel.readUsers()
+        if viewModel.isNotLikedIn && viewModel.isloading == false{
+            LoadingView().onAppear{
+                if UserSession.shared.currentUser == nil {
+                    viewModel.getUserDetail(onSuccess: { 
+                        viewModel.isloading = true
+                        if viewModel.people.isEmpty {
+                            viewModel.readUsers()
+                        }
+                    }, onFailure: {_ in 
+                        print(")")
+                    })
+                } else {
+                    viewModel.isloading = true
+                    if viewModel.people.isEmpty {
+                        viewModel.readUsers()
+                    }
                 }
-            }*/
+            }
         } else {
             VStack {
                 ZStack {

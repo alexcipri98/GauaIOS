@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct Colors {
-    static var registerButtonColor = Color("ButtonColor")
+    static var DarkBlueButtonColor = Color("ButtonColor")
     static var purpleColor = Color("LettersPurpleColor")
     static var gradientColor = Color("GradientColor")
 }

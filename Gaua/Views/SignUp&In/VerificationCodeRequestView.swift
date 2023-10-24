@@ -15,7 +15,7 @@ struct VerificationCodeRequestView: View {
             BackgroundImage(name: "RegisterStep2")
 
             VStack(alignment: .leading) {
-                RegisterText(
+                GenericText(
                     text: "register_view_verificationCodeRequest".localized,
                     color: .white,
                     space: 0
@@ -27,7 +27,7 @@ struct VerificationCodeRequestView: View {
                     text: $registerViewModel.verificationCode
                 )
 
-                RegisterButton(action: {
+                GenericButton(action: {
                     registerViewModel.registerStepTwo()
                 })
                 .disabled(registerViewModel.verificationCode.isEmpty)

@@ -14,7 +14,7 @@ struct ShowedGenderView: View {
             BackgroundImage(name: "RegisterStep6")
 
             VStack(alignment: .leading) {
-                RegisterText(
+                GenericText(
                     text: "register_view_showGender".localized,
                     color: .white,
                     space: 0
@@ -51,7 +51,7 @@ struct ShowedGenderView: View {
                     )
                 }
                 
-                RegisterButton(action: {
+                GenericButton(action: {
                     registerViewModel.goImageRequest = true
                 })
                 .disabled(registerViewModel.genderToShow.isEmpty)

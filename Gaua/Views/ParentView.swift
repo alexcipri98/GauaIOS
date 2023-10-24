@@ -6,20 +6,23 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct ParentView: View {
-    @EnvironmentObject private var router: Router
+    @EnvironmentObject private var router: RouterViewModel
     
     var body: some View {
         NavigationView {
             VStack {
-                switch router.currentDestination {
-                case .login:
-                  //  LoginView()
-                    RegisterView()
-                case .main:
-                    MainView()
-                }
+                
+                    if router.isAuthenticated || router.currentDestination == .main{
+                        MainView() // La vista principal cuando el usuario está autenticado.
+                    } else {
+                        NavigationStack  {
+                            PhoneNumberRequestView()
+                        }
+                    }
+                
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())

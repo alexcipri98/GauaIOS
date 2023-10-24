@@ -14,7 +14,7 @@ struct NameRequestView: View {
             BackgroundImage(name: "RegisterStep3")
 
             VStack(alignment: .leading) {
-                RegisterText(
+                GenericText(
                     text: "register_view_nameRequest".localized,
                     color: .white,
                     space: 0
@@ -32,7 +32,7 @@ struct NameRequestView: View {
                     text: $registerViewModel.name
                 )
 
-                RegisterButton(action: {
+                GenericButton(action: {
                     registerViewModel.goBirthDate = true
                 })
                 .disabled(registerViewModel.name.isEmpty)

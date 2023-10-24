@@ -30,24 +30,6 @@ class FireBaseManager: NSObject {
         super.init()
     }
     
-    public func retrieveImageOfUser(person: Person, onSuccess: @escaping (Person) -> Void, onFailure: @escaping (Error?) -> Void) {
-        guard let imageUrl = URL(string: person.imageUrl) else {
-            #warning("Manejar el caso cuando la URL no sea válida")
-            onSuccess(person)
-            return
-        }
-
-        URLSession.shared.dataTask(with: imageUrl) { (data, response, error) in
-            guard let imageData = data, let image = UIImage(data: imageData) else {
-                onSuccess(person)
-                return
-            }
-            var mutablePerson = person
-            mutablePerson.image = image
-            onSuccess(mutablePerson)
-        }.resume()
-    }
-    
     public func requestNotificationPermission() {
         let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
         UNUserNotificationCenter.current().requestAuthorization(
@@ -80,5 +62,23 @@ class FireBaseManager: NSObject {
                 completion(token, nil)
             }
         }
+    }
+    #warning("Este método se llama desde LikeViewModel pero está repetido, también existe en RegisterService")
+    func retrieveImageOfUser(person: Person, onSuccess: @escaping (Person) -> Void, onFailure: @escaping (Error?) -> Void) {
+        guard let imageUrl = URL(string: person.imageUrl) else {
+            #warning("Manejar el caso cuando la URL no sea válida")
+            onSuccess(person)
+            return
+        }
+
+        URLSession.shared.dataTask(with: imageUrl) { (data, response, error) in
+            guard let imageData = data, let image = UIImage(data: imageData) else {
+                onSuccess(person)
+                return
+            }
+            var mutablePerson = person
+            mutablePerson.image = image
+            onSuccess(mutablePerson)
+        }.resume()
     }
 }

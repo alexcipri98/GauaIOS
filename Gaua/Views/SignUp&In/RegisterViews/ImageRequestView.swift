@@ -19,7 +19,7 @@ struct ImageRequestView: View {
                 LoadingView()
             } else {
                 VStack(alignment: .center) {
-                    RegisterText(text: "register_view_imageRequest".localized,
+                    GenericText(text: "register_view_imageRequest".localized,
                                  color: Color.white,
                                  space: 0)
                     .padding(.bottom, 30)
@@ -61,7 +61,7 @@ struct ImageRequestView: View {
                                                                 set: { _ in isShowingCropViewController = false })) {
                         CropViewControllerRepresentable(viewModel: self.registerViewModel)
                     }
-                    RegisterButton(action: {
+                    GenericButton(action: {
                         registerViewModel.loadImageAndRegister()
                     })
                     .disabled(registerViewModel.recortedImage == nil)

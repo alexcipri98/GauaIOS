@@ -14,6 +14,19 @@ extension View {
     }
 }
 
+
+extension View {
+    @ViewBuilder
+    func `if`<Content: View>(_ condition: Bool, content: (Self) -> Content) -> some View {
+        if condition {
+            content(self)
+        } else {
+            self
+        }
+    }
+}
+
+
 extension Color {
     init(hex: String, alpha: Double = 1.0) {
         let hex = hex.filter { "0123456789abcdefABCDEF".contains($0) }

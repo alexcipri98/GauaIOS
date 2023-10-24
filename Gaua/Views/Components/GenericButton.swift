@@ -7,20 +7,20 @@
 
 import SwiftUI
 
-struct RegisterButton: View {
-    var title: String? = "register_view_next".localized
+struct GenericButton: View {
+    var title: String = "register_view_next".localized
     var action: () -> Void
     
     var body: some View {
         Button(action: action) {
-            Text("register_view_next".localized)
+            Text(title)
                 .bold()
                 .font(.system(size: 18))
                 .foregroundColor(.white)
                 .frame(maxWidth: .infinity)
                 .padding(10)
         }
-        .background(Colors.registerButtonColor)
+        .background(Colors.DarkBlueButtonColor)
         .cornerRadius(10)
         
     }
@@ -28,7 +28,7 @@ struct RegisterButton: View {
 
 struct RegisterButton_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterButton(title: "textForButton",
+        GenericButton(title: "textForButton",
                              action: {
                                 print("RegisteButton_Preview")
                             })
