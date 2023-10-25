@@ -15,4 +15,7 @@ class AuthService {
     func currentUserExist() -> Bool {
         return false
     }
+    func signIn(verificationCode: String, onSuccess: @escaping () -> Void, onFailure: @escaping (Error?) -> Void) {
+       onSuccess()
+    }
 }

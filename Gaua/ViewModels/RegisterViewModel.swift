@@ -50,7 +50,7 @@ class RegisterViewModel: ObservableObject {
     @Published var isLoading = false
     
     private var registerService = RegisterService()
-
+    private var authService = AuthService()
     
     func registerStepOne(){
         isLoading = true
@@ -78,23 +78,17 @@ class RegisterViewModel: ObservableObject {
     }
     
     func registerStepTwo() {
-        guard let verificationID = UserDefaults.standard.string(forKey: "authVerificationID") else { return }
-        
-        let credential = PhoneAuthProvider.provider().credential(
-            withVerificationID: verificationID,
-            verificationCode: verificationCode
-        )
-        
-        Auth.auth().signIn(with: credential) { (authResult, error) in
-            if let error = error {
-                self.secondStepError = error.localizedDescription
-                self.showSecondStepError = true
-                print(error.localizedDescription)
-                return
-            }
+        authService.signIn(verificationCode: self.verificationCode,
+                           onSuccess: {
             print("Usuario autenticado con éxito!")
             self.evaluateIfUserExist(userId: (self.prefix + self.phoneNumber))
-        }
+        },
+                           onFailure: { error in
+            self.secondStepError = error?.localizedDescription
+                self.showSecondStepError = true
+            print(error?.localizedDescription ?? "Error en el registerStepTwo del RegisterViewModel")
+        })
+        
     }
     
     private func evaluateIfUserExist(userId: String) {

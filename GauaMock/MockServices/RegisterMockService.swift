@@ -13,7 +13,7 @@ class RegisterService {
         if userId == "existing" {
             onSuccessExist()
         }
-        if userId == "noExisting" {
+        else if userId == "noExisting" {
             onSuccessNotExist()
         } else {
             let error = NSError(domain: "GauaMock",
@@ -24,7 +24,7 @@ class RegisterService {
     }
     
     public func register(person: Person, onSuccess: @escaping () -> Void, onFailure: @escaping (Error?) -> Void) {
-        if person.name == "Invented" {
+        if person.imageUrl == "123456" {
             onSuccess()
         } else {
             let error = NSError(domain: "GauaMock",

@@ -48,6 +48,11 @@ struct ProfileView: View {
             }*/
             
             VStack(alignment: .leading, spacing: 10) {
+                Button(action: {
+                    AuthService().logout()
+                }) {
+                    Text("logout")
+                }
                 BodyOfProfileView()
             }
         }

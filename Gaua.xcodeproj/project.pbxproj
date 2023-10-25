@@ -444,9 +444,9 @@
 			children = (
 				0F61450C2A5FDC0C0070D111 /* RegisterMockService.swift */,
 				0F61452D2A5FF3E00070D111 /* LikeMockService.swift */,
-				0FEE8EDC2AE7BE6B009D2746 /* ProfileMockService.swift */,
 				0FEE8EDE2AE7BE76009D2746 /* ChatMockService.swift */,
 				0FEE8EE02AE7BE82009D2746 /* AllChatsMockService.swift */,
+				0FEE8EDC2AE7BE6B009D2746 /* ProfileMockService.swift */,
 				0FEE8EE22AE7BE8D009D2746 /* AuthMockService.swift */,
 			);
 			path = MockServices;

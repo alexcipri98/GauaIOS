@@ -5,14 +5,6 @@
 //  Created by Alex Ciprián López on 24/9/23.
 //
 
-/*
- @State
- @Binding
- @StateObject
- @ObservableObject
- @Published
- */
-
 import SwiftUI
 
 struct PhoneNumberRequestView: View {
