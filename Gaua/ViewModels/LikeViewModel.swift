@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import FirebaseAuth
 class LikeViewModel: ObservableObject {
     @Published var people: [Person] = []
     @Published var discardedPeople: [Person] = []
@@ -14,8 +14,8 @@ class LikeViewModel: ObservableObject {
     @Published var isNotLikedIn: Bool = true
     @Published var errorText: String = ""
     @Published var showError: Bool = false
+    var isloading = false
     private var likeService = LikeService()
-    let currentPerson = UserSession.shared.currentUser
     
     typealias MessageResult = Result<[Person], Error>
 
@@ -41,7 +41,7 @@ class LikeViewModel: ObservableObject {
         guard !isFetching else { return }
         
         isFetching = true
-        guard let person = currentPerson else {
+        guard let person = UserSession.shared.currentUser else {
             print("Current person is nil")
             return
         }
@@ -57,7 +57,7 @@ class LikeViewModel: ObservableObject {
 
     func readUsers() {
         self.isFetching = true
-        guard let person = currentPerson else {
+        guard let person = UserSession.shared.currentUser else {
             print("Current person is nil")
             return
         }
@@ -76,7 +76,7 @@ class LikeViewModel: ObservableObject {
         if let index = people.firstIndex(where: { $0.id == user.id }) {
             people.remove(at: index)
             likedPeople.append(user)
-            likeService.likeUser(fromPerson: currentPerson!,
+            likeService.likeUser(fromPerson: UserSession.shared.currentUser!,
                                  toPerson: user,
                                  onSuccess: { isMatch in
                                     #warning("Falta implementar que se hace cuando es match")
@@ -98,5 +98,14 @@ class LikeViewModel: ObservableObject {
             print("Error")
             #warning("Falta implementación del error")
         }
+    }
+    
+    func getUserDetail(onSuccess: @escaping () -> Void, onFailure: @escaping (Error?) -> Void) {
+        RegisterService().getUser(userId: Auth.auth().currentUser?.phoneNumber ?? "errror", onSuccess: { person in
+            UserSession.shared.currentUser = person
+            onSuccess()
+        }, onFailure: { error in
+            print(error?.localizedDescription)
+        })
     }
 }

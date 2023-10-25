@@ -30,7 +30,41 @@ class FireBaseManager: NSObject {
         super.init()
     }
     
-    public func retrieveImageOfUser(person: Person, onSuccess: @escaping (Person) -> Void, onFailure: @escaping (Error?) -> Void) {
+    public func requestNotificationPermission() {
+        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+        UNUserNotificationCenter.current().requestAuthorization(
+            options: authOptions,
+            completionHandler: { granted, error in
+                if let error = error {
+                    print("Error al solicitar permisos para notificaciones: \(error)")
+                } else if granted {
+                    DispatchQueue.main.async {
+                        UIApplication.shared.registerForRemoteNotifications()
+                        self.retrieveFCMToken(completion: {_,_ in 
+                            print("bien")
+                        })
+                    }
+                }
+            }
+        )
+    }
+    
+    #warning("Falta llamar a este método desde algún sitio")
+    func retrieveFCMToken(completion: @escaping (String?, Error?) -> Void) {
+        Messaging.messaging().token { token, error in
+            if let error = error {
+                print("Error fetching FCM registration token: \(error)")
+                completion(nil, error)
+            } else if let token = token {
+                print("FCM registration token: \(token)")
+                #warning("El comentario a continuación es muy importante porque serviría para saber que usuario usa que dispositivo")
+                // Aquí, además de llamar al completion, podrías guardar el token en Firestore asociado al usuario.
+                completion(token, nil)
+            }
+        }
+    }
+    #warning("Este método se llama desde LikeViewModel pero está repetido, también existe en RegisterService")
+    func retrieveImageOfUser(person: Person, onSuccess: @escaping (Person) -> Void, onFailure: @escaping (Error?) -> Void) {
         guard let imageUrl = URL(string: person.imageUrl) else {
             #warning("Manejar el caso cuando la URL no sea válida")
             onSuccess(person)

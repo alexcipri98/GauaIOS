@@ -14,6 +14,35 @@ extension View {
     }
 }
 
+
+extension View {
+    @ViewBuilder
+    func `if`<Content: View>(_ condition: Bool, content: (Self) -> Content) -> some View {
+        if condition {
+            content(self)
+        } else {
+            self
+        }
+    }
+}
+
+
+extension Color {
+    init(hex: String, alpha: Double = 1.0) {
+        let hex = hex.filter { "0123456789abcdefABCDEF".contains($0) }
+        let scanner = Scanner(string: hex)
+        var hexNumber: UInt64 = 0
+        
+        scanner.scanHexInt64(&hexNumber)
+        
+        let red = Double((hexNumber & 0xff0000) >> 16) / 255
+        let green = Double((hexNumber & 0x00ff00) >> 8) / 255
+        let blue = Double(hexNumber & 0x0000ff) / 255
+        
+        self.init(.sRGB, red: red, green: green, blue: blue, opacity: alpha)
+    }
+}
+
 struct RoundedCorner: Shape {
     var radius: CGFloat = .infinity
     var corners: UIRectCorner = .allCorners

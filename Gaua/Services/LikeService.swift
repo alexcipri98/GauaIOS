@@ -45,13 +45,13 @@ class LikeService {
                 }
 
                 let data = document.data()
-                let currentPerson = Person(id: document.documentID,
-                                           email: data["email"] as? String ?? "",
+                let currentPerson = Person(prefix: "",
+                                           phoneNumber: "",
                                            name: data["name"] as? String ?? "",
                                            gender: data["gender"] as? String ?? "",
                                            genderToShow: data["genderToShow"] as? String ?? "",
                                            classOfPerson: ClassOfPerson(rawValue: data["classOfPerson"] as? String ?? "") ?? .classA,
-                                           yearOfBorn: data["yearOfBorn"] as? Int ?? 2023,
+                                           birthDate: data["genderToShow"] as? String ?? "",
                                            imageUrl: data["imageUrl"] as? String ?? "Error")
 
                 FireBaseManager.shared.retrieveImageOfUser(person: currentPerson, onSuccess: { person in

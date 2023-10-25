@@ -11,7 +11,7 @@ import TOCropViewController
 struct CropViewControllerRepresentable: UIViewControllerRepresentable {
     
     @Environment(\.presentationMode) var presentationMode
-    let viewModel: ProfileViewModel
+    let viewModel: RegisterViewModel
 
     func makeUIViewController(context: Context) -> TOCropViewController {
         guard let image = viewModel.selectedImage else {

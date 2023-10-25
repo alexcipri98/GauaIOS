@@ -11,7 +11,6 @@ class Router: ObservableObject {
     enum Destination {
         case login
         case main
-        // Agrega aquí más destinos de vista según tus necesidades
     }
     
     @Published var currentDestination: Destination = .login

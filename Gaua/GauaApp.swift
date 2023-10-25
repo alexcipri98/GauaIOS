@@ -10,7 +10,8 @@ import Firebase
 
 @main
 struct GauaApp: App {
-    
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+
     @StateObject private var navigationService = NavigationService.shared
        
        var body: some Scene {

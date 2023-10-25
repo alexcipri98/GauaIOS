@@ -14,7 +14,7 @@ struct GauaApp: App {
        
        var body: some Scene {
            WindowGroup {
-               ContentView()
+               ParentView()
                    .environmentObject(navigationService.router)
            }
        }

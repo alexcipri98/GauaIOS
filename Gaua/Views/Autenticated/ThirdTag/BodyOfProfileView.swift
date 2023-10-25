@@ -99,7 +99,7 @@ struct BodyOfProfileView: View {
             Text("Año de nacimiento:")
                 .font(.headline)
                 .foregroundColor(.secondary)
-            Text(String(user.yearOfBorn))
+            Text(String(user.birthDate))
                 .font(.body)
                 .foregroundColor(.primary)
             
