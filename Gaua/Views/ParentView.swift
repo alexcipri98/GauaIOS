@@ -14,15 +14,13 @@ struct ParentView: View {
     var body: some View {
         NavigationView {
             VStack {
-                
-                    if router.isAuthenticated || router.currentDestination == .main{
-                        MainView() // La vista principal cuando el usuario está autenticado.
-                    } else {
-                        NavigationStack  {
-                            PhoneNumberRequestView()
-                        }
+                if router.isAuthenticated || router.currentDestination == .main{
+                    MainView() // La vista principal cuando el usuario está autenticado.
+                } else {
+                    NavigationStack  {
+                        PhoneNumberRequestView()
                     }
-                
+                }
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())

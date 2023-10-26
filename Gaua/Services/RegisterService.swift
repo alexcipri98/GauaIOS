@@ -10,7 +10,7 @@ import Firebase
 import FirebaseStorage
 import UIKit
 
-class RegisterService {
+class RegisterService: RegisterServiceProtocol {
     let db = FireBaseManager.shared.db
     let storage = FireBaseManager.shared.storage
 
@@ -52,23 +52,6 @@ class RegisterService {
         }
     }
 
-    public func getVerificationID(prefix: String, phoneNumber: String, onSuccess: @escaping (String) -> Void, onFailure: @escaping (Error?) -> Void) {
-        PhoneAuthProvider.provider()
-            .verifyPhoneNumber(prefix + phoneNumber, uiDelegate: nil) { verificationID, error in
-                if let error = error {
-                    print(error.localizedDescription)
-                    onFailure(error)
-                } else {
-                    if let verificationID = verificationID {
-                        print("this is the verification id" + verificationID)
-
-                        onSuccess(verificationID)
-                    } else {
-                        onFailure(nil)
-                    }
-                }        
-            }
-    }
     public func loadImage(userId: String, imageData: Data, onSuccess: @escaping (String) -> Void, onFailure: @escaping (Error?) -> Void) {
         
         let uniqueID = UUID().uuidString

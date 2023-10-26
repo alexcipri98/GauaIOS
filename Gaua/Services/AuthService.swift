@@ -8,14 +8,11 @@
 import Foundation
 import FirebaseAuth
 
-class AuthService {
+class AuthService: AuthServiceProtocol {
     
-    func logout() -> Bool {
+    public func logout() -> Bool {
         do {
-            #warning("Esto hay que cambiarlo, aqui solo tendría que estar la petición")
             try Auth.auth().signOut()
-            NavigationService.shared.router.isAuthenticated = false
-            NavigationService.shared.router.currentDestination = .login
             return true
         } catch {
             print("Error al cerrar sesión: \(error)")
@@ -23,11 +20,11 @@ class AuthService {
         }
     }
     
-    func currentUserExist() -> Bool {
+    public func currentUserExist() -> Bool {
         return (Auth.auth().currentUser != nil)
     }
     
-    func signIn(verificationCode: String, onSuccess: @escaping () -> Void, onFailure: @escaping (Error?) -> Void) {
+    public func signIn(verificationCode: String, onSuccess: @escaping () -> Void, onFailure: @escaping (Error?) -> Void) {
         guard let verificationID = UserDefaults.standard.string(forKey: "authVerificationID") else { return }
         
         let credential = PhoneAuthProvider.provider().credential(
@@ -43,5 +40,23 @@ class AuthService {
                 onSuccess()
             }
         }
+    }
+    
+    public func getVerificationID(prefix: String, phoneNumber: String, onSuccess: @escaping (String) -> Void, onFailure: @escaping (Error?) -> Void) {
+        PhoneAuthProvider.provider()
+            .verifyPhoneNumber(prefix + phoneNumber, uiDelegate: nil) { verificationID, error in
+                if let error = error {
+                    print(error.localizedDescription)
+                    onFailure(error)
+                } else {
+                    if let verificationID = verificationID {
+                        print("this is the verification id" + verificationID)
+
+                        onSuccess(verificationID)
+                    } else {
+                        onFailure(nil)
+                    }
+                }
+            }
     }
 }

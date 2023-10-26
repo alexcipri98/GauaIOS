@@ -6,8 +6,6 @@
 //
 
 import Foundation
-import FirebaseAuth
-import libPhoneNumber
 import SwiftUI
 
 class RegisterViewModel: ObservableObject {
@@ -49,16 +47,19 @@ class RegisterViewModel: ObservableObject {
    
     @Published var isLoading = false
     
-    private var registerService = RegisterService()
-    private var authService = AuthService()
+    private var registerService: RegisterServiceProtocol = RegisterService()
+    private var authService: AuthServiceProtocol = AuthService()
+    private var phoneNumberValidator = PhoneNumberValidator()
+    private var clasifier = ClasifierOfClassOfPerson()
     
     func registerStepOne(){
         isLoading = true
         if prefix == "" {
             prefix = "+34"
         }
-        if isValidPhoneNumber() {
-            registerService.getVerificationID(prefix: prefix,
+        if phoneNumberValidator.isValidPhoneNumber(prefix: prefix,
+                                                   phoneNumber: phoneNumber) {
+            authService.getVerificationID(prefix: prefix,
                                               phoneNumber: phoneNumber,
                                               onSuccess: { verificationID in
                 UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
@@ -71,7 +72,7 @@ class RegisterViewModel: ObservableObject {
                 self.isLoading = false
             })
         } else {
-            self.firstStepError = "El prefijo o el número de teléfono no tienen un formato correcto. \n Ejemplo: +34 666666666"
+            self.firstStepError = "register_view_phoneError".localized
             self.showFirstStepError = true
             self.isLoading = false
         }
@@ -145,12 +146,14 @@ class RegisterViewModel: ObservableObject {
     }
     
     private func registerUser(imageUrl: String) {
+        let personClass = clasifier.calculateClassOfPerson(gender: self.gender,
+                                                                          genderToShow: self.genderToShow)
         let currentperson = Person(prefix: self.prefix,
                                    phoneNumber: self.phoneNumber,
                                    name: self.name,
                                    gender: self.gender,
                                    genderToShow: self.genderToShow,
-                                   classOfPerson: self.calculateClassOfPerson(),
+                                   classOfPerson: personClass,
                                    birthDate: self.birthDate,
                                    imageUrl: imageUrl)
         
@@ -165,55 +168,5 @@ class RegisterViewModel: ObservableObject {
             self.showLastStepError = true
             self.isLoading = false
         })
-    }
-    
-    private func isValidPhoneNumber() -> Bool {
-        
-        guard let phoneUtil = NBPhoneNumberUtil.sharedInstance() else {
-            print("Error al recuperar la instancia NBPhoneNumberUtil")
-            return false
-        }
-        
-        do {
-            let phoneNumberParsed = try phoneUtil.parse("\(prefix)\(phoneNumber)", defaultRegion: nil)
-            return phoneUtil.isValidNumber(phoneNumberParsed)
-        } catch {
-            self.firstStepError = "any_view_unknown_error".localized
-            self.showFirstStepError = true
-            print("Error al parsear el número: \(error)")
-            return false
-        }
-    }
-    
-    private func calculateClassOfPerson() -> ClassOfPerson {
-        switch gender {
-        case "male_gender_parameter".localized:
-            switch genderToShow {
-            case "female_gender_parameter".localized:
-                return .classA
-            case "male_gender_parameter".localized:
-                return .classC
-            default:
-                return .classE
-            }
-        case "female_gender_parameter".localized:
-            switch genderToShow {
-            case "male_gender_parameter".localized:
-                return .classB
-            case "female_gender_parameter".localized:
-                return .classD
-            default:
-                return .classF
-            }
-        default:
-            switch genderToShow {
-            case "male_gender_parameter".localized:
-                return .classH
-            case "female_gender_parameter".localized:
-                return .classG
-            default:
-                return .classI
-            }
-        }
     }
 }

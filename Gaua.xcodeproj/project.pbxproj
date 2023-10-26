@@ -223,6 +223,9 @@
 		0FEE8EDF2AE7BE76009D2746 /* ChatMockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEE8EDE2AE7BE76009D2746 /* ChatMockService.swift */; };
 		0FEE8EE12AE7BE82009D2746 /* AllChatsMockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEE8EE02AE7BE82009D2746 /* AllChatsMockService.swift */; };
 		0FEE8EE32AE7BE8D009D2746 /* AuthMockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEE8EE22AE7BE8D009D2746 /* AuthMockService.swift */; };
+		0FEE8EED2AEA598B009D2746 /* ServiceProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEE8EEC2AEA598B009D2746 /* ServiceProtocols.swift */; };
+		0FEE8EF02AEA5DC9009D2746 /* PhoneNumberValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEE8EEF2AEA5DC9009D2746 /* PhoneNumberValidator.swift */; };
+		0FEE8EF42AEA64A1009D2746 /* ClasifierOfClassPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEE8EF32AEA64A1009D2746 /* ClasifierOfClassPerson.swift */; };
 		0FF163352A8E31470016AF04 /* BulkData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF163342A8E31470016AF04 /* BulkData.swift */; };
 		0FFFC5842A5F4AE70025268A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFFC5832A5F4AE70025268A /* MainView.swift */; };
 		0FFFC5862A5F4E470025268A /* LikeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFFC5852A5F4E470025268A /* LikeView.swift */; };
@@ -316,6 +319,9 @@
 		0FEE8EDE2AE7BE76009D2746 /* ChatMockService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMockService.swift; sourceTree = "<group>"; };
 		0FEE8EE02AE7BE82009D2746 /* AllChatsMockService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllChatsMockService.swift; sourceTree = "<group>"; };
 		0FEE8EE22AE7BE8D009D2746 /* AuthMockService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthMockService.swift; sourceTree = "<group>"; };
+		0FEE8EEC2AEA598B009D2746 /* ServiceProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProtocols.swift; sourceTree = "<group>"; };
+		0FEE8EEF2AEA5DC9009D2746 /* PhoneNumberValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberValidator.swift; sourceTree = "<group>"; };
+		0FEE8EF32AEA64A1009D2746 /* ClasifierOfClassPerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClasifierOfClassPerson.swift; sourceTree = "<group>"; };
 		0FF163342A8E31470016AF04 /* BulkData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulkData.swift; sourceTree = "<group>"; };
 		0FFFC5832A5F4AE70025268A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		0FFFC5852A5F4E470025268A /* LikeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeView.swift; sourceTree = "<group>"; };
@@ -601,6 +607,7 @@
 		0F9B7EE02A5C127900CEE335 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				0FEE8EEC2AEA598B009D2746 /* ServiceProtocols.swift */,
 				0F5211CF2A66797100A551FB /* Utils */,
 				0F9B7F1E2A5E87E700CEE335 /* RegisterService.swift */,
 				0F61452A2A5FEB7D0070D111 /* LikeService.swift */,
@@ -615,6 +622,7 @@
 		0F9B7EE12A5C128300CEE335 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				0FEE8EEE2AEA5DB2009D2746 /* Utils */,
 				0F828BE92AE023AF00C542A7 /* WireFrame */,
 				0F9B7F1C2A5E87E700CEE335 /* RegisterViewModel.swift */,
 				0F6145272A5FE7880070D111 /* LikeViewModel.swift */,
@@ -692,6 +700,15 @@
 				0FEE8E772AE670BE009D2746 /* RegisterViewModelTest.swift */,
 			);
 			path = GauaTests;
+			sourceTree = "<group>";
+		};
+		0FEE8EEE2AEA5DB2009D2746 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				0FEE8EEF2AEA5DC9009D2746 /* PhoneNumberValidator.swift */,
+				0FEE8EF32AEA64A1009D2746 /* ClasifierOfClassPerson.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -985,9 +1002,11 @@
 				0F6145042A5FDB490070D111 /* Converters.swift in Sources */,
 				0F4B11952A711EDC0068F135 /* AllChatsViewModel.swift in Sources */,
 				0FA17B432AC4436A00F43791 /* EnvironmentColors.swift in Sources */,
+				0FEE8EED2AEA598B009D2746 /* ServiceProtocols.swift in Sources */,
 				0F4B11992A7128160068F135 /* AllChatsService.swift in Sources */,
 				0FD8D7C92AD3021500DB9C0B /* RegisterGenderButton.swift in Sources */,
 				0F6145382A62A3710070D111 /* UserSession.swift in Sources */,
+				0FEE8EF42AEA64A1009D2746 /* ClasifierOfClassPerson.swift in Sources */,
 				0F5211E42A67BEC400A551FB /* LoadingView.swift in Sources */,
 				0F828BED2AE023D600C542A7 /* RouterViewModel.swift in Sources */,
 				0F4B118F2A6FDD420068F135 /* ChatService.swift in Sources */,
@@ -1005,6 +1024,7 @@
 				0F7906A32A83890D00FC4621 /* ClassOfPerson.swift in Sources */,
 				0F5211D12A66798600A551FB /* FireBaseManager.swift in Sources */,
 				0F9B7ED22A5C105600CEE335 /* ParentView.swift in Sources */,
+				0FEE8EF02AEA5DC9009D2746 /* PhoneNumberValidator.swift in Sources */,
 				0F828BEF2AE1298A00C542A7 /* PubsSignInView.swift in Sources */,
 				0FA17AF72AB8A3D000F43791 /* AppDelegate.swift in Sources */,
 				0F61453A2A62A7B50070D111 /* Like.swift in Sources */,
