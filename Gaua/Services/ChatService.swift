@@ -9,7 +9,7 @@ import Foundation
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 
-class ChatService {
+struct ChatService {
     let db = Firestore.firestore()
 
     func getConversationIDs(forDocument documentID: String, onSuccess: @escaping ([String]) -> Void, onFailure: @escaping (Error?) -> Void) {

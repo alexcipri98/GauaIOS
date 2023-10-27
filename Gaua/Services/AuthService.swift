@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseAuth
 
-class AuthService: AuthServiceProtocol {
+struct AuthService: AuthServiceProtocol {
     
     public func logout() -> Bool {
         do {

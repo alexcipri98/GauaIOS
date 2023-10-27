@@ -10,6 +10,7 @@
 "any_view_close" = "Cerrar";
 "any_view_error" = "Error";
 "any_view_unknown_error" = "Error desconocido, vuelva a intentarlo en unos minutos";
+"any_view_accept" = "Aceptar";
 
 /* LogIn */
 "login_view_title" = "Inicio de sesión";

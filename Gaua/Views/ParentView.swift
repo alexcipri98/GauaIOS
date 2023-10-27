@@ -4,28 +4,37 @@
 //
 //  Created by Alex Ciprián López on 10/7/23.
 //
-
 import SwiftUI
-import FirebaseAuth
 
 struct ParentView: View {
     @EnvironmentObject private var router: RouterViewModel
     
     var body: some View {
         NavigationView {
-            VStack {
-                if router.isAuthenticated || router.currentDestination == .main{
-                    MainView() // La vista principal cuando el usuario está autenticado.
-                } else {
-                    NavigationStack  {
-                        PhoneNumberRequestView()
+            ZStack {
+                VStack {
+                    if router.isAuthenticated || router.currentDestination == .main {
+                        MainView() // La vista principal cuando el usuario está autenticado.
+                    } else {
+                        NavigationStack  {
+                            PhoneNumberRequestView()
+                        }
                     }
+                }
+                .alert(isPresented: $router.showAlert) {
+                    Alert(title: Text("any_view_error".localized),
+                          message: Text(router.alertMessage),
+                          dismissButton: .default(Text("any_view_accept".localized)))
+                }
+                if router.isLoading {
+                    LoadingView()
                 }
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
 }
+
 
 
 struct ParentView_Previews: PreviewProvider {

@@ -12,7 +12,7 @@ struct MessageBubble: View {
     @State private var showTime = true
     
     var body: some View {
-        if let currentUser = UserSession.shared.currentUser {
+        if let currentUser = NavigationServiceViewModel.shared.userSession {
             let isSendedMessage = (message.sendedByID == currentUser.id)
             let alignmentForMessage: Alignment = isSendedMessage ? .trailing : .leading
             

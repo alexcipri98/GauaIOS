@@ -7,7 +7,7 @@
 
 import Foundation
 
-class AllChatsViewModel: ObservableObject {
+final class AllChatsViewModel: ObservableObject {
     @Published var matches : [Match] = []
     @Published var isLoading : Bool = true
     private var allChatsService = AllChatsService()

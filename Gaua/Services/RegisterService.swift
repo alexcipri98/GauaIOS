@@ -10,7 +10,7 @@ import Firebase
 import FirebaseStorage
 import UIKit
 
-class RegisterService: RegisterServiceProtocol {
+struct RegisterService: RegisterServiceProtocol {
     let db = FireBaseManager.shared.db
     let storage = FireBaseManager.shared.storage
 
@@ -126,7 +126,6 @@ class RegisterService: RegisterServiceProtocol {
     
     private func retrieveImageOfUser(person: Person, onSuccess: @escaping (Person) -> Void, onFailure: @escaping (Error?) -> Void) {
         guard let imageUrl = URL(string: person.imageUrl) else {
-            #warning("Manejar el caso cuando la URL no sea válida")
             onSuccess(person)
             return
         }

@@ -8,19 +8,15 @@
 import Foundation
 import SwiftUI
 
-class RegisterViewModel: ObservableObject {
+final class RegisterViewModel: ObservableObject {
     
     //RegisterStep1 phoneRequest
     @Published var prefix: String = ""
     @Published var phoneNumber: String = ""
-    @Published var showFirstStepError: Bool = false
-    @Published var firstStepError: String?
     @Published var goVerification: Bool = false
 
     //RegisterStep2 Verification
     @Published var verificationCode: String = ""
-    @Published var showSecondStepError: Bool = false
-    @Published var secondStepError: String?
     @Published var goName: Bool = false
 
     //RegisterStep3 Name
@@ -42,10 +38,6 @@ class RegisterViewModel: ObservableObject {
     //RegisterStep7 Image
     @Published var selectedImage: UIImage? = nil
     @Published var recortedImage: UIImage? = nil
-    @Published var showLastStepError: Bool = false
-    @Published var lastStepError: String?
-   
-    @Published var isLoading = false
     
     private var registerService: RegisterServiceProtocol = RegisterService()
     private var authService: AuthServiceProtocol = AuthService()
@@ -53,28 +45,24 @@ class RegisterViewModel: ObservableObject {
     private var clasifier = ClasifierOfClassOfPerson()
     
     func registerStepOne(){
-        isLoading = true
-        if prefix == "" {
-            prefix = "+34"
-        }
+        NavigationServiceViewModel.shared.showLoading()
+        if prefix == "" { prefix = "+34" }
         if phoneNumberValidator.isValidPhoneNumber(prefix: prefix,
                                                    phoneNumber: phoneNumber) {
             authService.getVerificationID(prefix: prefix,
                                               phoneNumber: phoneNumber,
                                               onSuccess: { verificationID in
-                UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
-                self.isLoading = false
-                self.goVerification = true
-                print("Guardado verificationID en UserDefaults")
+                DispatchQueue.main.async {
+                    UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
+                    self.goVerification = true
+                    print("Guardado verificationID en UserDefaults")
+                }
+                NavigationServiceViewModel.shared.hideLoading()
             }, onFailure: { error in
-                self.firstStepError = error?.localizedDescription
-                self.showFirstStepError = true
-                self.isLoading = false
+                NavigationServiceViewModel.shared.showError(text: error?.localizedDescription)
             })
         } else {
-            self.firstStepError = "register_view_phoneError".localized
-            self.showFirstStepError = true
-            self.isLoading = false
+            NavigationServiceViewModel.shared.showError(text: "register_view_phoneError".localized)
         }
     }
     
@@ -85,9 +73,7 @@ class RegisterViewModel: ObservableObject {
             self.evaluateIfUserExist(userId: (self.prefix + self.phoneNumber))
         },
                            onFailure: { error in
-            self.secondStepError = error?.localizedDescription
-                self.showSecondStepError = true
-            print(error?.localizedDescription ?? "Error en el registerStepTwo del RegisterViewModel")
+            NavigationServiceViewModel.shared.showError(text: error?.localizedDescription)
         })
         
     }
@@ -98,12 +84,12 @@ class RegisterViewModel: ObservableObject {
             self.login(userId: userId)
         },
                                   onSuccessNotExist: {
-            self.goName = true
+            DispatchQueue.main.async {
+                self.goName = true
+            }
         },
                                   onFailure: { error in
-            self.secondStepError = error?.localizedDescription ?? "any_view_unknown_error".localized
-            self.showSecondStepError = true
-            print(error?.localizedDescription ?? "Error en registerStepTwo")
+            NavigationServiceViewModel.shared.showError(text: error?.localizedDescription)
         })
     }
     
@@ -111,24 +97,20 @@ class RegisterViewModel: ObservableObject {
         
         registerService.getUser(userId: userId,
                                 onSuccess: { person in
-            UserSession.shared.currentUser = person
-            NavigationService.shared.router.currentDestination = .main
+            NavigationServiceViewModel.shared.userSession = person
+            NavigationServiceViewModel.shared.router.currentDestination = .main
         },
                                 onFailure: { error in
-            self.secondStepError = error?.localizedDescription ?? "any_view_unknown_error".localized
-            self.showSecondStepError = true
-            print(error?.localizedDescription ?? "Error en el login")
+            NavigationServiceViewModel.shared.showError(text: error?.localizedDescription)
         })
     }
     
     func loadImageAndRegister() {
-        isLoading = true
+        NavigationServiceViewModel.shared.showLoading()
         guard let selectedImage = recortedImage,
               let imageData = selectedImage.jpegData(compressionQuality: 0.8)
         else {
-            self.lastStepError = "register_view_imageError".localized
-            self.showLastStepError = true
-            self.isLoading = false
+            NavigationServiceViewModel.shared.showError(text: "register_view_imageError".localized)
             return
         }
         
@@ -138,9 +120,7 @@ class RegisterViewModel: ObservableObject {
                                     self.registerUser(imageUrl: imageUrl)
                                 },
                                   onFailure: { error in
-                                    self.lastStepError = error?.localizedDescription
-                                    self.showLastStepError = true
-                                    self.isLoading = false
+                                    NavigationServiceViewModel.shared.showError(text: error?.localizedDescription)
                                 })
         
     }
@@ -160,13 +140,11 @@ class RegisterViewModel: ObservableObject {
         self.registerService.register(person: currentperson,
                                  onSuccess:  {
             
-            UserSession.shared.currentUser = currentperson
-            self.isLoading = false
-            NavigationService.shared.navigateTo(destination: .main)
+            NavigationServiceViewModel.shared.userSession = currentperson
+            NavigationServiceViewModel.shared.navigateTo(destination: .main)
+            NavigationServiceViewModel.shared.hideLoading()
         }, onFailure: { error in
-            self.lastStepError = error?.localizedDescription
-            self.showLastStepError = true
-            self.isLoading = false
+            NavigationServiceViewModel.shared.showError(text: error?.localizedDescription)
         })
     }
 }

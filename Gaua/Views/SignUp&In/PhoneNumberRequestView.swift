@@ -15,48 +15,46 @@ struct PhoneNumberRequestView: View {
             BackgroundImage(name: "RegisterStep1")
             
             VStack(alignment: .leading) {
-                if registerViewModel.isLoading {
-                    LoadingView()
-                } else {
-
-                    HStack(alignment: .center) {
-                        Image("GauaLogo")
-                            .resizable()
-                            .frame(width: 225, height: 225)
-                            .foregroundColor(Color.white)
-                    }
-                    .padding(.top)
-                    
-                    GenericText(text: "register_view_movileRequest".localized, color: Color.white)
-                        .padding(.top)
-                    
-                    HStack {
-                        RegisterField(placeholder: "+34", text: $registerViewModel.prefix)
-                            .frame(width: 70)
-                        
-                        RegisterField(placeholder: "register_view_phoneNumber".localized, text: $registerViewModel.phoneNumber)
-                            .padding(.leading, 10)
-                    }
-                    .padding(.vertical)
-                    
-                    HStack {
-                        Image(systemName: "lock")
-                            .resizable()
-                            .frame(width: 16, height: 24)
-                        
-                        Text("register_view_privateSecurityText".localized)
-                            .font(.system(size: 12))
-                    }
-                    .foregroundColor(Color.white)
-                    
-                    GenericButton(action: {
-                        registerViewModel.registerStepOne()
-                    })
-                    .disabled(registerViewModel.phoneNumber == "")
-                    .padding(.top, 60)
-                    
+                HStack {
+                    Spacer()
+                    Image("GauaLogo")
+                        .resizable()
+                        .frame(width: 225, height: 225)
+                        .foregroundColor(Color.white)
                     Spacer()
                 }
+                .padding(.top)
+                
+                GenericText(text: "register_view_movileRequest".localized, color: Color.white)
+                    .padding(.top)
+                
+                HStack {
+                    RegisterField(placeholder: "+34", text: $registerViewModel.prefix)
+                        .frame(width: 70)
+                    
+                    RegisterField(placeholder: "register_view_phoneNumber".localized, text: $registerViewModel.phoneNumber)
+                        .padding(.leading, 10)
+                }
+                .padding(.vertical)
+                
+                HStack {
+                    Image(systemName: "lock")
+                        .resizable()
+                        .frame(width: 16, height: 24)
+                    
+                    Text("register_view_privateSecurityText".localized)
+                        .font(.system(size: 12))
+                }
+                .foregroundColor(Color.white)
+                
+                GenericButton(action: {
+                    registerViewModel.registerStepOne()
+                })
+                .disabled(registerViewModel.phoneNumber == "")
+                .padding(.top, 60)
+                
+                Spacer()
+                
             }
             .padding(.horizontal, 50)
             .navigationDestination(isPresented: $registerViewModel.goVerification) {

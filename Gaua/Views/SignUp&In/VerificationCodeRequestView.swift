@@ -32,13 +32,6 @@ struct VerificationCodeRequestView: View {
                 })
                 .disabled(registerViewModel.verificationCode.isEmpty)
                 .padding(.top, 60)
-                .alert(isPresented: $registerViewModel.showSecondStepError) {
-                    Alert(
-                        title: Text("any_view_error".localized),
-                        message: Text(registerViewModel.secondStepError ?? "any_view_unknown_error".localized),
-                        dismissButton: .default(Text("any_view_close".localized))
-                    )
-                }
             }
             .padding(.vertical)
             .padding(.horizontal, 50)

@@ -9,7 +9,7 @@ import Foundation
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 
-class ChatViewModel: ObservableObject {
+final class ChatViewModel: ObservableObject {
     @Published private(set) var messages: [Message] = []
     @Published var showError: Bool = false
     @Published var errorText: String = ""
@@ -48,7 +48,7 @@ class ChatViewModel: ObservableObject {
     }
     
     func sendMessage(text: String, toMatchDocumentID matchDocumentID: String) {
-        let newMessage = Message(id: "\(UUID())", text: text, sendedByID: UserSession.shared.currentUser!.id, timestamp: Date())
+        let newMessage = Message(id: "\(UUID())", text: text, sendedByID: NavigationServiceViewModel.shared.userSession!.id, timestamp: Date())
         chatService.sendMessage(newMessage: newMessage,
                                 toMatchDocumentID: matchDocumentID,
                                 onFailure: { error in

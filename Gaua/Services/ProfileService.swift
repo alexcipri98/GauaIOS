@@ -10,7 +10,7 @@ import Firebase
 import FirebaseFirestore
 import FirebaseStorage
 
-class ProfileService {
+struct ProfileService {
     
     let db = FireBaseManager.shared.db
     let storage = FireBaseManager.shared.storage

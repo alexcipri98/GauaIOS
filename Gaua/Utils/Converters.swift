@@ -9,22 +9,19 @@ import Foundation
 import UIKit
 import SwiftUI
 
-class Converters {
+struct Converters {
+    
+    private static let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        return formatter
+    }()
     
     static func fromDateToString(date: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-
-        let currentDate = Date()
-
-        let dateString = dateFormatter.string(from: currentDate)
-        return dateString
+        return dateFormatter.string(from: Date())
     }
     
     static func fromStringToDate(string: String) -> Date? {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-
         if let date = dateFormatter.date(from: string) {
             return date
         } else {
@@ -40,8 +37,6 @@ class Converters {
     }
     
     static func calculateAge(from birthday: String) -> Int? {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         if let date = dateFormatter.date(from: birthday) {
             let calendar = Calendar.current
             let ageComponents = calendar.dateComponents([.year], from: date, to: Date())

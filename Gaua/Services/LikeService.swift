@@ -9,15 +9,14 @@ import Foundation
 import Firebase
 import FirebaseFirestore
 
-class LikeService {
+struct LikeService {
     let db = FireBaseManager.shared.db
     let functions = FireBaseManager.shared.functions
     
-    var lastDocumentSnapshot: DocumentSnapshot?
-
     public func getPeople(initialFetch: Bool, person: Person, onSuccess: @escaping ([Person]) -> Void, onFailure: @escaping (Error?) -> Void) {
+        var lastDocumentSnapshot: DocumentSnapshot?
 
-        let excludedClasses = getIncompatibleClasses(currentClass: UserSession.shared.currentUser?.classOfPerson ?? .classA)
+        let excludedClasses = getIncompatibleClasses(currentClass: NavigationServiceViewModel.shared.userSession?.classOfPerson ?? .classA)
         let idsToExclude = ["x96X3wlC7BkiM3mz0P7T", "ID2", "ID3"]
         var query = db.collection("users").whereField("classOfPerson", notIn: excludedClasses).limit(to: 20)
 
@@ -59,7 +58,7 @@ class LikeService {
                     
                     if result.count == snapshot.documents.count {
                         print("\u{1F44C} se han obtenido todos los usuarios.")
-                        self.lastDocumentSnapshot = snapshot.documents.last
+                        lastDocumentSnapshot = snapshot.documents.last
                         onSuccess(result)
                     }
                 }, onFailure: onFailure)

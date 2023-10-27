@@ -10,7 +10,7 @@
 "any_view_close" = "Close";
 "any_view_error" = "Error";
 "any_view_unknown_error" = "Unknown error, try again later";
-
+"any_view_accept" = "Accept";
 /* LogIn */
 "login_view_title" = "Login";
 "login_view_button" = "Log in";

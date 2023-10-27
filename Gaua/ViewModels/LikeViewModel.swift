@@ -7,7 +7,8 @@
 
 import Foundation
 import FirebaseAuth
-class LikeViewModel: ObservableObject {
+
+final class LikeViewModel: ObservableObject {
     @Published var people: [Person] = []
     @Published var discardedPeople: [Person] = []
     @Published var likedPeople: [Person] = []
@@ -41,7 +42,7 @@ class LikeViewModel: ObservableObject {
         guard !isFetching else { return }
         
         isFetching = true
-        guard let person = UserSession.shared.currentUser else {
+        guard let person = NavigationServiceViewModel.shared.userSession else {
             print("Current person is nil")
             return
         }
@@ -57,7 +58,7 @@ class LikeViewModel: ObservableObject {
 
     func readUsers() {
         self.isFetching = true
-        guard let person = UserSession.shared.currentUser else {
+        guard let person = NavigationServiceViewModel.shared.userSession else {
             print("Current person is nil")
             return
         }
@@ -76,7 +77,7 @@ class LikeViewModel: ObservableObject {
         if let index = people.firstIndex(where: { $0.id == user.id }) {
             people.remove(at: index)
             likedPeople.append(user)
-            likeService.likeUser(fromPerson: UserSession.shared.currentUser!,
+            likeService.likeUser(fromPerson: NavigationServiceViewModel.shared.userSession!,
                                  toPerson: user,
                                  onSuccess: { isMatch in
                                     #warning("Falta implementar que se hace cuando es match")
@@ -102,7 +103,7 @@ class LikeViewModel: ObservableObject {
     
     func getUserDetail(onSuccess: @escaping () -> Void, onFailure: @escaping (Error?) -> Void) {
         RegisterService().getUser(userId: Auth.auth().currentUser?.phoneNumber ?? "errror", onSuccess: { person in
-            UserSession.shared.currentUser = person
+            NavigationServiceViewModel.shared.userSession = person
             onSuccess()
         }, onFailure: { error in
             print(error?.localizedDescription)

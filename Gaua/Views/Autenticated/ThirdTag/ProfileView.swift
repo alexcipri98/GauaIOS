@@ -17,7 +17,7 @@ struct ProfileView: View {
             Button(action: {
                 viewModel.isShowingImagePicker = true
             }) {
-                ComponentStyles.customImageOfUser(imageIn: UserSession.shared.currentUser?.image)
+                ComponentStyles.customImageOfUser(imageIn: NavigationServiceViewModel.shared.userSession?.image)
                     .frame(width: 200, height: 200)
                     .clipShape(Circle())
                     .shadow(radius: 10)

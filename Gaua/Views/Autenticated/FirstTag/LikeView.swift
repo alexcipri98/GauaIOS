@@ -13,7 +13,7 @@ struct LikeView: View {
     var body: some View {
         if viewModel.isNotLikedIn && viewModel.isloading == false{
             LoadingView().onAppear{
-                if UserSession.shared.currentUser == nil {
+                if NavigationServiceViewModel.shared.userSession == nil {
                     viewModel.getUserDetail(onSuccess: { 
                         viewModel.isloading = true
                         if viewModel.people.isEmpty {

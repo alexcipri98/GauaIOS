@@ -10,7 +10,7 @@ import FirebaseAuth
 import libPhoneNumber
 import SwiftUI
 
-class PubsSignInViewModel: ObservableObject {
+final class PubsSignInViewModel: ObservableObject {
     
     @Published var email: String = ""
     @Published var passWord: String = ""

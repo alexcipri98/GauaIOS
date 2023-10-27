@@ -11,7 +11,7 @@ import FirebaseFirestore
 import FirebaseStorage
 import FirebaseFunctions
 
-class FireBaseManager: NSObject {
+final class FireBaseManager: NSObject {
     
     let auth: Auth
     let storage: Storage

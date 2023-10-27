@@ -8,18 +8,18 @@
 import Foundation
 import SwiftUI
 
-class ProfileViewModel: ObservableObject {
+final class ProfileViewModel: ObservableObject {
     @Published var isShowingImagePicker = false
     @Published var selectedImage: UIImage? = nil
     @Published var recortedImage: UIImage? = nil
     @Published var isShowingCropViewController: Bool = false
     private var profileService = ProfileService()
-    let currentPerson = UserSession.shared.currentUser
+    let currentPerson = NavigationServiceViewModel.shared.userSession
 
     
     func loadImage() {
         guard let selectedImage = recortedImage,
-              let userId = UserSession.shared.currentUser?.id,
+              let userId = NavigationServiceViewModel.shared.userSession?.id,
               let imageData = selectedImage.jpegData(compressionQuality: 0.8)
         else {
             #warning("Falta controlar error")

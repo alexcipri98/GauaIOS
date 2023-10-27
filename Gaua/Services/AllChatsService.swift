@@ -11,7 +11,7 @@ import FirebaseFirestoreSwift
 import FirebaseStorage
 import UIKit
 
-class AllChatsService {
+struct AllChatsService {
     let db = Firestore.firestore()
     let fb = FireBaseManager.shared
 
@@ -19,7 +19,7 @@ class AllChatsService {
         let matchesRef = db.collection("matches")
         var totalTransactions = 0
         
-        if let user = UserSession.shared.currentUser {
+        if let user = NavigationServiceViewModel.shared.userSession {
             
             let userId = user.id
             var matches: [Match] = []
@@ -77,7 +77,7 @@ class AllChatsService {
         }
         
         let id = document.documentID
-        let currentUserID = UserSession.shared.currentUser?.id
+        let currentUserID = NavigationServiceViewModel.shared.userSession?.id
         
         let otherUserID = fromUserID == currentUserID ? toUserID : fromUserID
         var match = Match(id: id,

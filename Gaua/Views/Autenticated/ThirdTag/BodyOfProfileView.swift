@@ -22,10 +22,10 @@ struct BodyOfProfileView: View {
     @State private var selectedTags = Set<UUID>()
     @State private var isEditingName = false
     @State private var isEditingDescription = false
-    @State private var name: String = UserSession.shared.currentUser?.name ?? ""
-    @State private var description: String = UserSession.shared.currentUser?.description ?? ""
+    @State private var name: String = NavigationServiceViewModel.shared.userSession?.name ?? ""
+    @State private var description: String = NavigationServiceViewModel.shared.userSession?.description ?? ""
     var body: some View {
-        if let user = UserSession.shared.currentUser {
+        if let user = NavigationServiceViewModel.shared.userSession {
             Text("Nombre:")
                 .font(.headline)
                 .foregroundColor(.secondary)

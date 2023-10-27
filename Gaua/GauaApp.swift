@@ -12,7 +12,7 @@ import Firebase
 struct GauaApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
-    @StateObject private var navigationService = NavigationService.shared
+    @StateObject private var navigationService = NavigationServiceViewModel.shared
        
        var body: some Scene {
            WindowGroup {
