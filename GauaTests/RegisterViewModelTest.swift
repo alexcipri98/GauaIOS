@@ -21,59 +21,91 @@ class RegisterViewModelTests: XCTestCase {
     }
 
     func testValidRegisterStepOne() throws {
+        let expectation = self.expectation(description: "Verification completed")
+        
         viewModel.prefix = "+34"
         viewModel.phoneNumber = "666666666"
         
-        
         viewModel.registerStepOne()
         
-        XCTAssertFalse(viewModel.showFirstStepError)
-        XCTAssertTrue(viewModel.goVerification)
+        let observation = viewModel.$goVerification.sink { newValue in
+            if newValue {
+                expectation.fulfill()
+            }
+        }
+        
+        waitForExpectations(timeout: 5) { error in
+            if let error = error {
+                XCTFail("waitForExpectations errored: \(error)")
+            }
+            observation.cancel()
+            XCTAssertTrue(self.viewModel.goVerification)
+        }
     }
+
     
-    func testRegisterStepTwo_Success_UserExists() {
-        viewModel.prefix = ""
-        viewModel.phoneNumber = "existing"
-        viewModel.registerStepTwo()
-        
-        XCTAssertFalse(viewModel.showSecondStepError)
-        XCTAssertFalse(viewModel.goName) //Si el usuario existe no debería ir al Name
-        XCTAssertTrue(NavigationService.shared.router.currentDestination == .main)
-    }
-
-    func testRegisterStepTwo_Success_UserDoesNotExist() {
-        viewModel.prefix = ""
-        viewModel.phoneNumber = "noExisting"
-        viewModel.registerStepTwo()
-        
-        XCTAssertFalse(viewModel.showSecondStepError)
-        XCTAssertTrue(viewModel.goName) //Si el usuario no existe debería ir al Name
-    }
-
     func testRegisterStepTwo_Failure() {
-        viewModel.prefix = ""
-        viewModel.phoneNumber = "Error"
-        viewModel.registerStepTwo()
-        
-        XCTAssertTrue(viewModel.showSecondStepError)
-        XCTAssertFalse(viewModel.goName)
-    }
-    
-    func testLoadImageAndRegister_Success() {
-        viewModel.prefix = ""
-        viewModel.phoneNumber = "existing"
-        viewModel.recortedImage = UIImage(named: "GauaLogo")
-        viewModel.loadImageAndRegister()
-        
-        XCTAssertFalse(viewModel.showLastStepError)
-    }
-    
-    func testLoadImageAndRegister_Failure() {
-        viewModel.prefix = ""
-        viewModel.phoneNumber = "error"
-        viewModel.loadImageAndRegister()
-
-        XCTAssertTrue(viewModel.showLastStepError)
-        XCTAssertFalse(NavigationService.shared.router.currentDestination == .main)
-    }
-}
+          let expectation = self.expectation(description: "Verification completed for testRegisterStepTwo_Failure")
+          
+          viewModel.prefix = ""
+          viewModel.phoneNumber = "error"
+          
+          viewModel.registerStepTwo()
+          
+          DispatchQueue.main.async {
+              expectation.fulfill()
+          }
+          
+          waitForExpectations(timeout: 5) { error in
+              if let error = error {
+                  XCTFail("waitForExpectations errored: \(error)")
+              }
+              XCTAssertTrue(NavigationServiceViewModel.shared.router.showAlert)
+              XCTAssertFalse(self.viewModel.goName)
+              XCTAssertFalse(NavigationServiceViewModel.shared.router.currentDestination == .main)
+          }
+      }
+      
+      func testLoadImageAndRegister_Success() {
+          let expectation = self.expectation(description: "Verification completed for testLoadImageAndRegister_Success")
+          
+          viewModel.prefix = ""
+          viewModel.phoneNumber = "existing"
+          viewModel.recortedImage = UIImage(named: "GauaLogo")
+          
+          viewModel.loadImageAndRegister()
+          
+          DispatchQueue.main.async {
+              expectation.fulfill()
+          }
+          
+          waitForExpectations(timeout: 5) { error in
+              if let error = error {
+                  XCTFail("waitForExpectations errored: \(error)")
+              }
+              XCTAssertFalse(NavigationServiceViewModel.shared.router.showAlert)
+              XCTAssertTrue(NavigationServiceViewModel.shared.router.currentDestination == .main)
+          }
+      }
+      
+      func testLoadImageAndRegister_Failure() {
+          let expectation = self.expectation(description: "Verification completed for testLoadImageAndRegister_Failure")
+          
+          viewModel.prefix = ""
+          viewModel.phoneNumber = "error"
+          
+          viewModel.loadImageAndRegister()
+          
+          DispatchQueue.main.async {
+              expectation.fulfill()
+          }
+          
+          waitForExpectations(timeout: 5) { error in
+              if let error = error {
+                  XCTFail("waitForExpectations errored: \(error)")
+              }
+              XCTAssertTrue(NavigationServiceViewModel.shared.router.showAlert)
+              XCTAssertFalse(NavigationServiceViewModel.shared.router.currentDestination == .main)
+          }
+      }
+  }

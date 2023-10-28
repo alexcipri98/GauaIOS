@@ -7,19 +7,19 @@
 
 import Foundation
 
-class RegisterService {
+class RegisterService: RegisterServiceProtocol {
     
     public func existUser(userId: String, onSuccessExist: @escaping() -> Void, onSuccessNotExist: @escaping() -> Void, onFailure: @escaping (Error?) -> Void) {
-        if userId == "existing" {
+        if userId == "+34666666666" {
             onSuccessExist()
         }
-        else if userId == "noExisting" {
-            onSuccessNotExist()
-        } else {
+        else if userId == "error" {
             let error = NSError(domain: "GauaMock",
                                 code: 0,
                                 userInfo: [NSLocalizedDescriptionKey: "Error en existUserMock"])
             onFailure(error)
+        } else {
+            onSuccessNotExist()
         }
     }
     
@@ -30,17 +30,6 @@ class RegisterService {
             let error = NSError(domain: "GauaMock",
                                 code: 0,
                                 userInfo: [NSLocalizedDescriptionKey: "Error en registerMock"])
-            onFailure(error)
-        }
-    }
-
-    public func getVerificationID(prefix: String, phoneNumber: String, onSuccess: @escaping (String) -> Void, onFailure: @escaping (Error?) -> Void) {
-        if prefix == "+34" && phoneNumber == "666666666" {
-            onSuccess("123456")
-        } else {
-            let error = NSError(domain: "GauaMock",
-                                code: 0,
-                                userInfo: [NSLocalizedDescriptionKey: "Error en getVerificationIDMock"])
             onFailure(error)
         }
     }

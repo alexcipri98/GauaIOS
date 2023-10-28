@@ -30,14 +30,4 @@ struct ComponentStyles {
         }
     }
     
-    static func customImageOfUser(imageIn: UIImage?) -> some View {
-        var imageOut = Image("spanish")
-        
-        if let image = imageIn {
-            imageOut = Image(uiImage: image)
-        }
-        
-        return imageOut.resizable().aspectRatio(contentMode: .fill)
-    }
-    
 }
