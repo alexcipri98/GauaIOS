@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct GauaApp: App {
 
-    @StateObject private var navigationService = NavigationService.shared
+    @StateObject private var navigationService = NavigationServiceViewModel.shared
        
        var body: some Scene {
            WindowGroup {

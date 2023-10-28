@@ -217,6 +217,12 @@
 		0FEE8EED2AEA598B009D2746 /* ServiceProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEE8EEC2AEA598B009D2746 /* ServiceProtocols.swift */; };
 		0FEE8EF02AEA5DC9009D2746 /* PhoneNumberValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEE8EEF2AEA5DC9009D2746 /* PhoneNumberValidator.swift */; };
 		0FEE8EF42AEA64A1009D2746 /* ClasifierOfClassPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEE8EF32AEA64A1009D2746 /* ClasifierOfClassPerson.swift */; };
+		0FEE8F0D2AED388F009D2746 /* PhoneNumberValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEE8EEF2AEA5DC9009D2746 /* PhoneNumberValidator.swift */; };
+		0FEE8F0F2AED3892009D2746 /* PhoneNumberValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEE8EEF2AEA5DC9009D2746 /* PhoneNumberValidator.swift */; };
+		0FEE8F102AED3894009D2746 /* ClasifierOfClassPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEE8EF32AEA64A1009D2746 /* ClasifierOfClassPerson.swift */; };
+		0FEE8F112AED3895009D2746 /* ClasifierOfClassPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEE8EF32AEA64A1009D2746 /* ClasifierOfClassPerson.swift */; };
+		0FEE8F122AED389C009D2746 /* ServiceProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEE8EEC2AEA598B009D2746 /* ServiceProtocols.swift */; };
+		0FEE8F132AED389C009D2746 /* ServiceProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEE8EEC2AEA598B009D2746 /* ServiceProtocols.swift */; };
 		0FF163352A8E31470016AF04 /* BulkData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF163342A8E31470016AF04 /* BulkData.swift */; };
 		0FFFC5842A5F4AE70025268A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFFC5832A5F4AE70025268A /* MainView.swift */; };
 		0FFFC5862A5F4E470025268A /* LikeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFFC5852A5F4E470025268A /* LikeView.swift */; };
@@ -946,6 +952,7 @@
 				0FEE8ED62AE7BDD9009D2746 /* EnvironmentColors.swift in Sources */,
 				0FA17AA72AB70ECB00F43791 /* BodyOfProfileView.swift in Sources */,
 				0FEE8EBD2AE7BD8E009D2746 /* PhoneNumberRequestView.swift in Sources */,
+				0FEE8F122AED389C009D2746 /* ServiceProtocols.swift in Sources */,
 				0FEE8EC12AE7BD95009D2746 /* NameRequestView.swift in Sources */,
 				0FA17A9B2AB70EB300F43791 /* MessageBubble.swift in Sources */,
 				0F61450D2A5FDC0C0070D111 /* RegisterMockService.swift in Sources */,
@@ -965,9 +972,11 @@
 				0FA17AAE2AB70EDE00F43791 /* Like.swift in Sources */,
 				0FEE8EC72AE7BD9E009D2746 /* ShowedGenderView.swift in Sources */,
 				0F61452E2A5FF3E00070D111 /* LikeMockService.swift in Sources */,
+				0FEE8F102AED3894009D2746 /* ClasifierOfClassPerson.swift in Sources */,
 				0F6145162A5FDD9E0070D111 /* ProfileView.swift in Sources */,
 				0FEE8EB72AE7BD7C009D2746 /* ChatViewModel.swift in Sources */,
 				0F6145112A5FDD920070D111 /* ComponentStyles.swift in Sources */,
+				0FEE8F0D2AED388F009D2746 /* PhoneNumberValidator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1040,6 +1049,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FEE8F0F2AED3892009D2746 /* PhoneNumberValidator.swift in Sources */,
 				0FA17B002AB9ED0F00F43791 /* AppDelegate.swift in Sources */,
 				0FA17A982AB70EAC00F43791 /* AllChatsView.swift in Sources */,
 				0FA17A962AB70EA900F43791 /* CardView.swift in Sources */,
@@ -1078,10 +1088,12 @@
 				0FA17A832AB70E6E00F43791 /* RegisterViewModel.swift in Sources */,
 				0FEE8EBE2AE7BD8F009D2746 /* PhoneNumberRequestView.swift in Sources */,
 				0FA17A8C2AB70E8A00F43791 /* ProfileService.swift in Sources */,
+				0FEE8F132AED389C009D2746 /* ServiceProtocols.swift in Sources */,
 				0FA17A872AB70E7A00F43791 /* AllChatsViewModel.swift in Sources */,
 				0FA17A802AB70E6600F43791 /* BulkData.swift in Sources */,
 				0FA17A7F2AB70E6200F43791 /* Converters.swift in Sources */,
 				0FEE8ED42AE7BDC7009D2746 /* RegisterGenderButton.swift in Sources */,
+				0FEE8F112AED3895009D2746 /* ClasifierOfClassPerson.swift in Sources */,
 				0FA17A9A2AB70EB100F43791 /* TitleRowView.swift in Sources */,
 				0FA17A8A2AB70E8500F43791 /* RegisterService.swift in Sources */,
 				0FEE8ECE2AE7BDBF009D2746 /* GenericText.swift in Sources */,

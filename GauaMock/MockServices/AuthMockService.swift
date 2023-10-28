@@ -7,7 +7,7 @@
 
 import Foundation
 
-class AuthService {
+class AuthService: AuthServiceProtocol {
     
     func logout() -> Bool {
         return true
@@ -17,5 +17,15 @@ class AuthService {
     }
     func signIn(verificationCode: String, onSuccess: @escaping () -> Void, onFailure: @escaping (Error?) -> Void) {
        onSuccess()
+    }
+    func getVerificationID(prefix: String, phoneNumber: String, onSuccess: @escaping (String) -> Void, onFailure: @escaping (Error?) -> Void) {
+        if prefix == "+34" && phoneNumber == "666666666" {
+            onSuccess("123456")
+        } else {
+            let error = NSError(domain: "GauaMock",
+                                code: 0,
+                                userInfo: [NSLocalizedDescriptionKey: "Error en getVerificationIDMock"])
+            onFailure(error)
+        }
     }
 }

@@ -14,8 +14,19 @@ final class ProfileViewModel: ObservableObject {
     @Published var recortedImage: UIImage? = nil
     @Published var isShowingCropViewController: Bool = false
     private var profileService = ProfileService()
-    let currentPerson = NavigationServiceViewModel.shared.userSession
-
+    var currentPerson: Person
+    var age : Int?
+    init() {
+        guard let person = NavigationServiceViewModel.shared.userSession else {
+            #warning("Esto luego hay que eliminarlo, pero ahora es para poder ver el preview")
+            self.currentPerson = Person(prefix: "+34", phoneNumber: "634459500", name: "Alex", gender: "Male", genderToShow: "Female", classOfPerson: .classA, birthDate: "16/09/1998", imageUrl: "")
+            return
+            //Este error no debería ocurrir nunca bajo condiciones normales
+            //fatalError("Error al inicializar ProfileViewModel sin un Person válido.")
+        }
+        self.currentPerson = person
+        self.age = Converters.calculateAge(from: person.birthDate)
+    }
     
     func loadImage() {
         guard let selectedImage = recortedImage,

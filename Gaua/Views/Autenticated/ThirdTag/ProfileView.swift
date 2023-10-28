@@ -8,58 +8,75 @@
 import SwiftUI
 
 struct ProfileView: View {
-    @StateObject private var viewModel = ProfileViewModel()
+    @StateObject private var profileViewModel = ProfileViewModel()
 
     var body: some View {
-        let shouldPresentCropView = viewModel.isShowingCropViewController && viewModel.selectedImage != nil
-
-        ScrollView() {
-            Button(action: {
-                viewModel.isShowingImagePicker = true
-            }) {
-                ComponentStyles.customImageOfUser(imageIn: NavigationServiceViewModel.shared.userSession?.image)
-                    .frame(width: 200, height: 200)
-                    .clipShape(Circle())
-                    .shadow(radius: 10)
-                    .overlay(
-                        Circle()
-                            .stroke(Color.white, lineWidth: 5)
-                    )
-                    .padding(.top, 10)
-                    .overlay(
-                        Image(systemName: "plus")
+        let shouldPresentCropView = profileViewModel.isShowingCropViewController && profileViewModel.selectedImage != nil
+        ZStack{
+            BackgroundImage(name: "RegisterStep7").opacity(0.9)
+            Circle()
+                .fill(Colors.purpleColor)
+                .frame(width: UIScreen.main.bounds.width * 2.5, height: UIScreen.main.bounds.width * 2.5)
+                .offset(y: -UIScreen.main.bounds.width * 1)
+                .zIndex(0)
+                .opacity(0.7)
+            VStack {
+                HStack {
+                    Button(action: {}) {
+                        Image(systemName: "pencil.circle.fill")
                             .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 30, height: 30)
-                            .foregroundColor(.green)
-                            .padding(10)
-                            .background(Color.white)
-                            .clipShape(Circle())
-                            .offset(x: 80, y: 80)
-                    )
-            }
-            .sheet(isPresented: $viewModel.isShowingImagePicker, onDismiss: viewModel.showCrop) {
-                ImagePicker(image: $viewModel.selectedImage)
-            }
-           /* .fullScreenCover(isPresented: Binding<Bool>(get: { shouldPresentCropView },
-                                                      set: { _ in viewModel.isShowingCropViewController = false }),
-                             onDismiss: viewModel.loadImage) {
-                CropViewControllerRepresentable(viewModel: self.viewModel)
-            }*/
-            
-            VStack(alignment: .leading, spacing: 10) {
+                            .frame(width: 50, height: 50)
+                            .padding()
+                    }
+                    .foregroundColor(Color.white)
+                    .frame(width: 60, height: 60)
+                    .padding(.leading, 30)
+
+                    Spacer()
+
+                    Button(action: {}) {
+                        Image(systemName: "arrowshape.turn.up.right.circle.fill")
+                            .resizable()
+                            .frame(width: 50, height: 50)
+                            .padding()
+                    }
+                    .foregroundColor(Color.white)
+                    .frame(width: 60, height: 60)
+                    .padding(.trailing, 30)
+                }
+                .frame(width: UIScreen.main.bounds.width, height: 50, alignment: .center)
+                .padding(.vertical, 30)
+                
+
+                Button(action: {
+                    profileViewModel.isShowingImagePicker = true
+                }) {
+                    UserImageView(recortedImage: $profileViewModel.recortedImage)
+                }
+                .sheet(isPresented: $profileViewModel.isShowingImagePicker, onDismiss: profileViewModel.showCrop) {
+                    ImagePicker(image: $profileViewModel.selectedImage)
+                }
+                /* .fullScreenCover(isPresented: Binding<Bool>(get: { shouldPresentCropView },
+                 set: { _ in viewModel.isShowingCropViewController = false }),
+                 onDismiss: viewModel.loadImage) {
+                 CropViewControllerRepresentable(viewModel: self.viewModel)
+                 }*/
+                GenericText(text: "\(profileViewModel.currentPerson.name), \(profileViewModel.age ?? 0)",
+                            color: Color.white)
+                
                 Button(action: {
                     AuthService().logout()
                 }) {
                     Text("logout")
                 }
-                BodyOfProfileView()
-            }
+                    //BodyOfProfileView()
+                Spacer()
+                
+            }.padding(.vertical)
+                .padding(.horizontal, 50)
+                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+                .navigationBarTitle("Profile")
         }
-        .frame(maxHeight: UIScreen.main.bounds.height * 0.8)
-        .padding(.trailing)
-        .padding(.leading)
-        .navigationBarTitle("Profile")
     }
 }
 

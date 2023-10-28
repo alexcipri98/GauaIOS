@@ -15,7 +15,7 @@ struct ImageUserProfileView: View {
         Button(action: {
             viewModel.isShowingImagePicker = true
         }) {
-            ComponentStyles.customImageOfUser(imageIn: NavigationServiceViewModel.shared.userSession?.image)
+           /* ComponentStyles.customImageOfUser(imageIn: NavigationServiceViewModel.shared.userSession?.image)
                 .frame(width: 200, height: 200)
                 .clipShape(Circle())
                 .shadow(radius: 10)
@@ -34,7 +34,8 @@ struct ImageUserProfileView: View {
                         .background(Color.white)
                         .clipShape(Circle())
                         .offset(x: 80, y: 80)
-                )
+                )*/
+            Text("omisión de código")
         }
         .sheet(isPresented: $viewModel.isShowingImagePicker, onDismiss: viewModel.showCrop) {
             ImagePicker(image: $viewModel.selectedImage)
