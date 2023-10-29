@@ -13,34 +13,35 @@ struct MainView: View {
     var body: some View {
         TabView {
             NavigationView {
+                PubsListView()
+            }
+            .tabItem {
+                Image("PubsGlobe")
+            }
+            
+            NavigationView {
                 LikeView()
             }
             .tabItem {
-                Label("main_view_game".localized,
-                      systemImage: "flame.circle")
-                    .font(.title)
+                Image("Tickets")
             }
 
             NavigationView {
                 AllChatsView()
             }
             .tabItem {
-                Label("main_view_chat".localized,
-                      systemImage: "ellipsis.message")
-                    .font(.title)
+                Image("Matches")
             }
 
             NavigationView {
                 ProfileView()
             }
             .tabItem {
-                Label("main_view_profile".localized,
-                      systemImage: "person.circle")
-                    .font(.title)
+                Image("User")
             }
         }
         .background(Color(.systemGray6))
-        .accentColor(.purple)
+        .accentColor(.yellow)
         .navigationViewStyle(StackNavigationViewStyle())
     }
 }

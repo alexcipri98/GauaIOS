@@ -223,6 +223,12 @@
 		0FEE8F112AED3895009D2746 /* ClasifierOfClassPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEE8EF32AEA64A1009D2746 /* ClasifierOfClassPerson.swift */; };
 		0FEE8F122AED389C009D2746 /* ServiceProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEE8EEC2AEA598B009D2746 /* ServiceProtocols.swift */; };
 		0FEE8F132AED389C009D2746 /* ServiceProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEE8EEC2AEA598B009D2746 /* ServiceProtocols.swift */; };
+		0FEE8F162AED582D009D2746 /* PubsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEE8F152AED582D009D2746 /* PubsListView.swift */; };
+		0FEE8F172AED58E7009D2746 /* PubsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEE8F152AED582D009D2746 /* PubsListView.swift */; };
+		0FEE8F182AED58E8009D2746 /* PubsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEE8F152AED582D009D2746 /* PubsListView.swift */; };
+		0FEE8F1A2AEDB240009D2746 /* GenericSubText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEE8F192AEDB240009D2746 /* GenericSubText.swift */; };
+		0FEE8F1C2AEE6046009D2746 /* SinglePubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEE8F1B2AEE6046009D2746 /* SinglePubView.swift */; };
+		0FEE8F1E2AEE6303009D2746 /* UserImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEE8F1D2AEE6303009D2746 /* UserImageView.swift */; };
 		0FF163352A8E31470016AF04 /* BulkData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF163342A8E31470016AF04 /* BulkData.swift */; };
 		0FFFC5842A5F4AE70025268A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFFC5832A5F4AE70025268A /* MainView.swift */; };
 		0FFFC5862A5F4E470025268A /* LikeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFFC5852A5F4E470025268A /* LikeView.swift */; };
@@ -316,6 +322,10 @@
 		0FEE8EEC2AEA598B009D2746 /* ServiceProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProtocols.swift; sourceTree = "<group>"; };
 		0FEE8EEF2AEA5DC9009D2746 /* PhoneNumberValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberValidator.swift; sourceTree = "<group>"; };
 		0FEE8EF32AEA64A1009D2746 /* ClasifierOfClassPerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClasifierOfClassPerson.swift; sourceTree = "<group>"; };
+		0FEE8F152AED582D009D2746 /* PubsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PubsListView.swift; sourceTree = "<group>"; };
+		0FEE8F192AEDB240009D2746 /* GenericSubText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericSubText.swift; sourceTree = "<group>"; };
+		0FEE8F1B2AEE6046009D2746 /* SinglePubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePubView.swift; sourceTree = "<group>"; };
+		0FEE8F1D2AEE6303009D2746 /* UserImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserImageView.swift; sourceTree = "<group>"; };
 		0FF163342A8E31470016AF04 /* BulkData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulkData.swift; sourceTree = "<group>"; };
 		0FFFC5832A5F4AE70025268A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		0FFFC5852A5F4E470025268A /* LikeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeView.swift; sourceTree = "<group>"; };
@@ -466,6 +476,7 @@
 			isa = PBXGroup;
 			children = (
 				0FFFC5832A5F4AE70025268A /* MainView.swift */,
+				0FEE8F142AED5814009D2746 /* PubsTag */,
 				0F6145242A5FE31E0070D111 /* FirstTag */,
 				0F6145252A5FE33C0070D111 /* SecodTag */,
 				0F6145262A5FE3440070D111 /* ThirdTag */,
@@ -587,8 +598,8 @@
 			isa = PBXGroup;
 			children = (
 				0F9B7ED12A5C105600CEE335 /* ParentView.swift */,
-				0F6145222A5FE2EB0070D111 /* SignUp&In */,
-				0F6145232A5FE30B0070D111 /* Autenticated */,
+				0FEE8F202AEE6587009D2746 /* Pubs */,
+				0FEE8F1F2AEE657A009D2746 /* Users */,
 				0FA17B472AC553AC00F43791 /* Components */,
 				0F9B7F262A5EB98500CEE335 /* Utils */,
 			);
@@ -678,9 +689,11 @@
 			children = (
 				0FA17B482AC553C100F43791 /* GenericButton.swift */,
 				0FA17B4A2AC5545900F43791 /* GenericText.swift */,
+				0FEE8F192AEDB240009D2746 /* GenericSubText.swift */,
 				0FA17B4C2AC5554900F43791 /* RegisterField.swift */,
 				0FA17B4E2AC5585F00F43791 /* BackgroundImage.swift */,
 				0FD8D7C82AD3021500DB9C0B /* RegisterGenderButton.swift */,
+				0FEE8F1D2AEE6303009D2746 /* UserImageView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -700,6 +713,31 @@
 				0FEE8EF32AEA64A1009D2746 /* ClasifierOfClassPerson.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		0FEE8F142AED5814009D2746 /* PubsTag */ = {
+			isa = PBXGroup;
+			children = (
+				0FEE8F152AED582D009D2746 /* PubsListView.swift */,
+				0FEE8F1B2AEE6046009D2746 /* SinglePubView.swift */,
+			);
+			path = PubsTag;
+			sourceTree = "<group>";
+		};
+		0FEE8F1F2AEE657A009D2746 /* Users */ = {
+			isa = PBXGroup;
+			children = (
+				0F6145222A5FE2EB0070D111 /* SignUp&In */,
+				0F6145232A5FE30B0070D111 /* Autenticated */,
+			);
+			path = Users;
+			sourceTree = "<group>";
+		};
+		0FEE8F202AEE6587009D2746 /* Pubs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Pubs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -928,6 +966,7 @@
 				0F6145202A5FDDD20070D111 /* GauaMockApp.swift in Sources */,
 				0FEE8ECF2AE7BDC1009D2746 /* BackgroundImage.swift in Sources */,
 				0FA17AA22AB70EC300F43791 /* CropImageView.swift in Sources */,
+				0FEE8F172AED58E7009D2746 /* PubsListView.swift in Sources */,
 				0FA17AA02AB70EC000F43791 /* ImagePicker.swift in Sources */,
 				0FEE8EC92AE7BDA0009D2746 /* ImageRequestView.swift in Sources */,
 				0F6145142A5FDD990070D111 /* MainView.swift in Sources */,
@@ -1003,6 +1042,7 @@
 				0F595AB62A654B2F00620811 /* ProfileViewModel.swift in Sources */,
 				0FA17ACF2AB79DFC00F43791 /* Ticket.swift in Sources */,
 				0FA17B492AC553C100F43791 /* GenericButton.swift in Sources */,
+				0FEE8F1C2AEE6046009D2746 /* SinglePubView.swift in Sources */,
 				0F7906882A7D1C6A00FC4621 /* ImageUserProfileView.swift in Sources */,
 				0F4B11652A6C33DC0068F135 /* ChatViewModel.swift in Sources */,
 				0FFFC58A2A5F4EAD0025268A /* ChatView.swift in Sources */,
@@ -1023,6 +1063,7 @@
 				0FFFC5882A5F4E860025268A /* ProfileView.swift in Sources */,
 				0FFFC5862A5F4E470025268A /* LikeView.swift in Sources */,
 				0F828BF32AE14C3700C542A7 /* PubsSignInViewModel.swift in Sources */,
+				0FEE8F162AED582D009D2746 /* PubsListView.swift in Sources */,
 				0FA17AD12AB7A61600F43791 /* Pub.swift in Sources */,
 				0F4B11592A6C1F720068F135 /* TitleRowView.swift in Sources */,
 				0FA17B4D2AC5554900F43791 /* RegisterField.swift in Sources */,
@@ -1038,10 +1079,12 @@
 				0F4B115B2A6C25890068F135 /* Message.swift in Sources */,
 				0F9B7F232A5E8ED000CEE335 /* ComponentStyles.swift in Sources */,
 				0FA17B352AC2F48F00F43791 /* VerificationCodeRequestView.swift in Sources */,
+				0FEE8F1A2AEDB240009D2746 /* GenericSubText.swift in Sources */,
 				0F4B11612A6C2CD90068F135 /* MessageFieldView.swift in Sources */,
 				0F6145282A5FE7880070D111 /* LikeViewModel.swift in Sources */,
 				0F79068A2A7E49CE00FC4621 /* BodyOfProfileView.swift in Sources */,
 				0F828BE82ADFEF1600C542A7 /* AuthService.swift in Sources */,
+				0FEE8F1E2AEE6303009D2746 /* UserImageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1099,6 +1142,7 @@
 				0FEE8ECE2AE7BDBF009D2746 /* GenericText.swift in Sources */,
 				0FA17A882AB70E7F00F43791 /* FireBaseManager.swift in Sources */,
 				0FEE8EC82AE7BD9E009D2746 /* ShowedGenderView.swift in Sources */,
+				0FEE8F182AED58E8009D2746 /* PubsListView.swift in Sources */,
 				0FEE8ED02AE7BDC2009D2746 /* BackgroundImage.swift in Sources */,
 				0FA17AAF2AB70EDE00F43791 /* Like.swift in Sources */,
 				0FEE8ED22AE7BDC4009D2746 /* RegisterField.swift in Sources */,
