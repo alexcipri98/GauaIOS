@@ -6,7 +6,8 @@
 //
 
 import Foundation
-class ClasifierOfClassOfPerson {
+
+struct ClasifierOfClassOfPerson {
     func calculateClassOfPerson(gender: String, genderToShow: String) -> ClassOfPerson {
         switch gender {
         case "male_gender_parameter".localized:

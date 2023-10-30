@@ -13,8 +13,10 @@ struct ParentView: View {
         NavigationView {
             ZStack {
                 VStack {
-                    if router.isAuthenticated || router.currentDestination == .main {
+                    if router.isAuthenticatedUserClient || router.currentDestination == .main {
                         MainView() // La vista principal cuando el usuario está autenticado.
+                    } else if router.isAuthenticatedPubClient || router.currentDestination == .mainPubs {
+                        PubsMainView()
                     } else {
                         NavigationStack  {
                             PhoneNumberRequestView()

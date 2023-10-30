@@ -20,11 +20,19 @@ struct AuthService: AuthServiceProtocol {
         }
     }
     
-    public func currentUserExist() -> Bool {
-        return (Auth.auth().currentUser != nil)
+    public func currentUserExist() -> UserAuthType? {
+        guard let user = Auth.auth().currentUser else { return nil }
+        for info in user.providerData {
+            if info.providerID == "phone" {
+                return .userClient
+            } else if info.providerID == "password" {
+                return .userPub
+            }
+        }
+        return nil
     }
     
-    public func signIn(verificationCode: String, onSuccess: @escaping () -> Void, onFailure: @escaping (Error?) -> Void) {
+    public func signInCode(verificationCode: String, onSuccess: @escaping () -> Void, onFailure: @escaping (Error?) -> Void) {
         guard let verificationID = UserDefaults.standard.string(forKey: "authVerificationID") else { return }
         
         let credential = PhoneAuthProvider.provider().credential(
@@ -39,6 +47,16 @@ struct AuthService: AuthServiceProtocol {
                 print("Autenticación exitosa en AuthService" + (authResult?.user.phoneNumber ?? ""))
                 onSuccess()
             }
+        }
+    }
+    
+    public func signInEmail(email: String, password: String, onSuccess: @escaping () -> Void, onFailure: @escaping (Error?) -> Void){
+        Auth.auth().signIn(withEmail: email, password: password) { (authResult, error) in
+            if let error = error {
+                onFailure(error)
+            }
+            print("Inicio de sesión exitoso")
+            onSuccess()
         }
     }
     

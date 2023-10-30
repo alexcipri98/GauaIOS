@@ -9,18 +9,15 @@ import SwiftUI
 
 struct PhoneNumberRequestView: View {
     @StateObject private var registerViewModel = RegisterViewModel()
-
+    @State var goPubsSignIn = false
     var body: some View {
-        VStack(alignment: .leading) {
-            HStack {
-                Spacer()
-                Image("GauaLogo")
-                    .resizable()
-                    .frame(width: 225, height: 225)
-                    .foregroundColor(Color.white)
-                Spacer()
-            }
-            .padding(.top)
+        VStack(alignment: .center) {
+            
+            Image("GauaLogo")
+                .resizable()
+                .frame(width: 225, height: 225)
+                .foregroundColor(Color.white)
+                .padding(.top)
             
             GenericText(text: "register_view_movileRequest".localized, color: Color.white)
                 .padding(.top)
@@ -48,8 +45,14 @@ struct PhoneNumberRequestView: View {
                 registerViewModel.registerStepOne()
             })
             .disabled(registerViewModel.phoneNumber == "")
-            .padding(.top, 60)
+            .padding(.top, 50)
             
+            GenericSubText(text: "Entrar con cuenta de empresa")
+                .underline()
+                .padding(.top, 50)
+                .onTapGesture {
+                    goPubsSignIn = true
+                }
             Spacer()
             
         }
@@ -58,6 +61,9 @@ struct PhoneNumberRequestView: View {
         .padding(.horizontal, 50)
         .navigationDestination(isPresented: $registerViewModel.goVerification) {
             VerificationCodeRequestView(registerViewModel: registerViewModel)
+        }
+        .navigationDestination(isPresented: $goPubsSignIn) {
+            PubsSignInView()
         }
     }
 }

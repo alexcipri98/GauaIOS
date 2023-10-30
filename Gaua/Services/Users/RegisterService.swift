@@ -30,7 +30,7 @@ struct RegisterService: RegisterServiceProtocol {
         }
     }
     
-    public func register(person: Person, onSuccess: @escaping () -> Void, onFailure: @escaping (Error?) -> Void) {
+    public func register(person: Person, onSuccess: @escaping (Person) -> Void, onFailure: @escaping (Error?) -> Void) {
         let uniqueID = person.prefix + person.phoneNumber
         let userRef = db.collection("users").document(uniqueID)
         
@@ -47,7 +47,7 @@ struct RegisterService: RegisterServiceProtocol {
                 onFailure(error)
             } else {
                 print("\u{1F44C} User added successfully!")
-                onSuccess()
+                onSuccess(person)
             }
         }
     }
@@ -115,6 +115,7 @@ struct RegisterService: RegisterServiceProtocol {
                                              onFailure: onFailure)
                     
                 } else {
+                    #warning("El siguiente error no está traducido")
                     let customError = NSError(domain: "",
                                               code: 409,
                                               userInfo: [NSLocalizedDescriptionKey : "Error al intentar recuperar el usuario."])

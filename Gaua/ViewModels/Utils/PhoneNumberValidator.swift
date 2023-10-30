@@ -8,7 +8,9 @@
 import Foundation
 import libPhoneNumber
 
-class PhoneNumberValidator {
+struct PhoneNumberValidator {
+    static let defaultPrefix = "+34"
+
     func isValidPhoneNumber(prefix: String, phoneNumber: String) -> Bool {
         guard let phoneUtil = NBPhoneNumberUtil.sharedInstance() else {
             return false
@@ -20,5 +22,9 @@ class PhoneNumberValidator {
         } catch {
             return false
         }
+    }
+    
+    func ensureValidPrefix(_ prefix: String) -> String {
+        return prefix.isEmpty ? Self.defaultPrefix : prefix
     }
 }

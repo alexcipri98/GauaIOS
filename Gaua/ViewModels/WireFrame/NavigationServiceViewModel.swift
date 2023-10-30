@@ -13,7 +13,8 @@ final class NavigationServiceViewModel: ObservableObject {
     
     let router = RouterViewModel()
     var userSession : Person?
-
+    var pubsUserSession: PubsPerson?
+    
     func navigateTo(destination: RouterViewModel.Destination) {
         DispatchQueue.main.async {
             self.router.currentDestination = destination
@@ -46,25 +47,33 @@ final class NavigationServiceViewModel: ObservableObject {
 
 final class RouterViewModel: ObservableObject {
     enum Destination {
-           case login
-           case main
+        case register
+        case main
+        case mainPubs
     }
     private var authService = AuthService()
 
-    @Published var isAuthenticated: Bool = false
-    @Published var currentDestination: Destination = .login
+    @Published var isAuthenticatedUserClient: Bool = false
+    @Published var isAuthenticatedPubClient: Bool = false
+    @Published var currentDestination: Destination = .register
     @Published var showAlert: Bool = false
     @Published var alertMessage: String = ""
     @Published var isLoading: Bool = false
     
     fileprivate init() {
-        self.isAuthenticated = authService.currentUserExist()
+        guard let typeOfAuthenticatedUser = authService.currentUserExist() else { return }
+        if typeOfAuthenticatedUser == .userPub {
+            isAuthenticatedPubClient = true
+        } else if typeOfAuthenticatedUser == .userClient  {
+            isAuthenticatedUserClient = true
+        }
     }
     
     func logoutUser() {
         if authService.logout() {
-            self.isAuthenticated = false
-            self.currentDestination = .login
+            self.isAuthenticatedPubClient = false
+            self.isAuthenticatedUserClient = false
+            self.currentDestination = .register
         } else {
             alertMessage = "Hubo un problema al cerrar la sesión. Por favor, inténtalo de nuevo."
             showAlert = true

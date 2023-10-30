@@ -1,0 +1,51 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2639
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica-Bold;\f1\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw12240\paperh15840\margl1440\margr1440\vieww9000\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\b\fs24 \cf0 Dado el escenario que describes, donde solo t\'fa puedes dar de alta a una empresa y luego un usuario administrador de esa empresa puede agregar m\'e1s usuarios, aqu\'ed te dejo una estructura y pasos sugeridos:\
+
+\f1\b0 \
+
+\f0\b  1. Dar de Alta a una Empresa desde Firebase:\
+
+\f1\b0 \
+	a. Colecci\'f3n de Empresas en Firestore: Crea una colecci\'f3n llamada `empresas`. Cada documento representar\'eda una empresa individual y podr\'eda tener campos como `nombre`, `direccion`, `emailAdmin`, `telefonoAdmin`, etc.\
+\
+	b. Creaci\'f3n manual: Dado que solo t\'fa registrar\'e1s empresas, puedes hacerlo directamente desde la consola de Firestore agregando un nuevo documento a la colecci\'f3n `empresas`.\
+\
+
+\f0\b 2. Usuario Administrador:\
+
+\f1\b0 \
+	a. Registro en Firebase Auth: Registra al usuario administrador en Firebase Auth utilizando su correo electr\'f3nico. Puedes hacer esto manualmente desde la consola de Firebase, creando un nuevo usuario con correo electr\'f3nico y contrase\'f1a.\
+\
+	b. Vinculaci\'f3n con la Empresa: En el documento de la empresa (en la colecci\'f3n `empresas`), a\'f1ade un campo llamado `uidAdmin` que contenga el UID del usuario administrador que acabas de crear. Esto vincula el usuario administrador con la empresa espec\'edfica.\
+\
+
+\f0\b 3. Roles y Permisos:
+\f1\b0 \
+\
+	a. Sistema de Roles: En Firestore, crea una colecci\'f3n llamada `roles`. Aqu\'ed puedes definir roles como `administrador`, `empleado`, `gerente`, etc. Cada documento en esta colecci\'f3n podr\'eda tener permisos espec\'edficos definidos.\
+\
+	b. Vinculaci\'f3n de Usuarios con Roles: En cada perfil de usuario (dentro de tu base de datos, no en Firebase Auth), puedes tener un campo llamado `rol` que haga referencia a un documento espec\'edfico en la colecci\'f3n `roles`. Esto te permitir\'e1 definir y cambiar f\'e1cilmente los permisos de un 	usuario al cambiar su `rol`.\
+\
+
+\f0\b 4. Funcionalidad para Agregar Usuarios por parte del Administrador:
+\f1\b0 \
+\
+	a. Interfaz en tu App: Dentro de la aplicaci\'f3n, proporciona una interfaz donde el usuario administrador pueda agregar nuevos usuarios. Esto podr\'eda ser un formulario simple donde el admin introduce el correo electr\'f3nico y selecciona un rol para el nuevo usuario.\
+\
+	b. Backend: Cuando se env\'ede el formulario, tu backend deber\'eda:\
+   		- Registrar al nuevo usuario en Firebase Auth.\
+   		- Crear un nuevo documento para el usuario en una colecci\'f3n `usuarios` en Firestore.\
+   		- Vincular al usuario con la empresa y asignarle el rol seleccionado.\
+\
+
+\f0\b 5. Reglas de Seguridad:\
+
+\f1\b0 Establece reglas de seguridad en Firebase para asegurarte de que solo los usuarios autorizados puedan realizar acciones espec\'edficas. Por ejemplo, solo un administrador puede agregar nuevos usuarios dentro de su empresa.\
+\
+}

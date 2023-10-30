@@ -12,10 +12,10 @@ class AuthService: AuthServiceProtocol {
     func logout() -> Bool {
         return true
     }
-    func currentUserExist() -> Bool {
-        return false
+    func currentUserExist() -> UserAuthType? {
+        return nil
     }
-    func signIn(verificationCode: String, onSuccess: @escaping () -> Void, onFailure: @escaping (Error?) -> Void) {
+    func signInCode(verificationCode: String, onSuccess: @escaping () -> Void, onFailure: @escaping (Error?) -> Void) {
        onSuccess()
     }
     func getVerificationID(prefix: String, phoneNumber: String, onSuccess: @escaping (String) -> Void, onFailure: @escaping (Error?) -> Void) {
